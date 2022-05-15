@@ -1,18 +1,22 @@
 ![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)
 
 # PySil
-PySil is simple, but kind of useful python library to gather:
+PySil is simple, but useful python library to gather:
   - system information
   - hardware information
   - network information
 
+
+# Anouncements
+Linux support finnaly done!, you can now download PySil library version 1.8
+New features:
+  - display information (works both for windows and linux!)
+
 # Compatibility 
-Current PySil version: 1.0.7
+Current PySil version: 1.0.8
 
 Currently most of PySil's library functions are only supported
-by Windows, but I am currently working on Linux support.
-
-Linux support almost done! Functions to do: RAM, GPU, motherboard and storage.
+by Windows, but I am currently working on MacOS support.
 
 I've been testing and coding this library on python 3.8 and 3.9,
 but I have no idea if it works on other versions too.
@@ -22,7 +26,6 @@ Required python pacakges to run pysil library are in the requirements.txt file.
 # ToDo List
 ### ToDo list for PySil library:
 
-- [ ] Linux Support
 - [ ] MacOS Support
 - [ ] more functions
 - [ ] fixing ram amount bug
@@ -70,11 +73,11 @@ For gathering GPU information use:
 from pysil import gpu
 print(gpu.gpu_id()) # example return: 0
 print(gpu.gpu_name()) # example return: NVIDIA GeForce GTX 1660 Ti
-print(gpu.gpu_load()) # example return: 0.0%
-print(gpu.gpu_free_memory()) # example return: 5991.0MB
-print(gpu.gpu_used_memory()) # example return: 0.0MB
-print(gpu.gpu_total_memory()) # example return: 6144.0MB
-print(gpu.gpu_temperature()) # example return: 45C
+print(gpu.gpu_load()) # example return: 0.0% # does not work on linux, i don't know why
+print(gpu.gpu_free_memory()) # example return: 5991.0MB # does not work on linux, i don't know why
+print(gpu.gpu_used_memory()) # example return: 0.0MB # does not work on linux, i don't know why
+print(gpu.gpu_total_memory()) # example return: 6144.0MB # does not work on linux, i don't know why
+print(gpu.gpu_temperature()) # example return: 45C # does not work on linux, i don't know why
 ```
 
 For gathering RAM information use:
