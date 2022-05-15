@@ -156,24 +156,13 @@ all network functions will return the virtual netwrok information, not yours.
 - ----------------------------------
 - total ram memory will return not correct amount, it returns a little bit less than you have ( about 0.7 GB ).
 
-# Notes
-1) Some of PySil's library functions require to be run as administrator,
-because some of them are using libraries like wmi, so if you are
-getting an unexpected error, try running your IDE as administrator,
-and restart your script.
+# Support
 ----------------------------------
-2) Some of PySil's library functions might have an error, and if you are having one
-for example function is returning wrong data, or function is just not working
-please contact me.
- ----------------------------------
-3) Some functions might need few seconds ( depending on your computer specs ) to return the data, because it needs to access
-files, read them, get needed data and then return it, so be patient. If it is taking longer than about 8sec then please contact me.
+* Feel free to contribute, I will appriciate it for sure. If you want to do so, please contact me ( preferably discord )
 ----------------------------------
-4) Feel free to contribute, I will appriciate it for sure. If you want to do so, please contact me ( preferably discord )
+* If you found an error or vurnability of any sort, please report it to me.
 ----------------------------------
-5) If you found an error or vurnability of any sort, please report it to me.
-----------------------------------
-6) Contact details:
+* Contact details:
   - E-mail: bambusixmc@gmail.com
   - Discord: Bamboooz#8423
 
