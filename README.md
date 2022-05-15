@@ -75,7 +75,6 @@ print(gpu.gpu_free_memory()) # example return: 5991.0MB
 print(gpu.gpu_used_memory()) # example return: 0.0MB
 print(gpu.gpu_total_memory()) # example return: 6144.0MB
 print(gpu.gpu_temperature()) # example return: 45C
-print(gpu.get_uuid()) # example return: GPU-7acefeea-cbae-0e2f-3c6f-10540fb3ada6
 ```
 
 For gathering RAM information use:
@@ -107,7 +106,7 @@ For gathering motherboard information use:
 from pysil import motherboard
 print(motherboard.motherboard_model()) # example return: 8786
 print(motherboard.motherboard_manufacturer()) # example return: HP
-print(motherboard.motherboard_serial_id()) # example return: 31444335-3530-4331-5736-6C02E073D649
+print(motherboard.motherboard_serial_number()) # example return: 31444335-3530-4331-5736-6C02E073D649
 print(motherboard.motherboard_version()) # example return: 22.54
 print(motherboard.motherboard_node()) # example return: 145253501163834
 ```
