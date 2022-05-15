@@ -15,6 +15,7 @@ PySil is simple, but useful python library to gather:
 Linux support finnaly done!, you can now download PySil library version 1.8
 New features:
   - display information (works both for windows and linux!)
+  - working linux support 🎉
 
 # Compatibility 
 Windows • Linux
