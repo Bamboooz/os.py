@@ -142,6 +142,7 @@ print(network.get_hostname())
 # Known Bugs
 - if you have some sort of virtual network installed ( for example you have vmware installed ),
 all network functions will return the virtual netwrok information, not yours.
+- gpu total, used, free memory and gpu temp on linux in returning none or errors.
 - total ram memory will return not correct amount, it returns a little bit less than you have ( about 0.7 GB ).
 
 # Notes
