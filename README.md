@@ -18,8 +18,6 @@ New features:
 # Compatibility 
 Windows • Linux
 
-Required python pacakges to run pysil library are in the requirements.txt file.
-
 # ToDo List
 ### ToDo list for PySil library:
 
@@ -41,6 +39,8 @@ Commands in PySil library are the same for every single
 operating system, and you don't have to change anything
 in import etc. - our library will automaticly detect
 your operating system and apply correct code for you.
+
+Required python pacakges to run pysil library are in the requirements.txt file.
 
 For gathering system information use:
 ```python
