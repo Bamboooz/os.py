@@ -39,7 +39,7 @@ pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont wo
 # Usage
 Commands in PySil library are the same for every single
 operating system, and you don't have to change anything
-in import etc. - our library will automaticly detect
+in import etc. - my library will automaticly detect
 your operating system and apply correct code for you.
 
 Required python pacakges to run pysil library are in the requirements.txt file.
