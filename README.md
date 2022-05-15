@@ -30,7 +30,7 @@ Windows • Linux
 - [ ] importing pysil library to other languages ( java, c# )
 
 # Installing
-Pip install:
+Installation using python package installer (pip):
 ```python
 pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont work then
 ```
@@ -42,7 +42,7 @@ in import etc. - our library will automaticly detect
 your operating system and apply correct code for you.
 
 Required python pacakges to run pysil library are in the requirements.txt file.
-
+----------------------------------
 For gathering system information use:
 ```python
 from pysil import system
@@ -53,7 +53,7 @@ print(system.os_release()) # example return: 10
 print(system.os_architecture()) # example return: AMD64
 print(system.linux_distro()) # example return: ubuntu ( works only on linux )
 ```
-
+----------------------------------
 For gathering CPU information use:
 ```python
 from pysil import cpu
