@@ -1,12 +1,20 @@
+import os
 import subprocess
 import sys
 import psutil
 from core.exception import *
 
 
+def sudo_dmidecode(data):
+    dmidecode = os.popen('sudo -S dmidecode --type 17').read()
+    for line in str(dmidecode).splitlines():
+        if data in line:
+            return line
+
+
 def ram_total_memory():
     if sys.platform == 'win32' or 'linux':
-        return str(psutil.virtual_memory().total / (1024 ** 3)) + ' GB'
+        return str(round(psutil.virtual_memory().total / (1024 ** 3))) + 'GB'
     elif sys.platform == 'darwin':
         return unsupported_exception()
     else:
@@ -20,7 +28,7 @@ def ram_manufacturer():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return sudo_dmidecode('Manufacturer').replace('	', '').replace('Manufacturer: ', '')
     else:
         return unsupported_exception()
 
@@ -32,7 +40,7 @@ def ram_serial_number():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return sudo_dmidecode('Serial Number').replace('	', '').replace('Serial Number: ', '')
     else:
         return unsupported_exception()
 
@@ -47,7 +55,7 @@ def ram_memory_type():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return sudo_dmidecode('Type').replace('	', '').replace('Type: ', '')
     else:
         return unsupported_exception()
 
@@ -62,7 +70,7 @@ def ram_form_factor():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return sudo_dmidecode('Form Factor').replace('	', '').replace('Form Factor: ', '')
     else:
         return unsupported_exception()
 
@@ -74,7 +82,7 @@ def ram_clockspeed():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return sudo_dmidecode('Speed').replace('	', '').replace('Speed: ', '')
     else:
         return unsupported_exception()
 

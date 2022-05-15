@@ -1,5 +1,6 @@
 import sys
 import GPUtil
+import os
 from core.exception import *
 
 
@@ -13,7 +14,10 @@ def gpu_id():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        data = os.popen('sudo -S lshw -C display').read()
+        for line in str(data).splitlines():
+            if 'physical id' in line:
+                return line.replace('physical id: ', '').replace('       ', '')
     else:
         return unsupported_exception()
 
@@ -25,7 +29,10 @@ def gpu_name():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        data = os.popen('sudo -S lshw -C display').read()
+        for line in str(data).splitlines():
+            if 'product: ' in line:
+                return line.replace('product: ', '').replace('       ', '')
     else:
         return unsupported_exception()
 
@@ -82,18 +89,6 @@ def gpu_temperature():
     if sys.platform == 'win32':
         gpu = GPUtil.getGPUs()[0]
         return str(gpu.temperature) + 'C'
-    elif sys.platform == 'darwin':
-        return unsupported_exception()
-    elif sys.platform == 'linux':
-        return unsupported_exception()
-    else:
-        return unsupported_exception()
-
-
-def gpu_uuid():
-    if sys.platform == 'win32':
-        for gpu in gpus:
-            return gpu.uuid
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':

@@ -1,7 +1,7 @@
 import os
 import subprocess
-import uuid
 import sys
+import uuid
 from core.exception import *
 
 
@@ -29,14 +29,15 @@ def motherboard_manufacturer():
         return unsupported_exception()
 
 
-def motherboard_serial_id():
+def motherboard_serial_number():
     if sys.platform == 'win32':
         serial_id = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
         return serial_id
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        dmidecode = os.popen('sudo -S dmidecode -t system | grep Serial').read()
+        return dmidecode.replace('Serial Number: ', '').replace('	', '')
     else:
         return unsupported_exception()
 
@@ -48,7 +49,10 @@ def motherboard_version():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        dmidecode = os.popen('sudo -S dmidecode -t 2').read()
+        for line in str(dmidecode).splitlines():
+            if 'Version' in line:
+                return line.replace('Version: ', '').replace('	', '')
     else:
         return unsupported_exception()
 

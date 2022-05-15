@@ -1,6 +1,5 @@
-import os
-import sys
 import platform
+import sys
 import distro
 from core.exception import *
 

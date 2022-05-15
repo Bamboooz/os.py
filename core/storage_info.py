@@ -51,25 +51,25 @@ def get_used_space_percent():
         return unsupported_exception()
 
 
-def get_drive_fstype():
+def get_drive_fstype(drive_letter):
     if sys.platform == 'win32':
         for part in psutil.disk_partitions(all=False):
             if os.name == 'nt':
                 if 'cdrom' in part.opts or part.fstype == '':
                     continue
-            if part.device.startswith():
+            if part.device.startswith(drive_letter):
                 return part.fstype
     else:
         return unsupported_exception()
 
 
-def get_drive_mountpoint():
+def get_drive_mountpoint(drive_letter):
     if sys.platform == 'win32':
         for part in psutil.disk_partitions(all=False):
             if os.name == 'nt':
                 if 'cdrom' in part.opts or part.fstype == '':
                     continue
-            if part.device.startswith():
+            if part.device.startswith(drive_letter):
                 return part.mountpoint
     else:
         return unsupported_exception()

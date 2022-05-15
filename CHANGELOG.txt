@@ -13,3 +13,5 @@ CHANGELOG
 1.0.6 - added changelog (14.05.22)
 
 1.0.7 - added proper readme file (14.05.22)
+
+1.0.8 - linux support + display info functions (16.05.22)

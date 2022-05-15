@@ -86,10 +86,6 @@ class gpu:
     def gpu_temperature():
         return gpu_info.gpu_temperature()
 
-    @staticmethod
-    def gpu_uuid():
-        return gpu_info.gpu_uuid()
-
 
 class ram:
     @staticmethod
@@ -127,20 +123,20 @@ class storage:
         return storage_info.drive_list()
 
     @staticmethod
-    def get_total_space(drive_letter):
-        return storage_info.get_total_space(drive_letter)
+    def get_total_space():
+        return storage_info.get_total_space()
 
     @staticmethod
-    def get_used_space(drive_letter):
-        return storage_info.get_used_space(drive_letter)
+    def get_used_space():
+        return storage_info.get_used_space()
 
     @staticmethod
-    def get_free_space(drive_letter):
-        return storage_info.get_free_space(drive_letter)
+    def get_free_space():
+        return storage_info.get_free_space()
 
     @staticmethod
-    def get_used_space_percent(drive_letter):
-        return storage_info.get_used_space_percent(drive_letter)
+    def get_used_space_percent():
+        return storage_info.get_used_space_percent()
 
     @staticmethod
     def get_drive_fstype(drive_letter):
@@ -162,7 +158,7 @@ class motherboard:
 
     @staticmethod
     def motherboard_serial_id():
-        return motherboard_info.motherboard_serial_id()
+        return motherboard_info.motherboard_serial_number()
 
     @staticmethod
     def motherboard_version():
