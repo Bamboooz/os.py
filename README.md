@@ -114,6 +114,14 @@ print(motherboard.motherboard_version()) # example return: 22.54
 print(motherboard.motherboard_node()) # example return: 145253501163834
 ```
 
+For gathering display information use:
+```python
+from pysil import display
+print(display.display_device()) # example return: ('\\\\.\\DISPLAY1', 'AMD Radeon(TM) Graphics')
+print(display.screen_resolution()) # example return: 1920x1080
+print(display.screen_refresh_frequency()) # example return: 144Hz
+```
+
 For gathering machine information use:
 ```python
 from pysil import machine
