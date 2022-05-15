@@ -2,6 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Version](https://img.shields.io/github/package-json/v/:user/:repo?filename=packages%2Fchar-width-table-builder%2Fpackage.json)
+![Build](https://img.shields.io/appveyor/build/:user/:repo)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
 # PySil
