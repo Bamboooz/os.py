@@ -11,18 +11,25 @@ PySil is simple, but useful python library to gather:
   - hardware information
   - network information
 
-# Anouncements
-Linux support finnaly done!, you can now download PySil library version 1.8
-New features:
-  - display information (works both for windows and linux!)
-  - working linux support 🎉
+# Supported Features
+------------------
+* Computer System and firmware, baseboard
+* Operating System and Version/Build
+* Physical (core) and Logical (hyperthreaded) CPUs, processor groups
+* System and per-processor load, usage
+* CPU, memory usage
+* Physical and virtual memory used/available
+* Mounted filesystems (type, total space)
+* Disk drives (model, serial, size)
+* Network interfaces (IPs), network parameters
+* Connected displays (with EDID info), graphics
+* Sensors (temperature) on some hardware
 
 # Compatibility 
 Windows • Linux
 
 # Future updates
 ### Future updates for PySil library:
-
 - [ ] MacOS Support
 - [ ] more functions
 - [ ] fixing ram amount bug
@@ -41,9 +48,8 @@ Commands in PySil library are the same for every single
 operating system, and you don't have to change anything
 in import etc. - my library will automaticly detect
 your operating system and apply correct code for you.
-
+----------------------------------
 Required python pacakges to run pysil library are in the requirements.txt file.
-
 ----------------------------------
 For gathering system information use:
 ```python
