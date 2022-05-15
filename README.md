@@ -10,20 +10,13 @@ PySil is simple, but useful python library to gather:
   - hardware information
   - network information
 
-
 # Anouncements
 Linux support finnaly done!, you can now download PySil library version 1.8
 New features:
   - display information (works both for windows and linux!)
 
 # Compatibility 
-Current PySil version: 1.0.8
-
-Currently most of PySil's library functions are only supported
-by Windows, but I am currently working on MacOS support.
-
-I've been testing and coding this library on python 3.8 and 3.9,
-but I have no idea if it works on other versions too.
+Windows • Linux
 
 Required python pacakges to run pysil library are in the requirements.txt file.
 
