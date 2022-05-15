@@ -1,8 +1,9 @@
 ![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)
 
-
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![Version](https://img.shields.io/github/package-json/v/:user/:repo?filename=packages%2Fchar-width-table-builder%2Fpackage.json)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+![pythonver](https://img.shields.io/pypi/pyversions/:packageName)
 
 # PySil
 PySil is simple, but useful python library to gather:
@@ -10,26 +11,25 @@ PySil is simple, but useful python library to gather:
   - hardware information
   - network information
 
-
-# Anouncements
-Linux support finnaly done!, you can now download PySil library version 1.8
-New features:
-  - display information (works both for windows and linux!)
+# Supported Features
+------------------
+* Computer System and firmware, baseboard
+* Operating System and Version/Build
+* Physical (core) and Logical (hyperthreaded) CPUs, processor groups
+* System and per-processor load, usage
+* CPU, memory usage
+* Physical and virtual memory used/available
+* Mounted filesystems (type, total space)
+* Disk drives (model, serial, size)
+* Network interfaces (IPs), network parameters
+* Connected displays (with EDID info), graphics
+* Sensors (temperature) on some hardware
 
 # Compatibility 
-Current PySil version: 1.0.8
+Windows • Linux
 
-Currently most of PySil's library functions are only supported
-by Windows, but I am currently working on MacOS support.
-
-I've been testing and coding this library on python 3.8 and 3.9,
-but I have no idea if it works on other versions too.
-
-Required python pacakges to run pysil library are in the requirements.txt file.
-
-# ToDo List
-### ToDo list for PySil library:
-
+# Future updates
+### Future updates for PySil library:
 - [ ] MacOS Support
 - [ ] more functions
 - [ ] fixing ram amount bug
@@ -38,7 +38,7 @@ Required python pacakges to run pysil library are in the requirements.txt file.
 - [ ] importing pysil library to other languages ( java, c# )
 
 # Installing
-Pip install:
+Installation using python package installer (pip):
 ```python
 pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont work then
 ```
@@ -46,9 +46,11 @@ pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont wo
 # Usage
 Commands in PySil library are the same for every single
 operating system, and you don't have to change anything
-in import etc. - our library will automaticly detect
+in import etc. - my library will automaticly detect
 your operating system and apply correct code for you.
-
+----------------------------------
+Required python pacakges to run pysil library are in the requirements.txt file.
+----------------------------------
 For gathering system information use:
 ```python
 from pysil import system
@@ -59,7 +61,7 @@ print(system.os_release()) # example return: 10
 print(system.os_architecture()) # example return: AMD64
 print(system.linux_distro()) # example return: ubuntu ( works only on linux )
 ```
-
+----------------------------------
 For gathering CPU information use:
 ```python
 from pysil import cpu
@@ -71,7 +73,7 @@ print(cpu.cpu_usage()) # example return: 17.5%
 print(cpu.cpu_temperature()) # example return: 80C
 print(cpu.cpu_vendor_id()) # example return: AuthenticAMD
 ```
-
+----------------------------------
 For gathering GPU information use:
 ```python
 from pysil import gpu
@@ -83,7 +85,7 @@ print(gpu.gpu_used_memory()) # example return: 0.0MB # does not work on linux, i
 print(gpu.gpu_total_memory()) # example return: 6144.0MB # does not work on linux, i don't know why
 print(gpu.gpu_temperature()) # example return: 45C # does not work on linux, i don't know why
 ```
-
+----------------------------------
 For gathering RAM information use:
 ```python
 from pysil import ram
@@ -95,7 +97,7 @@ print(ram.ram_form_factor()) # example return: SODIMM
 print(ram.ram_clockspeed()) # example return: 3200Hz
 print(ram.ram_usage()) # example return: 54.7%
 ```
-
+----------------------------------
 For gathering storage information use: ( as drive_letter use the letter of the drive you want to get info about )
 ```python
 from pysil import storage
@@ -107,7 +109,7 @@ print(storage.get_used_space_percent()) # example return: 56.4%
 print(storage.get_drive_fstype(drive_letter)) # example return: NTFS ( only for windows - linux doesnt have drive letters )
 print(storage.get_drive_mountpoint(drive_letter)) # example return: C:\ ( only for windows - linux doesnt have drive letters )
 ```
-
+----------------------------------
 For gathering motherboard information use:
 ```python
 from pysil import motherboard
@@ -117,7 +119,7 @@ print(motherboard.motherboard_serial_number()) # example return: 31444335-3530-4
 print(motherboard.motherboard_version()) # example return: 22.54
 print(motherboard.motherboard_node()) # example return: 145253501163834
 ```
-
+----------------------------------
 For gathering display information use:
 ```python
 from pysil import display
@@ -125,14 +127,14 @@ print(display.display_device()) # example return: ('\\\\.\\DISPLAY1', 'AMD Radeo
 print(display.screen_resolution()) # example return: 1920x1080
 print(display.screen_refresh_frequency()) # example return: 144Hz
 ```
-
+----------------------------------
 For gathering machine information use:
 ```python
 from pysil import machine
 print(machine.machine_name()) # example return: DESKTOP-236TBJV
 print(machine.bios_type()) # example return: UEFI
 ```
-
+----------------------------------
 For gathering network information use:
 ```python
 # not showing example return cause i might accidentaly leak someones data.
@@ -144,29 +146,22 @@ print(network.get_default_gateway())
 print(network.is_connected()) # example return: True
 print(network.get_hostname())
 ```
+----------------------------------
 
 # Known Bugs
 - if you have some sort of virtual network installed ( for example you have vmware installed ),
 all network functions will return the virtual netwrok information, not yours.
+- gpu total, used, free memory and gpu temp on linux in returning none or errors.
 - total ram memory will return not correct amount, it returns a little bit less than you have ( about 0.7 GB ).
 
-# Notes
-1) Some of PySil's library functions require to be run as administrator,
-because some of them are using libraries like wmi, so if you are
-getting an unexpected error, try running your IDE as administrator,
-and restart your script.
-
-2) Some of PySil's library functions might have an error, and if you are having one
-for example function is returning wrong data, or function is just not working
-please contact me.
- 
-3) Some functions might need few seconds ( depending on your computer specs ) to return the data, because it needs to access
-files, read them, get needed data and then return it, so be patient. If it is taking longer than about 8sec then please contact me.
-
-4) Feel free to contribute, I will appriciate it for sure. If you want to do so, please contact me ( preferably discord )
-
-5) If you found an error or vurnability of any sort, please report it to me.
-
-6) Contact details:
+# Support
+----------------------------------
+* Feel free to contribute, I will appriciate it for sure. If you want to do so, please contact me ( preferably discord )
+* If you found an error or vurnability of any sort, please report it to me.
+* Contact details:
   - E-mail: bambusixmc@gmail.com
   - Discord: Bamboooz#8423
+
+# License
+-------
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
