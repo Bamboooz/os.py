@@ -75,7 +75,6 @@ print(gpu.gpu_free_memory()) # example return: 5991.0MB
 print(gpu.gpu_used_memory()) # example return: 0.0MB
 print(gpu.gpu_total_memory()) # example return: 6144.0MB
 print(gpu.gpu_temperature()) # example return: 45C
-print(gpu.get_uuid()) # example return: GPU-7acefeea-cbae-0e2f-3c6f-10540fb3ada6
 ```
 
 For gathering RAM information use:
