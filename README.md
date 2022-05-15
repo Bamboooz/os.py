@@ -1,5 +1,5 @@
 ![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)
-
+[![LGPL License](https://img.shields.io/badge/license-LGPL-2.1-blue.svg)](https://opensource.org/licenses/LGPL-2.1)
 # PySil
 PySil is simple, but useful python library to gather:
   - system information
