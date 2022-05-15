@@ -107,7 +107,7 @@ For gathering motherboard information use:
 from pysil import motherboard
 print(motherboard.motherboard_model()) # example return: 8786
 print(motherboard.motherboard_manufacturer()) # example return: HP
-print(motherboard.motherboard_serial_id()) # example return: 31444335-3530-4331-5736-6C02E073D649
+print(motherboard.motherboard_serial_number()) # example return: 31444335-3530-4331-5736-6C02E073D649
 print(motherboard.motherboard_version()) # example return: 22.54
 print(motherboard.motherboard_node()) # example return: 145253501163834
 ```
