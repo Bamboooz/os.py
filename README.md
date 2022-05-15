@@ -1,5 +1,9 @@
 ![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)
 
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+
 # PySil
 PySil is simple, but useful python library to gather:
   - system information
@@ -112,6 +116,14 @@ print(motherboard.motherboard_manufacturer()) # example return: HP
 print(motherboard.motherboard_serial_number()) # example return: 31444335-3530-4331-5736-6C02E073D649
 print(motherboard.motherboard_version()) # example return: 22.54
 print(motherboard.motherboard_node()) # example return: 145253501163834
+```
+
+For gathering display information use:
+```python
+from pysil import display
+print(display.display_device()) # example return: ('\\\\.\\DISPLAY1', 'AMD Radeon(TM) Graphics')
+print(display.screen_resolution()) # example return: 1920x1080
+print(display.screen_refresh_frequency()) # example return: 144Hz
 ```
 
 For gathering machine information use:
