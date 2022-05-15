@@ -1,4 +1,4 @@
-![pysil](https://github.com/Bamboooz/pysil/blob/master/banner.png?raw=true)
+![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)
 
 # PySil
 PySil is simple, but kind of useful python library to gather:
