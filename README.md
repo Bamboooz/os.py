@@ -47,9 +47,11 @@ Commands in PySil library are the same for every single
 operating system, and you don't have to change anything
 in import etc. - our library will automatically detect
 your operating system and apply correct code for you.
-
-Required python packages to run pysil library are in the requirements.txt file.
 ----------------------------------
+Required python packages to run pysil library are in the requirements.txt file.
+
+----------------------------------
+
 For gathering system information use:
 ```python
 from pysil import system
