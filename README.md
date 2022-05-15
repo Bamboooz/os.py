@@ -168,3 +168,7 @@ files, read them, get needed data and then return it, so be patient. If it is ta
 6) Contact details:
   - E-mail: bambusixmc@gmail.com
   - Discord: Bamboooz#8423
+
+# License
+-------
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
