@@ -20,7 +20,7 @@ Pysil is a free Operating System and Hardware Information library for Python. It
 * Machine info ( BIOS type [BIOS or UEFI], machine name )
 * Disk drives ( model, serial, size )
 * Network interfaces ( IPs ), network parameters
-* Connected displays ( with EDID info ), graphics
+* Connected displays, graphics
 * Sensors ( temperature ) on some hardware
 
 # Future updates
