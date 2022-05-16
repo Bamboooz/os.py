@@ -20,7 +20,8 @@ Pysil is a free Operating System and Hardware Information library for Python. It
 * Machine info ( BIOS type [BIOS or UEFI], machine name )
 * Disk drives ( model, serial, size )
 * Network interfaces ( IPs ), network parameters
-* Connected displays ( with EDID info ), graphics
+* Connected displays, graphics
+* Battery information (percentage, is_connected, battery time left)
 * Sensors ( temperature ) on some hardware
 
 # Future updates
@@ -62,6 +63,8 @@ print(system.os_platform()) # example return: Windows-10-10.0.19044-SP0
 print(system.os_release()) # example return: 10
 print(system.os_architecture()) # example return: AMD64
 print(system.linux_distro()) # example return: ubuntu ( works only on linux )
+print(system.process_list()) # example return: process list
+print(system.os_antivirus()) # example return: ['Windows Defender', 'Malwarebytes']
 ```
 ----------------------------------
 For gathering CPU information use:
@@ -120,6 +123,14 @@ print(motherboard.motherboard_manufacturer()) # example return: HP
 print(motherboard.motherboard_serial_number()) # example return: 31444335-3530-4331-5736-6C02E073D649
 print(motherboard.motherboard_version()) # example return: 22.54
 print(motherboard.motherboard_node()) # example return: 145253501163834
+```
+----------------------------------
+For gathering battery information use:
+```python
+from pysil import battery
+print(battery.battery_percentage()) # example return: 57%
+print(battery.is_plugged_in()) # example return: True
+print(battery.battery_time_left()) # example return: 1.3h
 ```
 ----------------------------------
 For gathering display information use:
