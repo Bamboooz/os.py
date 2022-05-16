@@ -13,11 +13,10 @@ PySil is simple, but useful python library to gather:
 
 # Supported Features
 ------------------
-* Computer System and firmware, baseboard
-* Operating System and Version/Build
-* Physical (core) and Logical (hyperthreaded) CPUs, processor groups
-* System and per-processor load, usage
-* CPU, memory usage
+* Operating system information ( name, distribution, release etc. )
+* CPU information ( model, clockspeed, temperature, architecture etc. )
+* GPU information ( id, name, load, memory, temperature etc. )
+* rAM information ( memory, manufacturer, form factor, memory type, clockspeed, usage etc. )
 * Physical and virtual memory used/available
 * Mounted filesystems (type, total space)
 * Disk drives (model, serial, size)
