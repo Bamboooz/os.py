@@ -56,7 +56,7 @@ def gpu_free_memory():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return feature_not_implemented_yet()
     else:
         return unsupported_exception()
 
@@ -68,7 +68,7 @@ def gpu_used_memory():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return feature_not_implemented_yet()
     else:
         return unsupported_exception()
 
@@ -80,7 +80,7 @@ def gpu_total_memory():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return feature_not_implemented_yet()
     else:
         return unsupported_exception()
 
@@ -92,6 +92,6 @@ def gpu_temperature():
     elif sys.platform == 'darwin':
         return unsupported_exception()
     elif sys.platform == 'linux':
-        return unsupported_exception()
+        return feature_not_implemented_yet()
     else:
         return unsupported_exception()
