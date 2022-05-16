@@ -8,13 +8,13 @@ classifiers = [
 
 setup(
     name='pysil',
-    version='1.0.8',
+    version='1.0.9',
     description='system information gathering made simple',
     long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
     url='https://github.com/Bamboooz/pysil',
     author='Bamboooz',
     author_email='bambusixmc@gmail.com',
-    license='LGPL-2.1',
+    license='MIT',
     classifiers=classifiers,
     keywords='system',
     packages=['pysil', 'core'],
