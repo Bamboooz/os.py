@@ -6,7 +6,7 @@
 ![pythonver](https://img.shields.io/pypi/pyversions/:packageName)
 
 # PySil
-Pysil is a free Operating System and Hardware Information library for Python. It provides a cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
+Pysil is a free Operating System and Hardware Information library for Python. It provides a cross-platform implementation to retrieve system information, such as OS version, memory and CPU usage, disks, devices, sensors, etc.
 
 # Supported Features
 ------------------
@@ -20,7 +20,7 @@ Pysil is a free Operating System and Hardware Information library for Python. It
 * Machine info ( BIOS type [BIOS or UEFI], machine name )
 * Disk drives ( model, serial, size )
 * Network interfaces ( IPs ), network parameters
-* Connected displays ( with EDID info ), graphics
+* Connected displays, graphics
 * Sensors ( temperature ) on some hardware
 
 # Future updates
