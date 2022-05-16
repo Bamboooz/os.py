@@ -1,4 +1,4 @@
-from core import system_info, cpu_info, gpu_info, ram_info, machine_info, storage_info, network_info, motherboard_info, display_info
+from core import system_info, cpu_info, gpu_info, ram_info, machine_info, storage_info, network_info, motherboard_info, display_info, battery_info
 
 
 class system:
@@ -25,6 +25,14 @@ class system:
     @staticmethod
     def os_architecture():
         return system_info.os_architecture()
+
+    @staticmethod
+    def process_list():
+        return system_info.process_list()
+
+    @staticmethod
+    def os_antivirus():
+        return system_info.os_antivirus()
 
 
 class cpu:
@@ -191,6 +199,20 @@ class display:
     @staticmethod
     def screen_refresh_frequency():
         return display_info.screen_refresh_frequency()
+
+
+class battery:
+    @staticmethod
+    def battery_percentage():
+        return battery_info.battery_percentage()
+
+    @staticmethod
+    def is_plugged_in():
+        return battery_info.is_plugged_in()
+
+    @staticmethod
+    def battery_time_left():
+        return battery_info.battery_time_left()
 
 
 class network:
