@@ -14,4 +14,6 @@ CHANGELOG
 
 1.0.7 - added proper readme file (14.05.22)
 
-1.0.8 - linux support + display info functions (16.05.22)
+1.0.8 - linux support + display info functions, changed license from LGPL-2.1 to MIT (16.05.22)
+
+1.0.9 - battery information + new system information ( tasklist + av's installed ) (16.05.22)
