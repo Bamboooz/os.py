@@ -37,7 +37,7 @@ PySil is simple, but useful python library to gather:
 - [ ] importing pysil library to other languages ( java, c# )
 
 # Installing
-Pip install:
+Installing library using python package installer (pip):
 ```python
 pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont work then
 ```
