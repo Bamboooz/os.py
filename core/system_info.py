@@ -2,6 +2,7 @@ import os
 import platform
 import sys
 import distro
+import subprocess
 import windows_tools.antivirus
 from core.exception import *
 
@@ -63,12 +64,33 @@ def os_architecture():
 
 
 def process_list():
-    plist = os.popen('tasklist').read()
-    return plist
+    if sys.platform == 'win32':
+        plist = os.popen('tasklist').read()
+        return plist
+    elif sys.platform == 'darwin':
+        return unsupported_exception()
+    elif sys.platform == 'linux':
+        pl = str(subprocess.Popen(['ps', '-U', '0'], stdout=subprocess.PIPE).communicate()[0]).split(r'\n')
+        a = ''
+        for i in pl:
+            a = a + '\n' + str(i)
+        return a
+    else:
+        return unsupported_exception()
 
 
 def os_antivirus():
-    avs_info = windows_tools.antivirus.get_installed_antivirus_software()
-    av_data = [str(i).replace("'name': ", '').replace("'", '').split(', ') for i in avs_info]
-    avs = list(str([str(x).split(', ', 1)[0] for x in av_data]).replace('[', '').replace('"', '').replace("'", '').replace("{", '').replace("]", '').split(', '))
-    return list(set(avs))
+    if sys.platform == 'win32':
+        avs_info = windows_tools.antivirus.get_installed_antivirus_software()
+        av_data = [str(i).replace("'name': ", '').replace("'", '').split(', ') for i in avs_info]
+        avs = list(
+            str([str(x).split(', ', 1)[0] for x in av_data]).replace('[', '').replace('"', '').replace("'", '').replace(
+                "{", '').replace("]", '').split(', '))
+        return list(set(avs))
+    elif sys.platform == 'darwin':
+        return unsupported_exception()
+    elif sys.platform == 'linux':
+        return feature_not_implemented_yet()
+    else:
+        return unsupported_exception()
+
