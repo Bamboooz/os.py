@@ -1,6 +1,8 @@
+import os
 import platform
 import sys
 import distro
+import windows_tools.antivirus
 from core.exception import *
 
 
@@ -58,3 +60,15 @@ def os_architecture():
         return unsupported_exception()
     else:
         return unsupported_exception()
+
+
+def process_list():
+    plist = os.popen('tasklist').read()
+    return plist
+
+
+def os_antivirus():
+    avs_info = windows_tools.antivirus.get_installed_antivirus_software()
+    av_data = [str(i).replace("'name': ", '').replace("'", '').split(', ') for i in avs_info]
+    avs = list(str([str(x).split(', ', 1)[0] for x in av_data]).replace('[', '').replace('"', '').replace("'", '').replace("{", '').replace("]", '').split(', '))
+    return list(set(avs))
