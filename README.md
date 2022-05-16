@@ -16,13 +16,15 @@ PySil is simple, but useful python library to gather:
 * Operating system information ( name, distribution, release etc. )
 * CPU information ( model, clockspeed, temperature, architecture etc. )
 * GPU information ( id, name, load, memory, temperature etc. )
-* rAM information ( memory, manufacturer, form factor, memory type, clockspeed, usage etc. )
+* RAM information ( memory, manufacturer, form factor, memory type, clockspeed, usage etc. )
 * Physical and virtual memory used/available
 * Mounted filesystems (type, total space)
-* Disk drives (model, serial, size)
-* Network interfaces (IPs), network parameters
-* Connected displays (with EDID info), graphics
-* Sensors (temperature) on some hardware
+* Motherboard information ( model, serial number, manufacturer, version, node )
+* Machine info ( BIOS type [BIOS or UEFI], machine name )
+* Disk drives ( model, serial, size )
+* Network interfaces ( IPs ), network parameters
+* Connected displays ( with EDID info ), graphics
+* Sensors ( temperature ) on some hardware
 
 # Future updates
 ### Future updates for PySil library:
