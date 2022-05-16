@@ -6,10 +6,7 @@
 ![pythonver](https://img.shields.io/pypi/pyversions/:packageName)
 
 # PySil
-PySil is simple, but useful python library to gather:
-  - system information
-  - hardware information
-  - network information
+Pysil is a free JNA-based Operating System and Hardware Information library for Python. It provides a cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
 
 # Supported Features
 ------------------
