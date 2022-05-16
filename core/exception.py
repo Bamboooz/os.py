@@ -20,3 +20,7 @@ def battery_plugged_error():
 
 def no_battery_left_error():
     return "\033[91mError: Cannot detect remaining batter, because its about to run out.\033[0m"
+
+
+def feature_not_implemented_yet():
+    return "\033[91mError: Feature not implemented yet - should be available in next version.\033[0m"
