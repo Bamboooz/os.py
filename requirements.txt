@@ -8,3 +8,4 @@ setuptools~=57.4.0
 pywin32~=304
 screeninfo~=0.8
 xlib~=0.21
+windows_tools~=2.3.0
