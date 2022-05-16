@@ -13,17 +13,18 @@ PySil is simple, but useful python library to gather:
 
 # Supported Features
 ------------------
-* Computer System and firmware, baseboard
-* Operating System and Version/Build
-* Physical (core) and Logical (hyperthreaded) CPUs, processor groups
-* System and per-processor load, usage
-* CPU, memory usage
+* Operating system information ( name, distribution, release etc. )
+* CPU information ( model, clockspeed, temperature, architecture etc. )
+* GPU information ( id, name, load, memory, temperature etc. )
+* RAM information ( memory, manufacturer, form factor, memory type, clockspeed, usage etc. )
 * Physical and virtual memory used/available
 * Mounted filesystems (type, total space)
-* Disk drives (model, serial, size)
-* Network interfaces (IPs), network parameters
-* Connected displays (with EDID info), graphics
-* Sensors (temperature) on some hardware
+* Motherboard information ( model, serial number, manufacturer, version, node )
+* Machine info ( BIOS type [BIOS or UEFI], machine name )
+* Disk drives ( model, serial, size )
+* Network interfaces ( IPs ), network parameters
+* Connected displays ( with EDID info ), graphics
+* Sensors ( temperature ) on some hardware
 
 # Future updates
 ### Future updates for PySil library:
@@ -36,7 +37,7 @@ PySil is simple, but useful python library to gather:
 - [ ] importing pysil library to other languages ( java, c# )
 
 # Installing
-Pip install:
+Installing library using python package installer (pip):
 ```python
 pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont work then
 ```
@@ -141,7 +142,7 @@ print(machine.bios_type()) # example return: UEFI
 ----------------------------------
 For gathering network information use:
 ```python
-# not showing example return cause i might accidentaly leak someones data.
+# not showing example return because I might accidentally leak someone's data.
 from pysil import network
 print(network.get_ipv4())
 print(network.get_ipv6())
@@ -154,14 +155,14 @@ print(network.get_hostname())
 
 # Known Bugs
 - if you have some sort of virtual network installed ( for example you have vmware installed ),
-all network functions will return the virtual netwrok information, not yours.
+all network functions will return the virtual network information, not yours.
 - gpu total, used, free memory and gpu temp on linux in returning none or errors.
-- total ram memory will return not correct amount, it returns a little bit less than you have ( about 0.7 GB ).
+- total ram memory will return not correct amount, it returns a little less than you have ( about 0.7 GB ).
 
 # Support
 ----------------------------------
-* Feel free to contribute, I will appriciate it for sure. If you want to do so, please contact me ( preferably discord )
-* If you found an error or vurnability of any sort, please report it to me.
+* Feel free to contribute, I will appreciate it for sure. If you want to do so, please contact me ( preferably discord )
+* If you found an error or vulnerability of any sort, please report it to me.
 * Contact details:
   - E-mail: bambusixmc@gmail.com
   - Discord: Bamboooz#8423
