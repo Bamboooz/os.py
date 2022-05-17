@@ -18,7 +18,7 @@ Windows
 
 # Supported Features
 ------------------
-* Operating system information ( name, distribution, release etc. )
+* Operating system information ( name, release etc. )
 * CPU information ( model, clockspeed, temperature, architecture etc. )
 * GPU information ( id, name, load, memory, temperature etc. )
 * RAM information ( memory, manufacturer, form factor, memory type, clockspeed, usage etc. )
