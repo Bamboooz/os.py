@@ -1,0 +1,23 @@
+CHANGELOG
+
+1.0.1 - windows support done (10.05.22)
+
+1.0.2 - released beta linux support (12.05.22)
+
+1.0.3 - added to pypi (13.05.22)
+
+1.0.4 - core not loading bugfix (13.05.22)
+
+1.0.5 - working pip install (13.05.22)
+
+1.0.6 - added changelog (14.05.22)
+
+1.0.7 - added proper readme file (14.05.22)
+
+1.0.8 - linux support + display info functions, changed license from LGPL-2.1 to MIT (16.05.22)
+
+1.0.9 - battery information + new system information ( tasklist + av's installed ) (16.05.22)
+
+1.1.0 - random tests (17.05.22)
+
+1.1.1 - removed linux support cause of amount of bugs, device info added (17.05.22)
