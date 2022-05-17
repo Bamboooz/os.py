@@ -45,9 +45,11 @@ Installing library using python package installer (pip):
 pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont work then
 ```
 
+
 # Documentation
 * [Documentation](https://github.com/Bamboooz/pysil/blob/master/pysil/docs.md)
 * [Change Log](https://github.com/Bamboooz/pysil/blob/master/CHANGELOG.txt)
+* [PyPi page](https://pypi.org/project/pysil/)
 
 # Known Bugs
 - if you have some sort of virtual network installed ( for example you have vmware installed ),
