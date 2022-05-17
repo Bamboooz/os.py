@@ -29,6 +29,7 @@ Current version : 1.0.9
 # Future updates
 ### Future updates for PySil library:
 
+- [ ] Full Linux support
 - [ ] MacOS Support
 - [ ] more functions
 - [ ] fixing ram amount bug
