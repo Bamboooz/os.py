@@ -2,6 +2,7 @@ import ipaddress
 import socket
 import netifaces
 import sys
+import speedtest
 from core.exception import *
 
 
@@ -70,5 +71,42 @@ def is_connected():
 def get_hostname():
     if sys.platform == 'win32':
         return socket.gethostname()
+    else:
+        return unsupported_exception()
+
+
+def get_ping_time():
+    if sys.platform == 'win32':
+        st = speedtest.Speedtest()
+        st.get_servers([])
+        return str(st.results.ping) + 'ms'
+    else:
+        return unsupported_exception()
+
+
+def get_download_speed():
+    if sys.platform == 'win32':
+        wifi = speedtest.Speedtest()
+        transfer = round(wifi.download())/1000000
+        if transfer > 1000:
+            return str(transfer/1000) + 'GBps'
+        elif 1000 > transfer > 1:
+            return str(transfer) + 'Mbps'
+        elif transfer < 1:
+            return str(transfer*1000) + 'Kbps'
+    else:
+        return unsupported_exception()
+
+
+def get_upload_speed():
+    if sys.platform == 'win32':
+        wifi = speedtest.Speedtest()
+        transfer = round(wifi.upload()) / 1000000
+        if transfer > 1000:
+            return str(transfer / 1000) + 'GBps'
+        elif 1000 > transfer > 1:
+            return str(transfer) + 'Mbps'
+        elif transfer < 1:
+            return str(transfer * 1000) + 'Kbps'
     else:
         return unsupported_exception()

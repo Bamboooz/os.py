@@ -14,6 +14,7 @@
           <option value="N803" />
           <option value="N801" />
           <option value="N806" />
+          <option value="N802" />
         </list>
       </option>
     </inspection_tool>
@@ -23,6 +24,10 @@
           <option value="urllib2" />
           <option value="list.lower" />
           <option value="str.pop" />
+          <option value="win32com.client.Dispatch" />
+          <option value="main.pysil" />
+          <option value="random.random.shuffle" />
+          <option value="random.random.choice" />
         </list>
       </option>
     </inspection_tool>

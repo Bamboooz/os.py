@@ -112,7 +112,7 @@ print(sound.get_audio_devices()) # example return:
 ----------------------------------
 For gathering network information use:
 ```python
-# not showing example return because I might accidentally leak someone's data.
+# showing only particular data, that is not sensible.
 from pysil import network
 print(network.get_ipv4())
 print(network.get_ipv6())
@@ -120,5 +120,8 @@ print(network.get_subnet_mask())
 print(network.get_default_gateway())
 print(network.is_connected()) # example return: True
 print(network.get_hostname())
+print(network.get_ping_time()) # example return: 0ms
+print(network.get_download_speed()) # example return: 93.234Mbps
+print(network.get_upload_speed()) # example return: 101.245Mbps
 ```
 ----------------------------------

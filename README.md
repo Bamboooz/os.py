@@ -25,7 +25,7 @@ Windows
 * Motherboard information ( model, serial number, manufacturer, version, node )
 * Machine info ( BIOS type [BIOS or UEFI], machine name )
 * Disk drives ( list, size, mount type, file system type, mountpoint )
-* Network interfaces ( IPs ), network parameters
+* Network interfaces ( ( IPs ), network parameters, download, upload speed, ping time)
 * Connected displays, graphics
 * Battery information (percentage, is_connected, battery time left)
 * Sensors ( temperature ) on some hardware

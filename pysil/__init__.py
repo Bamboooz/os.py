@@ -246,3 +246,15 @@ class network:
     @staticmethod
     def is_connected():
         return network_info.is_connected()
+
+    @staticmethod
+    def get_ping_time():
+        return network_info.get_ping_time()
+
+    @staticmethod
+    def get_download_speed():
+        return network_info.get_download_speed()
+
+    @staticmethod
+    def get_upload_speed():
+        return network_info.get_upload_speed()
