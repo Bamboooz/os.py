@@ -57,10 +57,10 @@ For gathering storage information use: ( as drive_letter use the letter of the d
 ```python
 from pysil import storage
 print(storage.drive_list()) # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}] ( only for windows - linux doesn't have drive letters )
-print(storage.get_total_space()) # example return: 476GB
-print(storage.get_used_space()) # example return: 269GB
-print(storage.get_free_space()) # example return: 207GB
-print(storage.get_used_space_percent()) # example return: 56.4%
+print(storage.get_total_space(drive_letter)) # example return: 476GB
+print(storage.get_used_space(drive_letter)) # example return: 269GB
+print(storage.get_free_space(drive_letter)) # example return: 207GB
+print(storage.get_used_space_percent(drive_letter)) # example return: 56.4%
 print(storage.get_drive_fstype(drive_letter)) # example return: NTFS
 print(storage.get_drive_mountpoint(drive_letter)) # example return: C:\
 ```
