@@ -3,7 +3,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Version](https://img.shields.io/badge/version-1.1.1-yellow)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-orange.svg?style=flat-square)](https://www.firsttimersonly.com/)
-![pythonver](https://img.shields.io/badge/python-3.9-green)
+![pythonver](https://img.shields.io/badge/python-3.8,%203.9-green)
 ![os](https://img.shields.io/badge/operating%20system-windows-purple)
 [![docs](https://img.shields.io/badge/docs-here-pink)](https://github.com/Bamboooz/pysil/blob/master/pysil/docs.md)
 
