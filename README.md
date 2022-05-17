@@ -46,7 +46,7 @@ pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont wo
 ```
 
 # Documentation
-* [DOCS](https://github.com/Bamboooz/pysil/blob/master/pysil/docs.md)
+* [Documentation](https://github.com/Bamboooz/pysil/blob/master/pysil/docs.md)
 * [Change Log](https://github.com/Bamboooz/pysil/blob/master/CHANGELOG.txt)
 
 # Known Bugs
