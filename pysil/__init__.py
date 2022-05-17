@@ -11,10 +11,6 @@ class system:
         return system_info.os_version()
 
     @staticmethod
-    def linux_distro():
-        return system_info.linux_distro()
-
-    @staticmethod
     def os_platform():
         return system_info.os_platform()
 
@@ -131,20 +127,20 @@ class storage:
         return storage_info.drive_list()
 
     @staticmethod
-    def get_total_space():
-        return storage_info.get_total_space()
+    def get_total_space(drive_letter):
+        return storage_info.get_total_space(drive_letter)
 
     @staticmethod
-    def get_used_space():
-        return storage_info.get_used_space()
+    def get_used_space(drive_letter):
+        return storage_info.get_used_space(drive_letter)
 
     @staticmethod
-    def get_free_space():
-        return storage_info.get_free_space()
+    def get_free_space(drive_letter):
+        return storage_info.get_free_space(drive_letter)
 
     @staticmethod
-    def get_used_space_percent():
-        return storage_info.get_used_space_percent()
+    def get_used_space_percent(drive_letter):
+        return storage_info.get_used_space_percent(drive_letter)
 
     @staticmethod
     def get_drive_fstype(drive_letter):

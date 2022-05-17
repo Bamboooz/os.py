@@ -1,13 +1,6 @@
 # Usage
 ----------------------------------
 
-Commands in PySil library are the same for every single
-operating system, and you don't have to change anything
-in import etc. - our library will automatically detect
-your operating system and apply correct code for you.
-
-----------------------------------
-
 Required python packages to run pysil library are in the requirements.txt file.
 
 ----------------------------------
@@ -20,7 +13,6 @@ print(system.os_version()) # example return: 19044
 print(system.os_platform()) # example return: Windows-10-10.0.19044-SP0
 print(system.os_release()) # example return: 10
 print(system.os_architecture()) # example return: AMD64
-print(system.linux_distro()) # example return: ubuntu ( works only on linux )
 print(system.process_list()) # example return: process list
 print(system.os_antivirus()) # example return: ['Windows Defender', 'Malwarebytes']
 ```
@@ -42,11 +34,11 @@ For gathering GPU information use:
 from pysil import gpu
 print(gpu.gpu_id()) # example return: 0
 print(gpu.gpu_name()) # example return: NVIDIA GeForce GTX 1660 Ti
-print(gpu.gpu_load()) # example return: 0.0% # does not work on linux, i don't know why
-print(gpu.gpu_free_memory()) # example return: 5991.0MB # does not work on linux, i don't know why
-print(gpu.gpu_used_memory()) # example return: 0.0MB # does not work on linux, i don't know why
-print(gpu.gpu_total_memory()) # example return: 6144.0MB # does not work on linux, i don't know why
-print(gpu.gpu_temperature()) # example return: 45C # does not work on linux, i don't know why
+print(gpu.gpu_load()) # example return: 0.0%
+print(gpu.gpu_free_memory()) # example return: 5991.0MB
+print(gpu.gpu_used_memory()) # example return: 0.0MB
+print(gpu.gpu_total_memory()) # example return: 6144.0MB
+print(gpu.gpu_temperature()) # example return: 45C
 ```
 ----------------------------------
 For gathering RAM information use:
@@ -64,13 +56,13 @@ print(ram.ram_usage()) # example return: 54.7%
 For gathering storage information use: ( as drive_letter use the letter of the drive you want to get info about )
 ```python
 from pysil import storage
-print(storage.drive_list()) # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}] ( only for windows - linux doesnt have drive letters )
+print(storage.drive_list()) # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}] ( only for windows - linux doesn't have drive letters )
 print(storage.get_total_space()) # example return: 476GB
 print(storage.get_used_space()) # example return: 269GB
 print(storage.get_free_space()) # example return: 207GB
 print(storage.get_used_space_percent()) # example return: 56.4%
-print(storage.get_drive_fstype(drive_letter)) # example return: NTFS ( only for windows - linux doesnt have drive letters )
-print(storage.get_drive_mountpoint(drive_letter)) # example return: C:\ ( only for windows - linux doesnt have drive letters )
+print(storage.get_drive_fstype(drive_letter)) # example return: NTFS
+print(storage.get_drive_mountpoint(drive_letter)) # example return: C:\
 ```
 ----------------------------------
 For gathering motherboard information use:

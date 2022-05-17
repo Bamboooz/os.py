@@ -4,13 +4,17 @@
 ![Version](https://img.shields.io/badge/version-1.0.9-yellow)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-orange.svg?style=flat-square)](https://www.firsttimersonly.com/)
 ![pythonver](https://img.shields.io/badge/python-3.9-green)
-![os](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)
+![os](https://img.shields.io/badge/operating%20system-windows-purple)
 [![docs](https://img.shields.io/badge/docs-here-pink)](https://github.com/Bamboooz/pysil/blob/master/pysil/docs.md)
 
 # PySil
-Pysil is a free Operating System and Hardware Information library for Python. It provides a cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
+Pysil is a free Operating System and Hardware Information library for Python. It provides windows implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
 
 Current version : 1.0.9
+
+Supported platforms
+---------------------------
+Windows
 
 # Supported Features
 ------------------
@@ -31,7 +35,7 @@ Current version : 1.0.9
 # Future updates
 ### Future updates for PySil library:
 
-- [ ] Full Linux support
+- [ ] Linux support
 - [ ] MacOS Support
 - [ ] more functions
 - [ ] fixing ram amount bug
@@ -54,7 +58,6 @@ pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont wo
 # Known Bugs
 - if you have some sort of virtual network installed ( for example you have vmware installed ),
 all network functions will return the virtual network information, not yours.
-- gpu total, used, free memory and gpu temp on linux in returning none or errors.
 - total ram memory will return not correct amount, it returns a little less than you have ( about 0.7 GB ).
 
 # Support
