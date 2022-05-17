@@ -1,9 +1,9 @@
 ![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![Version](https://img.shields.io/github/package-json/v/:user/:repo?filename=packages%2Fchar-width-table-builder%2Fpackage.json)
+![Version](https://img.shields.io/badge/version-1.0.9-blue)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
-![pythonver](https://img.shields.io/pypi/pyversions/:packageName)
+![pythonver](https://img.shields.io/badge/python-3.9-blue)
 
 # PySil
 Pysil is a free Operating System and Hardware Information library for Python. It provides a cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
