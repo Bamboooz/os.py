@@ -1,5 +1,5 @@
 from core import system_info, cpu_info, gpu_info, ram_info, machine_info, storage_info, network_info, motherboard_info, \
-    display_info, battery_info, sound_info
+    display_info, battery_info, sound_info, device_info
 
 
 class system:
@@ -10,6 +10,10 @@ class system:
     @staticmethod
     def os_version():
         return system_info.os_version()
+
+    @staticmethod
+    def linux_distro():
+        return system_info.linux_distro()
 
     @staticmethod
     def os_platform():
@@ -220,6 +224,12 @@ class sound:
     @staticmethod
     def get_audio_devices():
         return sound_info.get_audio_devices()
+
+
+class device:
+    @staticmethod
+    def get_usb_list():
+        return device_info.get_usb_list()
 
 
 class network:

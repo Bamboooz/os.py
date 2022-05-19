@@ -21,3 +21,5 @@ CHANGELOG
 1.1.0 - random tests (17.05.22)
 
 1.1.1 - removed linux support cause of amount of bugs, device info added (17.05.22)
+
+1.1.2 - added linux support again, added sound info, network speeds, ping (19.05.22)

@@ -16,3 +16,15 @@ def no_battery_left_error():
 
 def feature_not_implemented_yet():
     return "\033[91mError: Feature not implemented yet - should be available in next version.\033[0m"
+
+
+def no_linux_temp_driver():
+    return "\033[91mError: Your Linux does not have driver required to get cpu temp.\033[0m"
+
+
+def not_linux():
+    return "\033[91mError: To run this function your os must be Linux.\033[0m"
+
+
+def not_for_linux():
+    return "\033[91mError: You can't use this function in Linux.\033[0m"

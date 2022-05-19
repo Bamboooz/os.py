@@ -12,6 +12,7 @@ print(system.os_name()) # example return: Windows
 print(system.os_version()) # example return: 19044 
 print(system.os_platform()) # example return: Windows-10-10.0.19044-SP0
 print(system.os_release()) # example return: 10
+print(system.linux_distro()) # example return: ubuntu
 print(system.os_architecture()) # example return: AMD64
 print(system.process_list()) # example return: process list
 print(system.os_antivirus()) # example return: ['Windows Defender', 'Malwarebytes']
@@ -54,7 +55,8 @@ print(ram.ram_clockspeed()) # example return: 3200Hz
 print(ram.ram_usage()) # example return: 54.7%
 ```
 ----------------------------------
-For gathering storage information use: ( as drive_letter use the letter of the drive you want to get info about )
+For gathering storage information use:
+( windows: drive_letter = drive letter what you want info about, linux: drive_letter = '' )
 ```python
 from pysil import storage
 print(storage.drive_list()) # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}] ( only for windows - linux doesn't have drive letters )
@@ -97,6 +99,17 @@ For gathering machine information use:
 from pysil import machine
 print(machine.machine_name()) # example return: DESKTOP-236TBJV
 print(machine.bios_type()) # example return: UEFI
+```
+----------------------------------
+For gathering device information use:
+```python
+from pysil import device
+print(device.get_usb_list()) # example return:
+#  USB\VID_30C9&PID_000E\6&2E165888&0&3
+#  USB\VID_25A7&PID_FA61\6&2E165888&0&2
+#  USB\ROOT_HUB30\5&78FB108&0&0
+#  USB\ROOT_HUB30\5&2C143778&0&0
+#  USB\ROOT_HUB30\5&39B4921D&0&0
 ```
 ----------------------------------
 For gathering sound information use:

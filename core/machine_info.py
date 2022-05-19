@@ -5,8 +5,10 @@ from core.exception import *
 
 
 def machine_name():
-    if sys.platform == 'win32':
+    if sys.platform == 'win32' or 'linux':
         return platform.node()
+    elif sys.platform == 'darwin':
+        return unsupported_exception()
     else:
         return unsupported_exception()
 
@@ -23,5 +25,13 @@ def bios_type():
                         return 'UEFI'
                     else:
                         return 'BIOS'
+    elif sys.platform == 'darwin':
+        return unsupported_exception()
+    elif sys.platform == 'linux':
+        try:
+            open("/sys/firmware/efi")
+            return 'UEFI'
+        except IOError:
+            return 'BIOS'
     else:
         return unsupported_exception()
