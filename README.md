@@ -14,7 +14,7 @@ Current version : 1.1.2
 
 Supported platforms
 ---------------------------
-Windows
+Windows • Linux
 
 # Supported Features
 ------------------
