@@ -170,7 +170,7 @@ class motherboard:
         return motherboard_info.motherboard_manufacturer()
 
     @staticmethod
-    def motherboard_serial_id():
+    def motherboard_serial_number():
         return motherboard_info.motherboard_serial_number()
 
     @staticmethod
