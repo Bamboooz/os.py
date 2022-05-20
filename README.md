@@ -27,6 +27,8 @@ Windows • Linux
 * Disk drives ( list, size, mount type, file system type, mountpoint )
 * Network interfaces ( ( IPs ), network parameters, download, upload speed, ping time)
 * Display info ( display device, screen resolution, refresh frequency )
+* Device info ( usb device list )
+* Sound info ( sound device list )
 * Battery information (percentage, is_connected, battery time left)
 * Sensors ( temperature ) on some hardware
 
