@@ -1,7 +1,7 @@
 [![pysil](https://github.com/Bamboooz/pysil/blob/master/icon.png?raw=true)](https://github.com/Bamboooz/pysil)
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.1.2-yellow)](https://pypi.org/project/pysil/)
+[![Version](https://img.shields.io/badge/version-1.1.3-yellow)](https://pypi.org/project/pysil/)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-orange.svg?style=flat-square)](https://www.firsttimersonly.com/)
 [![pythonver](https://img.shields.io/badge/python-3.8,%203.9-green)](https://en.wikipedia.org/wiki/Python_(programming_language))
 [![os](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)](https://en.wikipedia.org/wiki/Operating_system)
@@ -10,7 +10,7 @@
 # PySil
 Pysil is a free Operating System and Hardware Information library for Python. It provides cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
 
-Current version : 1.1.2
+Current version : 1.1.3
 
 Supported platforms
 ---------------------------
@@ -45,7 +45,8 @@ Windows • Linux
 # Installing
 Installing library using python package installer (pip):
 ```python
-pip install pysil # make sure its pysil version 1.0.5 or above, cause it wont work then
+pip install pysil # make sure its pysil version 1.1.3 or above,
+# because you will have to install all packages manually
 ```
 
 

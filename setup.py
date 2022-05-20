@@ -8,7 +8,7 @@ classifiers = [
 
 setup(
     name='pysil',
-    version='1.1.2',
+    version='1.1.3',
     description='system information gathering made simple',
     long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
     url='https://github.com/Bamboooz/pysil',
@@ -18,5 +18,16 @@ setup(
     classifiers=classifiers,
     keywords='system',
     packages=['pysil', 'core'],
-    install_requires=['']
+    install_requires=[
+        'distro',
+        'psutil',
+        'windows-tools.antivirus',
+        'py-cpuinfo',
+        'GPUtil',
+        'netifaces',
+        'speedtest-cli',
+        'screeninfo',
+        'xlib',
+        'sounddevice',
+    ]
 )
