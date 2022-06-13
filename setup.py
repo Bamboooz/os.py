@@ -8,7 +8,7 @@ classifiers = [
 
 setup(
     name='pysil',
-    version='1.1.4',
+    version='1.1.5',
     description='system information gathering made simple',
     long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
     url='https://github.com/Bamboooz/pysil',
