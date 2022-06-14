@@ -1,9 +1,4 @@
 # Usage
-----------------------------------
-
-Required python packages to run pysil library are in the requirements.txt file.
-
-----------------------------------
 
 For gathering system information use:
 ```python
@@ -56,7 +51,7 @@ print(ram.ram_usage()) # example return: 54.7%
 ```
 ----------------------------------
 For gathering storage information use:
-( windows: drive_letter = drive letter what you want info about, linux: drive_letter = '' )
+( windows: drive_letter = drive letter what you want info about, linux: drive_letter doesn't matter, just set it to anything )
 ```python
 from pysil import storage
 print(storage.drive_list()) # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}] ( only for windows - linux doesn't have drive letters )
