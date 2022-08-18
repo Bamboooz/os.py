@@ -66,7 +66,6 @@ all network functions will return the virtual network information, not yours.
 * Feel free to contribute, I will appreciate it for sure. If you want to do so, please contact me ( preferably discord )
 * If you found an error or vulnerability of any sort, please report it to me.
 * Contact details:
-  - E-mail: bambusixmc@gmail.com
   - Discord: Bamboooz#8423
 
 # License
