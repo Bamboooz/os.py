@@ -11,7 +11,7 @@ def display_device():
     if sys.platform == 'win32':
         return win32api.EnumDisplayDevices().DeviceName, win32api.EnumDisplayDevices().DeviceString
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
         for m in get_monitors():
             data = str(m).replace('Monitor(', '').replace(')', '')
@@ -20,7 +20,7 @@ def display_device():
                 if i.startswith('name'):
                     return i.replace("'", "").replace('name=', '')
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def screen_resolution():
@@ -28,7 +28,7 @@ def screen_resolution():
         user32 = ctypes.windll.user32
         return user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
         for m in get_monitors():
             data = str(m).replace('Monitor(', '').replace(')', '')
@@ -43,7 +43,7 @@ def screen_resolution():
                 else:
                     return screen_size.replace('width=', '').replace('height=', '')
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def screen_refresh_frequency():
@@ -52,7 +52,7 @@ def screen_refresh_frequency():
         for varName in ['DisplayFrequency']:
             return str(getattr(settings, varName)) + 'Hz'
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
         d = display.Display()
         default_screen = d.get_default_screen()
@@ -69,4 +69,4 @@ def screen_refresh_frequency():
             if mode.id in active_modes:
                 return str(round(mode.dot_clock / (mode.h_total * mode.v_total))) + 'Hz'
     else:
-        return unsupported_exception()
+        print(unsupported_exception())

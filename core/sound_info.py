@@ -8,8 +8,8 @@ def get_audio_devices():
     if sys.platform == 'win32':
         return sd.query_devices()
     elif sys.platform == 'darwin':
-        return
+        print(unsupported_exception())
     elif sys.platform == 'linux':
         return os.popen('aplay -l').read()
     else:
-        return unsupported_exception()
+        print(unsupported_exception())

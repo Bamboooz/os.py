@@ -136,27 +136,27 @@ class storage:
         return storage_info.drive_list()
 
     @staticmethod
-    def get_total_space(drive_letter):
+    def get_total_space(drive_letter=None):
         return storage_info.get_total_space(drive_letter)
 
     @staticmethod
-    def get_used_space(drive_letter):
+    def get_used_space(drive_letter=None):
         return storage_info.get_used_space(drive_letter)
 
     @staticmethod
-    def get_free_space(drive_letter):
+    def get_free_space(drive_letter=None):
         return storage_info.get_free_space(drive_letter)
 
     @staticmethod
-    def get_used_space_percent(drive_letter):
+    def get_used_space_percent(drive_letter=None):
         return storage_info.get_used_space_percent(drive_letter)
 
     @staticmethod
-    def get_drive_fstype(drive_letter):
+    def get_drive_fstype(drive_letter=None):
         return storage_info.get_drive_fstype(drive_letter)
 
     @staticmethod
-    def get_drive_mountpoint(drive_letter):
+    def get_drive_mountpoint(drive_letter=None):
         return storage_info.get_drive_mountpoint(drive_letter)
 
 

@@ -1,16 +1,16 @@
 [![pysil](https://github.com/Bamboooz/pysil/blob/master/banner.png?raw=true)](https://github.com/Bamboooz/pysil)
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.1.5-yellow)](https://pypi.org/project/pysil/)
+[![Version](https://img.shields.io/badge/version-1.1.6-yellow)](https://pypi.org/project/pysil/)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-orange.svg?style=flat-square)](https://www.firsttimersonly.com/)
 [![pythonver](https://img.shields.io/badge/python-3.8,%203.9-green)](https://en.wikipedia.org/wiki/Python_(programming_language))
 [![os](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)](https://en.wikipedia.org/wiki/Operating_system)
 [![docs](https://img.shields.io/badge/docs-here-pink)](https://github.com/Bamboooz/pysil/wiki)
 
 # PySil
-Pysil is a free Operating System and Hardware Information library for Python. It provides cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
+Pysil is a free Operating System and Hardware Information library for Python. It provides cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks, devices, sensors, etc.
 
-Current version : 1.1.5
+Current version : 1.1.6
 
 Supported platforms
 ---------------------------
@@ -29,16 +29,15 @@ Windows • Linux
 * Display info ( display device, screen resolution, refresh frequency )
 * Device info ( usb device list )
 * Sound info ( sound device list )
-* Battery information (percentage, is_connected, battery time left)
-* Sensors ( temperature ) on some hardware
+* Battery information ( percentage, is device charging, battery time left )
 
 # Future updates
 ### Future updates for PySil library:
 
 - [ ] MacOS Support
 - [ ] more functions
-- [ ] fixing ram amount bug
-- [ ] fixing virtual network bug
+- [ ] fixing known bugs
+- [ ] optimizing code
 - [ ] fixing code quality + reducing library weight
 - [ ] importing pysil library to other languages ( java, c# )
 
@@ -56,15 +55,15 @@ pip install pysil # make sure its pysil version 1.1.3 or above,
 * [PyPi page](https://pypi.org/project/pysil/)
 
 # Known Bugs
-- if you have some sort of virtual network installed ( for example you have vmware installed ),
+- if you have a program, that installs virtual network with it ( for example vmware ),
 all network functions will return the virtual network information, not yours.
-- some gpu functions struggle to run on linux
+- some gpu functions don't work on linux systems
 - total ram memory will return not correct amount, it returns a little less than you have ( about 0.7 GB ).
 
 # Support
 ----------------------------------
-* Feel free to contribute, I will appreciate it for sure. If you want to do so, please contact me ( preferably discord )
-* If you found an error or vulnerability of any sort, please report it to me.
+* Feel free to contribute. If you want to do so, please contact me ( preferably discord )
+* If you found an error, bug or a vulnerability of any sort, please report it to me.
 * Contact details:
   - E-mail: bambusixmc@gmail.com
   - Discord: Bamboooz#8423

@@ -12,9 +12,9 @@ def get_ipv4():
         ipv4 = socket.gethostbyname(hostname)
         return ipv4
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_ipv6():
@@ -26,9 +26,9 @@ def get_ipv6():
         )
         return list(ip6)[0][4][0]
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_subnet_mask():
@@ -37,9 +37,9 @@ def get_subnet_mask():
         netmask = ipaddress.IPv4Network(ip_addr).netmask
         return netmask
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_default_gateway():
@@ -47,21 +47,21 @@ def get_default_gateway():
         gateways = netifaces.gateways()
         defaults = gateways.get("default")
         if not defaults:
-            return
+            print(unknown_exception())
 
         def default_ip(family):
             gw_info = defaults.get(family)
             if not gw_info:
-                return
+                print(unknown_exception())
             addresses = netifaces.ifaddresses(gw_info[1]).get(family)
             if addresses:
                 return addresses[0]["addr"]
 
         return default_ip(netifaces.AF_INET) or default_ip(netifaces.AF_INET6)
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def is_connected():
@@ -73,18 +73,18 @@ def is_connected():
         except socket.error:
             return False
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_hostname():
     if sys.platform == 'win32' or 'linux':
         return socket.gethostname()
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_ping_time():
@@ -93,9 +93,9 @@ def get_ping_time():
         st.get_servers([])
         return str(st.results.ping) + 'ms'
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_download_speed():
@@ -109,9 +109,9 @@ def get_download_speed():
         elif transfer < 1:
             return str(transfer*1000) + 'Kbps'
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def get_upload_speed():
@@ -125,6 +125,6 @@ def get_upload_speed():
         elif transfer < 1:
             return str(transfer * 1000) + 'Kbps'
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())

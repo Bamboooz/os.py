@@ -10,8 +10,8 @@ def get_usb_list():
         for usb in wmi.InstancesOf("Win32_USBHub"):
             return usb.DeviceID
     elif sys.platform == 'darwin':
-        return
+        print(unsupported_exception())
     elif sys.platform == 'linux':
         return os.popen('lsusb').read()
     else:
-        return unsupported_exception()
+        print(unsupported_exception())

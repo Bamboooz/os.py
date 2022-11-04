@@ -6,25 +6,25 @@ def unsupported_func():
     return "\033[91mError: Currently function your trying to use is unavailable for your operating system.\033[0m"
 
 
-def battery_plugged_error():
-    return "\033[91mError: Cannot detect remaining battery time because your pc is plugged in.\033[0m"
-
-
-def no_battery_left_error():
-    return "\033[91mError: Cannot detect remaining batter, because its about to run out.\033[0m"
-
-
 def feature_not_implemented_yet():
-    return "\033[91mError: Feature not implemented yet - should be available in next version.\033[0m"
+    return "\033[91mError: Feature not implemented yet - should be available in next versions.\033[0m"
 
 
-def no_linux_temp_driver():
-    return "\033[91mError: Your Linux does not have driver required to get cpu temp.\033[0m"
+def no_linux_driver():
+    return "\033[91mError: Your Linux system does not have driver required to get this parameter.\033[0m"
 
 
 def not_linux():
     return "\033[91mError: To run this function your os must be Linux.\033[0m"
 
 
-def not_for_linux():
-    return "\033[91mError: You can't use this function in Linux.\033[0m"
+def distro_not_found():
+    return "\033[91mError: Linux distribution not found or not supported by PySil library.\033[0m"
+
+
+def unknown_exception():
+    return "\033[91mError: Unknown error occurred.\033[0m"
+
+
+def no_admin_perms():
+    return "\033[91mError: To get this data you need to run your application as administrator.\033[0m"

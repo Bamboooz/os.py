@@ -8,9 +8,9 @@ def machine_name():
     if sys.platform == 'win32' or 'linux':
         return platform.node()
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def bios_type():
@@ -26,7 +26,7 @@ def bios_type():
                     else:
                         return 'BIOS'
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
         try:
             open("/sys/firmware/efi")
@@ -34,4 +34,4 @@ def bios_type():
         except IOError:
             return 'BIOS'
     else:
-        return unsupported_exception()
+        print(unsupported_exception())

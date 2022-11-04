@@ -10,11 +10,14 @@ def motherboard_model():
         model = subprocess.check_output('wmic baseboard get product').decode().split('\n')[1].strip()
         return model
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
-        return os.system('cat /sys/devices/virtual/dmi/id/board_name')
+        try:
+            return os.system('cat /sys/devices/virtual/dmi/id/board_name')
+        except:
+            print(unknown_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def motherboard_manufacturer():
@@ -22,11 +25,14 @@ def motherboard_manufacturer():
         manufacturer = subprocess.check_output('wmic baseboard get Manufacturer').decode().split('\n')[1].strip()
         return manufacturer
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
-        return os.system('cat /sys/devices/virtual/dmi/id/board_vendor')
+        try:
+            return os.system('cat /sys/devices/virtual/dmi/id/board_vendor')
+        except:
+            print(unknown_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def motherboard_serial_number():
@@ -34,11 +40,14 @@ def motherboard_serial_number():
         serial_id = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
         return serial_id
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
-        return os.system('cat /sys/class/dmi/id/board_serial')
+        try:
+            return os.system('cat /sys/class/dmi/id/board_serial')
+        except:
+            print(unknown_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def motherboard_version():
@@ -46,17 +55,20 @@ def motherboard_version():
         version = subprocess.check_output('wmic baseboard get version').decode().split('\n')[1].strip()
         return version
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     elif sys.platform == 'linux':
-        return os.system('/sys/class/dmi/id/board_version:')
+        try:
+            return os.system('cat /sys/class/dmi/id/board_version:')
+        except:
+            print(unknown_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
 
 
 def motherboard_node():
     if sys.platform == 'win32' or 'linux':
         return uuid.getnode()
     elif sys.platform == 'darwin':
-        return unsupported_exception()
+        print(unsupported_exception())
     else:
-        return unsupported_exception()
+        print(unsupported_exception())
