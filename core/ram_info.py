@@ -2,6 +2,8 @@ import os
 import subprocess
 import sys
 import psutil
+from psutil._common import bytes2human
+
 from core.exception import *
 
 
@@ -14,7 +16,7 @@ def sudo_dmidecode(data):
 
 def ram_total_memory():
     if sys.platform == 'win32' or 'linux':
-        return str(round(psutil.virtual_memory().total / (1024 ** 3))) + 'GB'
+        return bytes2human(psutil.virtual_memory()[0]) + 'B'
     elif sys.platform == 'darwin':
         print(unsupported_exception())
     else:

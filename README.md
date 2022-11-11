@@ -13,12 +13,12 @@ Pysil is a free Operating System and Hardware Information library for Python. It
 Current version : 1.1.6
 
 Supported platforms
----------------------------
+
 Windows • Linux
 
 # Supported Features
-------------------
-* Operating system information ( name, version, release, platform, architecture, process list, antivirus, task list )
+
+* Operating system information ( name, version, release, platform, architecture, process list, antivirus )
 * CPU information ( model, clockspeed, architecture, temperature, usage, processor number, vendor id)
 * GPU information ( id, name, load, memory, temperature )
 * RAM information ( memory, manufacturer, form factor, memory type, clockspeed, usage, serial number )
@@ -50,23 +50,23 @@ pip install pysil # make sure its pysil version 1.1.3 or above,
 
 
 # Documentation
+
 * [Documentation](https://github.com/Bamboooz/pysil/wiki)
 * [Change Log](https://github.com/Bamboooz/pysil/blob/master/CHANGELOG.txt)
 * [PyPi page](https://pypi.org/project/pysil/)
 
 # Known Bugs
-- if you have a program, that installs virtual network with it ( for example vmware ),
-all network functions will return the virtual network information, not yours.
-- some gpu functions don't work on linux systems
-- total ram memory will return not correct amount, it returns a little less than you have ( about 0.7 GB ).
+
+ * some gpu functions don't work on linux systems
+ * Total ram memory will return less by a factor of reserved memory amount.
 
 # Support
-----------------------------------
+
 * Feel free to contribute. If you want to do so, please contact me ( preferably discord )
 * If you found an error, bug or a vulnerability of any sort, please report it to me.
 * Contact details:
   - Discord: Bamboooz#8423
 
 # License
--------
+
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
