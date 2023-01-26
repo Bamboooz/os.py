@@ -1,7 +1,8 @@
 # dev folders
 /venv
 /.idea
-/dev
+/dev/pypi
+/dev/notes.txt
 /.vscode
 
 # project testing
