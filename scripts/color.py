@@ -1,0 +1,10 @@
+class color_codes:
+    DEFAULT = '\033[39m'
+    WHITE = '\033[37m'
+    CYAN = '\033[36m'
+    MAGENTA = '\033[35m'
+    BLUE = '\033[34m'
+    YELLOW = '\033[33m'
+    GREEN = '\033[32m'
+    RED = '\033[31m'
+    BLACK = '\033[30m'

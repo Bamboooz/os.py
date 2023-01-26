@@ -1,6 +1,8 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-/setup.py/
-/requirements.txt/
-/main.py/
+# dev folders
+/venv
+/.idea
+/dev
+/.vscode
+
+# project testing
+/tests

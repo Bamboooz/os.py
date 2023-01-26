@@ -33,4 +33,6 @@ CHANGELOG
 1.1.5 - bugfix for version 1.1.4.1, (13.06.22)
 
 1.1.6 - added proper github wiki, added logo, improved error handling,
-improved pypi page, changed error logging system, no admin perms error handling, (.06.22)
+improved pypi page, changed error logging system, no admin perms error handling, (14.06.22)
+
+1.1.7 - refactored almost everything, added new things, improved wiki etc, renamed library to 'os.py', converted core to independent c code

@@ -9,4 +9,4 @@
 
 ## Reporting a Vulnerability
 
-You can make an [issue](https://github.com/Bamboooz/pysil/issues) if you find a security vulnerability 
+You can make an [issue](https://github.com/Bamboooz/os.py/issues) if you find a security vulnerability 
