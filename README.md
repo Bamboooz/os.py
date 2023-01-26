@@ -90,7 +90,7 @@ To get more detailed information about specific os.py functions visit [Detailed 
 Installing library using python package installer (pip):
 ```python
 pip install os_py
-# make sure its os.py version 1.1.3 or above,
+# make sure its os_py version 1.1.3 or above,
 # all versions below are deprecated and are not working
 ```
 
