@@ -1,6 +1,8 @@
 # PySil
 
-[![pysil](https://github.com/Bamboooz/pysil/blob/master/banner.png?raw=true)](https://github.com/Bamboooz/pysil)
+<div align="center">
+  [![pysil](https://github.com/Bamboooz/pysil/blob/master/banner.png?raw=true)](https://github.com/Bamboooz/pysil)
+</div>
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-1.1.6-yellow)](https://pypi.org/project/pysil/)
