@@ -1,6 +1,6 @@
 <p align="center">
 	<br>
-	<img src="https://github.com/Bamboooz/pysil/blob/master/banner.png?raw=true">
+	<img src="https://github.com/Bamboooz/os.py/blob/master/banner.png?raw=true">
 	<br>
 	<br>
 	<b>os.py</b>: Python library to know your operating system better.

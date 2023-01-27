@@ -5,11 +5,10 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
  * #### System Information
     - operating system name
     - operating system version
-    - operating system build
+    - operating system platform
+    - operating system release
     - operating system architecture
     - Linux distro
-    - operating system uptime
-    - current running process list
 
  * #### CPU information
     - CPU model
@@ -77,8 +76,8 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
 
  * #### Battery information
     - battery percentage
-    - is device plugged in (returns null if pc cause it is always connected, only works on laptops)
-    - estimated battery time left
+    - is device plugged in
+    - estimated battery time left (returns null if device is charging)
 
 These are current [os.py](https://github.com/Bamboooz/os.py) functions, but they will be expanded in the future.
 Don't see something you'd like to have? Try and implement it!

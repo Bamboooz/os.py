@@ -1,6 +1,6 @@
 <p align="center">
 	<br>
-	<img src="https://github.com/Bamboooz/pysil/blob/master/banner.png?raw=true">
+	<img src="https://github.com/Bamboooz/os.py/blob/master/banner.png?raw=true">
 	<br>
 	<br>
 	<b>os.py</b>: Python library to know your operating system better.
@@ -11,7 +11,7 @@
 	<a href="https://opensource.org/licenses/MIT">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
 	</a>
-	<a href="https://pypi.org/project/pysil/">
+	<a href="https://pypi.org/project/os.py/">
 		<img src="https://img.shields.io/badge/version-1.1.7-yellow"/>
 	</a>
 	<a href="https://www.firsttimersonly.com/">
