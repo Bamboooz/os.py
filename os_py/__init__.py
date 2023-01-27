@@ -8,10 +8,12 @@ from os_py.arch.linux import ldistro
 from os_py.arch.linux import machine as lmach
 from os_py.arch.linux import device as ldev
 from os_py.arch.linux import sound as lso
+from os_py.arch.linux import motherboard as lmb
 
 from os_py.arch.windows import machine as wmach
 from os_py.arch.windows import device as wdev
 from os_py.arch.windows import sound as wso
+from os_py.arch.windows import motherboard as wmb
 
 
 class system:  # access for system functions from library
@@ -225,4 +227,56 @@ class sound:
         return {
             'windows': wso.get_audio_devices(),
             'linux' or 'linux2': lso.get_audio_devices()
+        }.get(sys.platform.lower(), Errors().unsupported_os())
+
+
+class motherboard:
+    @staticmethod
+    def model():
+        """
+           Returns your current motherboard model
+        """
+        return {
+            'windows': wmb.motherboard_model(),
+            'linux' or 'linux2': lmb.motherboard_model()
+        }.get(sys.platform.lower(), Errors().unsupported_os())
+
+    @staticmethod
+    def manufacturer():
+        """
+           Returns your current motherboard manufacturer
+        """
+        return {
+            'windows': wmb.motherboard_manufacturer(),
+            'linux' or 'linux2': lmb.motherboard_manufacturer()
+        }.get(sys.platform.lower(), Errors().unsupported_os())
+
+    @staticmethod
+    def serial_number():
+        """
+           Returns your current motherboard serial number
+        """
+        return {
+            'windows': wmb.motherboard_serial_number(),
+            'linux' or 'linux2': lmb.motherboard_serial_number()
+        }.get(sys.platform.lower(), Errors().unsupported_os())
+
+    @staticmethod
+    def version():
+        """
+           Returns your current motherboard version
+        """
+        return {
+            'windows': wmb.motherboard_version(),
+            'linux' or 'linux2': lmb.motherboard_version()
+        }.get(sys.platform.lower(), Errors().unsupported_os())
+
+    @staticmethod
+    def node():
+        """
+           Returns your current motherboard node
+        """
+        return {
+            'windows': wmb.motherboard_node(),
+            'linux' or 'linux2': lmb.motherboard_node()
         }.get(sys.platform.lower(), Errors().unsupported_os())
