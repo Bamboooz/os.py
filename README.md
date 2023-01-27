@@ -42,7 +42,7 @@ Current version : 1.1.7
 
 ## Supported platforms
 
- •ㅤWindowsㅤ•ㅤLinuxㅤ•ㅤmacOSㅤ•
+ •ㅤWindowsㅤ•ㅤLinuxㅤ•
 
 ## Example usage
 
