@@ -35,6 +35,8 @@
 
 **Warning, os.py is currently under entire rebuild of its core, so it has been taken under maintenance for now.**
 
+**To get some information, os.py currently uses some other python libraries but this should be changed in version 1.2.0**
+
 os.py is a free Operating System and Hardware Information library for Python. It provides cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks, devices, sensors, etc.
 
 Current version : 1.1.7
