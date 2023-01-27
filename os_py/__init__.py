@@ -7,9 +7,11 @@ from os_py.arch.linux import ldistro
 
 from os_py.arch.linux import machine as lmach
 from os_py.arch.linux import device as ldev
+from os_py.arch.linux import sound as lso
 
 from os_py.arch.windows import machine as wmach
 from os_py.arch.windows import device as wdev
+from os_py.arch.windows import sound as wso
 
 
 class system:  # access for system functions from library
@@ -211,4 +213,16 @@ class battery:
         """
         return {
             'windows' or 'linux' or 'linux2': _battery.battery_time_left()
+        }.get(sys.platform.lower(), Errors().unsupported_os())
+
+
+class sound:
+    @staticmethod
+    def get_sound_devices():
+        """
+            Lists all connected sound devices
+        """
+        return {
+            'windows': wso.get_audio_devices(),
+            'linux' or 'linux2': lso.get_audio_devices()
         }.get(sys.platform.lower(), Errors().unsupported_os())
