@@ -79,12 +79,11 @@ To get more detailed information about specific os.py functions visit [Detailed 
 
 ### Future updates for os.py library:
 
+ - [ ] Making os.py free of other python libraries
  - [ ] Support for other platforms
  - [ ] More functions
  - [ ] Fixing known bugs
- - [ ] Optimizing code
- - [ ] Fixing code quality + reducing library weight
- - [ ] Importing os.py library to other languages (java, c#)
+ - [ ] Porting os.py library to other languages (java, c#)
 
 ## Installing
 
