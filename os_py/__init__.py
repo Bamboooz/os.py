@@ -105,9 +105,9 @@ class machine:
             Detects your operating system's boot method (BIOS/UEFI)
         """
         func_os = defaultdict(lambda: Errors().unsupported_os(),
-                              windows=wmach.bios_type(),
-                              linux=lmach.bios_type(),
-                              linux2=lmach.bios_type())
+                              windows=wmach.boot_type(),
+                              linux=lmach.boot_type(),
+                              linux2=lmach.boot_type())
         return func_os[platform.system().lower()]
 
 

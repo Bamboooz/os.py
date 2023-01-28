@@ -1,4 +1,4 @@
-def bios_type():
+def boot_type():
     try:
         open("/sys/firmware/efi")
         return 'UEFI'

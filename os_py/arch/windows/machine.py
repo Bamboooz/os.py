@@ -3,7 +3,7 @@ import subprocess
 from scripts.err import Errors
 
 
-def bios_type():
+def boot_type():
     try:
         out = subprocess.check_output(['bcdedit']).decode('utf-8')
 
