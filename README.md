@@ -73,7 +73,8 @@ A complete list of [os.py](https://github.com/Bamboooz/os.py) functions:
  * Sound info
  * Battery information
 
-To get more detailed information about specific os.py functions visit [Detailed os.py Functions](https://github.com/Bamboooz/os.py/wiki/os.py-Functions).
+To get more detailed information about specific os.py functions, visit [Detailed os.py Functions](https://github.com/Bamboooz/os.py/wiki/os.py-Functions).
+To see example usages of os.py library, visit [os.py examples](https://github.com/Bamboooz/os.py/tree/master/examples).
 
 ## Future updates
 
