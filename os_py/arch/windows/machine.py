@@ -1,15 +1,27 @@
-import re
+import subprocess
+
+from scripts.err import Errors
 
 
 def bios_type():
-    with open(r'C:\Windows\Panther\setupact.log') as f:
-        pattern = re.compile(r'Detected boot environment: (\w+)')
+    try:
+        out = subprocess.check_output(['bcdedit']).decode('utf-8')
 
-        for line in f:
-            match = pattern.search(line)
-            if match:
-                boot_type = match.group(1).upper()
-                if boot_type == 'EFI':
-                    return 'UEFI'
-                else:
-                    return 'BIOS'
+        is_loader = False
+        for line in out.split('\n'):
+            # Ignore lines until the Windows Boot Loader section
+            if not is_loader and 'Windows Boot Loader' in line:
+                is_loader = True
+
+            if not is_loader:
+                continue
+
+            # Ignore lines until the path subsection
+            if not line.startswith('path'):
+                continue
+
+            # Receives 'exe' (BIOS) or 'efi' (UEFI)
+            boot_type = 'BIOS' if line[-3:] == 'exe' else 'UEFI'
+            return boot_type
+    except:
+        Errors().no_permission()
