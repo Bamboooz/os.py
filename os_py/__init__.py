@@ -1,4 +1,7 @@
+import platform
 import sys
+
+from collections import defaultdict
 
 from scripts.err import Errors
 from os_py import _battery, _inet, _machine, _sys
@@ -22,55 +25,66 @@ class system:  # access for system functions from library
         """
             Returns operating system's name e.g. Windows, Linux etc.
         """
-        return {
-            'windows' or 'linux' or 'linux2': _sys.os_name()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_sys.os_name(),
+                              linux=_sys.os_name(),
+                              linux2=_sys.os_name())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def os_version():
         """
             Returns operating system's version e.g. Windows 10
         """
-        return {
-            'windows' or 'linux' or 'linux2': _sys.os_version()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_sys.os_version(),
+                              linux=_sys.os_version(),
+                              linux2=_sys.os_version())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def os_platform():
         """
             Returns a single string identifying the underlying platform
         """
-        return {
-            'windows' or 'linux' or 'linux2': _sys.os_platform()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_sys.os_platform(),
+                              linux=_sys.os_platform(),
+                              linux2=_sys.os_platform())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def os_release():
         """
             Detects your operating system's release e.g. Windows 10 22H2
         """
-        return {
-            'windows' or 'linux' or 'linux2': _sys.os_release()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_sys.os_release(),
+                              linux=_sys.os_release(),
+                              linux2=_sys.os_release())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def os_architecture():
         """
             Detects operating systems architecture e.g. 32-bit or 64-bit
         """
-        return {
-            'windows' or 'linux' or 'linux2': _sys.os_architecture()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_sys.os_architecture(),
+                              linux=_sys.os_architecture(),
+                              linux2=_sys.os_architecture())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def linux_distro():
         """
             Detects specific distributions on Linux-based systems
         """
-        return {
-            'linux' or 'linux2': ldistro.linux_distro(),
-            'windows': Errors().no_support()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=Errors().no_support(),
+                              linux=ldistro.linux_distro(),
+                              linux2=ldistro.linux_distro())
+        return func_os[platform.system().lower()]
 
 
 class machine:
@@ -79,19 +93,22 @@ class machine:
         """
             Detects machines names and returns it to the user
         """
-        return {
-            'windows' or 'linux' or 'linux2': _machine.machine_name()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_machine.machine_name(),
+                              linux=_machine.machine_name(),
+                              linux2=_machine.machine_name())
+        return func_os[platform.system().lower()]
 
     @staticmethod
-    def sys_start_method():
+    def boot_type():
         """
             Detects your operating system's boot method (BIOS/UEFI)
         """
-        return {
-            'windows': wmach.bios_type(),
-            'linux' or 'linux2': lmach.bios_type()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wmach.bios_type(),
+                              linux=lmach.bios_type(),
+                              linux2=lmach.bios_type())
+        return func_os[platform.system().lower()]
 
 
 class device:
@@ -100,10 +117,11 @@ class device:
         """
             Lists external drives connected to your device
         """
-        return {
-            'windows': wdev.get_usb_list(),
-            'linux' or 'linux2': ldev.get_usb_list()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wdev.get_usb_list(),
+                              linux=ldev.get_usb_list(),
+                              linux2=ldev.get_usb_list())
+        return func_os[platform.system().lower()]
 
 
 class network:
@@ -112,81 +130,99 @@ class network:
         """
             Returns user IpV4 address
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_ipv4()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_ipv4(),
+                              linux=_inet.get_ipv4(),
+                              linux2=_inet.get_ipv4())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def get_ipv6():
         """
             Returns user IpV6 address
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_ipv6()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_ipv6(),
+                              linux=_inet.get_ipv6(),
+                              linux2=_inet.get_ipv6())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def get_subnet_mask():
         """
             Returns user subnet mask
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_subnet_mask()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_subnet_mask(),
+                              linux=_inet.get_subnet_mask(),
+                              linux2=_inet.get_subnet_mask())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def get_default_gateway():
         """
             Returns user default gateway
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_default_gateway()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_default_gateway(),
+                              linux=_inet.get_default_gateway(),
+                              linux2=_inet.get_default_gateway())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def is_connected():
         """
             Returns users internet connection state (connected/disconnected)
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.is_connected()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.is_connected(),
+                              linux=_inet.is_connected(),
+                              linux2=_inet.is_connected())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def get_hostname():
         """
             Returns user host name
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_hostname()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_hostname(),
+                              linux=_inet.get_hostname(),
+                              linux2=_inet.get_hostname())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def get_ping_time():
         """
             Returns user ping time
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_ping_time()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_ping_time(),
+                              linux=_inet.get_ping_time(),
+                              linux2=_inet.get_ping_time())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def user_download_speed():
         """
             Returns users internet download speed
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_download_speed()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_download_speed(),
+                              linux=_inet.get_download_speed(),
+                              linux2=_inet.get_download_speed())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def user_upload_speed():
         """
             Returns users internet upload speed
         """
-        return {
-            'windows' or 'linux' or 'linux2': _inet.get_upload_speed()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_inet.get_upload_speed(),
+                              linux=_inet.get_upload_speed(),
+                              linux2=_inet.get_upload_speed())
+        return func_os[platform.system().lower()]
 
 
 class battery:
@@ -195,27 +231,33 @@ class battery:
         """
             Returns users internet download speed
         """
-        return {
-            'windows' or 'linux' or 'linux2': _battery.battery_percentage()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_battery.battery_percentage(),
+                              linux=_battery.battery_percentage(),
+                              linux2=_battery.battery_percentage())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def is_plugged_in():
         """
             Returns if users device is plugged in
         """
-        return {
-            'windows' or 'linux' or 'linux2': _battery.is_plugged_in()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_battery.is_plugged_in(),
+                              linux=_battery.is_plugged_in(),
+                              linux2=_battery.is_plugged_in())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def battery_time_left():
         """
             Returns users estimated remaining battery life
         """
-        return {
-            'windows' or 'linux' or 'linux2': _battery.battery_time_left()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_battery.battery_time_left(),
+                              linux=_battery.battery_time_left(),
+                              linux2=_battery.battery_time_left())
+        return func_os[platform.system().lower()]
 
 
 class sound:
@@ -224,10 +266,11 @@ class sound:
         """
             Lists all connected sound devices
         """
-        return {
-            'windows': wso.get_audio_devices(),
-            'linux' or 'linux2': lso.get_audio_devices()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wso.get_audio_devices(),
+                              linux=lso.get_audio_devices(),
+                              linux2=lso.get_audio_devices())
+        return func_os[platform.system().lower()]
 
 
 class motherboard:
@@ -236,47 +279,52 @@ class motherboard:
         """
            Returns your current motherboard model
         """
-        return {
-            'windows': wmb.motherboard_model(),
-            'linux' or 'linux2': lmb.motherboard_model()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wmb.motherboard_model(),
+                              linux=lmb.motherboard_model(),
+                              linux2=lmb.motherboard_model())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def manufacturer():
         """
            Returns your current motherboard manufacturer
         """
-        return {
-            'windows': wmb.motherboard_manufacturer(),
-            'linux' or 'linux2': lmb.motherboard_manufacturer()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wmb.motherboard_manufacturer(),
+                              linux=lmb.motherboard_manufacturer(),
+                              linux2=lmb.motherboard_manufacturer())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def serial_number():
         """
            Returns your current motherboard serial number
         """
-        return {
-            'windows': wmb.motherboard_serial_number(),
-            'linux' or 'linux2': lmb.motherboard_serial_number()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wmb.motherboard_serial_number(),
+                              linux=lmb.motherboard_serial_number(),
+                              linux2=lmb.motherboard_serial_number())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def version():
         """
            Returns your current motherboard version
         """
-        return {
-            'windows': wmb.motherboard_version(),
-            'linux' or 'linux2': lmb.motherboard_version()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wmb.motherboard_version(),
+                              linux=lmb.motherboard_version(),
+                              linux2=lmb.motherboard_version())
+        return func_os[platform.system().lower()]
 
     @staticmethod
     def node():
         """
            Returns your current motherboard node
         """
-        return {
-            'windows': wmb.motherboard_node(),
-            'linux' or 'linux2': lmb.motherboard_node()
-        }.get(sys.platform.lower(), Errors().unsupported_os())
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wmb.motherboard_node(),
+                              linux=lmb.motherboard_node(),
+                              linux2=lmb.motherboard_node())
+        return func_os[platform.system().lower()]
