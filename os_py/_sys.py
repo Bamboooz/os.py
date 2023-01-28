@@ -1,9 +1,8 @@
 import platform
-import sys
 
 
 def os_name():
-    return sys.platform
+    return platform.system()
 
 
 def os_version():
