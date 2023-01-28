@@ -80,7 +80,7 @@ To see example usages of os.py library, visit [os.py examples](https://github.co
 
 ### Future updates for os.py library:
 
- - [ ] Making os.py free of other python libraries
+ - [ ] Making os.py free of other python libraries, [What does it mean?](https://github.com/Bamboooz/os.py#about)
  - [ ] Support for other platforms
  - [ ] More functions
  - [ ] Fixing known bugs
