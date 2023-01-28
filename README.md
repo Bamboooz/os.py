@@ -34,7 +34,7 @@
 ## About
 
 **Warning, os.py is currently under entire rebuild of its core, so it has been taken under maintenance for now.**<br>
-**To get some information, os.py currently uses some other python libraries but this should be changed in version 1.2.0**<br>
+**To get some information, os.py currently uses some other python libraries but this should be changed in version 1.2.0**
 
 os.py is a free Operating System and Hardware Information library for Python. It provides implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks, devices, sensors, etc. using python, C and C++
 
@@ -72,9 +72,9 @@ A complete list of [os.py](https://github.com/Bamboooz/os.py) functions:
  * Device info
  * Sound info
  * Battery information
-
-To get more detailed information about specific os.py functions, visit [Detailed os.py Functions](https://github.com/Bamboooz/os.py/wiki/os.py-Functions).
-To see example usages of os.py library, visit [os.py examples](https://github.com/Bamboooz/os.py/tree/master/examples).
+<br><br>
+ * To get more detailed information about specific os.py functions, visit [Detailed os.py Functions](https://github.com/Bamboooz/os.py/wiki/os.py-Functions).<br>
+ * To see example usages of os.py library, visit [os.py examples](https://github.com/Bamboooz/os.py/tree/master/examples).
 
 ## Future updates
 
