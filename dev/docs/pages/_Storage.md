@@ -18,7 +18,7 @@
 from os_py import storage
 
 # as for drive_letter you insert drive letter you want to get information about, example: 'C'
-# default drive letter for windows 'C', and for linux its '/'
+# default drive letter for win32 'C', and for linux its '/'
 
 print(storage.drive_list())
 # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}]
