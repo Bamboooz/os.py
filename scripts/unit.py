@@ -22,4 +22,3 @@ class Unit:
             'f': (val + 459.67) * (5/9),
             'k': val
         }.get(_type.lower())
-
