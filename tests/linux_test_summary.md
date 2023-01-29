@@ -26,7 +26,6 @@ Here is a detailed chart of all windows functions and their test results.
 | cpu architecture    | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | cpu usage           | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | cpu vendor id       | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
-| cpu temperature     | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
 
 | os.py gpu functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
