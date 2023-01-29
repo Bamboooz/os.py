@@ -7,9 +7,7 @@
 * cpu model
 * cpu clockspeed
 * cpu architecture
-* cpu processor number
-* cpu usage
-* cpu temperature
+* cpu processor number (physical, logical, total)
 * cpu vendor id
 
 ------------------------
@@ -36,12 +34,6 @@ print(cpu.cpu_logical_cores()) # example return: 8
 
 # getting cpu processor number
 print(cpu.cpu_total_cores()) # example return: 16
-
-# getting cpu usage
-print(cpu.cpu_usage()) # example return: 17.5%
-
-# getting cpu temperature
-print(cpu.cpu_temperature()) # example return: 80C
 
 # getting cpu vendor id
 print(cpu.cpu_vendor_id()) # example return: AuthenticAMD

@@ -10,7 +10,6 @@
 * ram memory type
 * ram form factor
 * ram clockspeed
-* ram usage
 
 ------------------------
 ### Usage of each os.py RAM functions:
@@ -36,7 +35,4 @@ print(ram.ram_form_factor()) # example return: SODIMM
 
 # getting ram clockspeed
 print(ram.ram_clockspeed()) # example return: 3200Hz
-
-# getting ram usage
-print(ram.ram_usage()) # example return: 54.7%
 ```

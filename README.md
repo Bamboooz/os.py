@@ -21,7 +21,7 @@
 		<img src="https://img.shields.io/badge/python-3.8,%203.9-green"/>
 	</a>
   <a href="https://en.wikipedia.org/wiki/Operating_system">
-		<img src="https://img.shields.io/badge/operating%20system-windows,%20linux,%20macOS-purple"/>
+		<img src="https://img.shields.io/badge/operating%20system-windows,%20linux-purple"/>
 	</a>
   <a href="https://github.com/Bamboooz/os.py/wiki">
 		<img src="https://img.shields.io/badge/docs-here-pink"/>

@@ -14,17 +14,13 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
     - CPU model
     - CPU clockspeed
     - CPU architecture
-    - CPU core usage (single core/total)
     - CPU processor number
-    - CPU temperature
     - CPU vendor id
 
  * #### GPU information
     - GPU id
     - GPU model
-    - GPU usage
     - GPU free, used, total memory
-    - GPU temperature
 
  * #### RAM information
     - total RAM memory
@@ -33,7 +29,6 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
     - RAM memory type
     - RAM form factor
     - RAM clock speed
-    - RAM usage
 
  * #### Motherboard information
     - motherboard model
@@ -44,14 +39,12 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
 
  * #### Machine info
     - machine name
-    - bios type (BIOS/UEFI)
+    - boot type (BIOS/UEFI)
 
  * #### Physical drives
     - physical drive list
     - total, used, free drive space
     - used drive space in percentage
-    - drive file system type
-    - drive mountpoint
 
  * #### Network interfaces
     - user ipv4 address
