@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting GPU information using os.py library:
 ------------------------
-
-------------------------
 ### List of GPU functions that os.py library supports:
 ------------------------
 

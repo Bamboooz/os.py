@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting sound information using os.py library:
 ------------------------
-
-------------------------
 ### Sound functions that os.py library supports:
 ------------------------
 

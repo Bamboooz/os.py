@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting display information using os.py library:
 ------------------------
-
-------------------------
 ### List of display functions that os.py library supports:
 ------------------------
 

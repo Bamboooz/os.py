@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting machine information using os.py library:
 ------------------------
-
-------------------------
 ### List of machine functions that os.py library supports:
 ------------------------
 

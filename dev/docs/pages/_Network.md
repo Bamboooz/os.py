@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting network information using os.py library:
 ------------------------
-
-------------------------
 ### List of network functions that os.py library supports:
 ------------------------
 

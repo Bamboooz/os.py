@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting device information using os.py library:
 ------------------------
-
-------------------------
 ### List of device functions that os.py library supports:
 ------------------------
 

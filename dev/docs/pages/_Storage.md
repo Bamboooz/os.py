@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting storage information using os.py library:
-------------------------
-
-------------------------
+-------------------------
 ### List of storage functions that os.py library supports:
 ------------------------
 

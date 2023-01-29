@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting RAM information using os.py library:
 ------------------------
-
-------------------------
 ### List of RAM functions that os.py library supports:
 ------------------------
 

@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting CPU information using os.py library:
 ------------------------
-
-------------------------
 ### List of CPU functions that os.py library supports:
 ------------------------
 

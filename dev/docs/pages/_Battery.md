@@ -2,7 +2,6 @@
 ## Documentation on getting battery information using os.py library:
 ------------------------
 
-------------------------
 ### List of battery functions that os.py library supports:
 ------------------------
 

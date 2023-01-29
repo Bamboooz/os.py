@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting motherboard information using os.py library:
 ------------------------
-
-------------------------
 ### List of motherboard functions that os.py library supports:
 ------------------------
 

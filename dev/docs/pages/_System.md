@@ -1,8 +1,6 @@
 ------------------------
 ## Documentation on getting system information using os.py library:
 ------------------------
-
-------------------------
 ### System functions that os.py library supports:
 ------------------------
 
