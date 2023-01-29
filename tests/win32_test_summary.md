@@ -22,18 +22,15 @@ Here is a detailed chart of all windows functions and their test results.
 | cpu total cores     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu clockspeed      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu architecture    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| cpu usage           | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu vendor id       | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py gpu functions | Test Result                                                                 |
 |---------------------|-----------------------------------------------------------------------------|
 | gpu id              | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu name            | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
-| gpu load            | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu free memory     | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu used memory     | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu total memory    | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
-| gpu temperature     | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 
 | os.py ram functions | Test Result                                                                 |
 |---------------------|-----------------------------------------------------------------------------|
@@ -43,7 +40,6 @@ Here is a detailed chart of all windows functions and their test results.
 | ram memory type     | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | ram form factor     | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | ram clockspeed      | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
-| ram usage           | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 
 | os.py storage functions       | Test Result                                                               |
 |-------------------------------|---------------------------------------------------------------------------|
