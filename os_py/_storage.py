@@ -1,18 +1,20 @@
 import os
-import sys
 import psutil
+import platform
 
+from collections import defaultdict
 from scripts.err import Errors
 
 
-def default_letter():
-    return {
-        'windows': "C",
-        'linux' or 'linux2': '/'
-    }.get(sys.platform.lower(), Errors().unsupported_os())
+def _default_letter():
+    letter = defaultdict(lambda: Errors().unsupported_os(),
+                         windows='C',
+                         linux='/',
+                         linux2='/')
+    return letter[platform.system().lower()]
 
 
-def drive_list():  # win32 only
+def drive_list():
     disk_info = []
     for part in psutil.disk_partitions(all=False):
         if os.name == 'nt':
@@ -24,32 +26,32 @@ def drive_list():  # win32 only
     return disk_info
 
 
-def get_total_space(drive_letter=default_letter()):
-    if drive_letter is not '/':
+def get_total_space(drive_letter=_default_letter()):
+    if drive_letter != '/':
         drive_letter = drive_letter + ':\\'
 
     obj_disk = psutil.disk_usage(drive_letter)
     return str(round(obj_disk.total / (1024.0 ** 3))) + 'GB'
 
 
-def get_used_space(drive_letter=default_letter()):
-    if drive_letter is not '/':
+def get_used_space(drive_letter=_default_letter()):
+    if drive_letter != '/':
         drive_letter = drive_letter + ':\\'
 
     obj_disk = psutil.disk_usage(drive_letter)
     return str(round(obj_disk.used / (1024.0 ** 3))) + 'GB'
 
 
-def get_free_space(drive_letter=default_letter()):
-    if drive_letter is not '/':
+def get_free_space(drive_letter=_default_letter()):
+    if drive_letter != '/':
         drive_letter = drive_letter + ':\\'
 
     obj_disk = psutil.disk_usage(drive_letter)
     return str(round(obj_disk.free / (1024.0 ** 3))) + 'GB'
 
 
-def get_used_space_percent(drive_letter=default_letter()):
-    if drive_letter is not '/':
+def get_used_space_percent(drive_letter=_default_letter()):
+    if drive_letter != '/':
         drive_letter = drive_letter + ':\\'
 
     obj_disk = psutil.disk_usage(drive_letter)
