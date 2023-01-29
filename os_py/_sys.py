@@ -6,7 +6,7 @@ def os_name():
 
 
 def os_version():
-    return platform.version().split('.')[2]
+    return platform.version()
 
 
 def os_platform():
