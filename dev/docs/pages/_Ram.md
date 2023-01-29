@@ -1,22 +1,11 @@
 ------------------------
-## Documentation of getting RAM information using PySil library:
+## Documentation on getting RAM information using os.py library:
 ------------------------
-### How to get RAM information using PySil library in your project:
-```python
-from pysil import ram
-print(ram.ram_total_memory()) # example function
-```
-```python
-from pysil import *
-print(ram.ram_total_memory()) # example function
-```
-```python
-import pysil
-print(pysil.ram.ram_total_memory()) # example function
-```
+
 ------------------------
-### Here is the list of RAM functions that PySil library supports:
+### List of RAM functions that os.py library supports:
 ------------------------
+
 * ram total memory
 * ram manufacturer
 * ram serial number
@@ -24,11 +13,13 @@ print(pysil.ram.ram_total_memory()) # example function
 * ram form factor
 * ram clockspeed
 * ram usage
+
 ------------------------
-### Usage of each PySil RAM functions:
+### Usage of each os.py RAM functions:
 ------------------------
+
 ```python
-from pysil import ram
+from os_py import ram
 
 # getting ram total memory
 print(ram.ram_total_memory()) # example return: 15.362663269042969 GB

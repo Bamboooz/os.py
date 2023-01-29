@@ -1,30 +1,21 @@
 ------------------------
-## Documentation of getting battery information using PySil library:
+## Documentation on getting battery information using os.py library:
 ------------------------
-### How to get battery information using PySil library in your project:
-```python
-from pysil import battery
-print(battery.battery_percentage()) # example function
-```
-```python
-from pysil import *
-print(battery.battery_percentage()) # example function
-```
-```python
-import pysil
-print(pysil.battery.battery_percentage()) # example function
-```
+
 ------------------------
-### Here is the list of battery functions that PySil library supports:
+### List of battery functions that os.py library supports:
 ------------------------
+
 * getting battery percentage
 * getting information is battery plugged in
 * getting battery time left
+
 ------------------------
-### Usage of each PySil battery functions:
+### Usage of each os.py battery functions:
 ------------------------
+
 ```python
-from pysil import battery
+from os_py import battery
 
 # getting battery percentage
 print(battery.battery_percentage()) # example return: 57%

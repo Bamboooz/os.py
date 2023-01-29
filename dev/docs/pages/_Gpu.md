@@ -1,22 +1,11 @@
 ------------------------
-## Documentation of getting GPU information using PySil library:
+## Documentation on getting GPU information using os.py library:
 ------------------------
-### How to get GPU information using PySil library in your project:
-```python
-from pysil import gpu
-print(gpu.gpu_name()) # example function
-```
-```python
-from pysil import *
-print(gpu.gpu_name()) # example function
-```
-```python
-import pysil
-print(pysil.gpu.gpu_name()) # example function
-```
+
 ------------------------
-### Here is the list of GPU functions that PySil library supports:
+### List of GPU functions that os.py library supports:
 ------------------------
+
 * gpu id
 * gpu name
 * gpu load
@@ -24,11 +13,13 @@ print(pysil.gpu.gpu_name()) # example function
 * gpu used memory
 * gpu total memory
 * gpu temperature
+
 ------------------------
-### Usage of each PySil GPU functions:
+### Usage of each os.py GPU functions:
 ------------------------
+
 ```python
-from pysil import gpu
+from os_py import gpu
 
 # getting gpu id
 print(gpu.gpu_id()) # example return: 0

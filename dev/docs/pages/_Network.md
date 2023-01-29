@@ -1,37 +1,28 @@
 ------------------------
-## Documentation of getting network information using PySil library:
+## Documentation on getting network information using os.py library:
 ------------------------
-### How to get network information using PySil library in your project:
-```python
-from pysil import network
-print(network.get_ipv4()) # example function
-```
-```python
-from pysil import *
-print(network.get_ipv4()) # example function
-```
-```python
-import pysil
-print(pysil.network.get_ipv4()) # example function
-```
+
 ------------------------
-### Here is the list of network functions that PySil library supports:
+### List of network functions that os.py library supports:
 ------------------------
+
 * getting ipv4
 * getting ipv6
 * getting subnet mask
 * getting default gateway
-* getting information is user connected to the internet
+* is user connected to the internet
 * getting hostname
 * getting ping time
 * getting download speed
 * getting upload speed
+
 ------------------------
-### Usage of each PySil network functions:
+### Usage of each os.py network functions:
 ------------------------
+
 ```python
 # showing only particular data, that is not sensible.
-from pysil import network
+from os_py import network
 
 # getting ipv4
 print(network.get_ipv4())
@@ -55,8 +46,8 @@ print(network.get_hostname())
 print(network.get_ping_time()) # example return: 0ms
 
 # getting download speed
-print(network.get_download_speed()) # example return: 93.234Mbps
+print(network.user_download_speed()) # example return: 93.234Mbps
 
 # getting upload speed
-print(network.get_upload_speed()) # example return: 101.245Mbps
+print(network.user_upload_speed()) # example return: 101.245Mbps
 ```

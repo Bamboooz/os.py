@@ -1,31 +1,22 @@
 ------------------------
-## Documentation of getting sound information using PySil library:
+## Documentation on getting sound information using os.py library:
 ------------------------
-### How to get sound information using PySil library in your project:
-```python
-from pysil import sound
-print(sound.get_audio_devices()) # example function
-```
-```python
-from pysil import *
-print(sound.get_audio_devices()) # example function
-```
-```python
-import pysil
-print(pysil.sound.get_audio_devices()) # example function
-```
+
 ------------------------
-### Here is the list of sound functions that PySil library supports:
+### Sound functions that os.py library supports:
 ------------------------
+
 * getting audio devices list
+
 ------------------------
-### Usage of each PySil sound functions:
+### Usage of each os.py sound functions:
 ------------------------
+
 ```python
-from pysil import sound
+from os_py import sound
 
 # getting audio devices
-print(sound.get_audio_devices()) # example return:
+print(sound.get_sound_devices()) # example return:
 #  0 Microsoft Sound Mapper - Input, MME (2 in, 0 out)
 #  1 Internal Microphone (AMD Audio , MME (2 in, 0 out)
 #  2 Microsoft Sound Mapper - Output, MME (0 in, 2 out)

@@ -1,22 +1,11 @@
 ------------------------
-## Documentation of getting CPU information using PySil library:
+## Documentation on getting CPU information using os.py library:
 ------------------------
-### How to get CPU information using PySil library in your project:
-```python
-from pysil import cpu
-print(cpu.cpu_model()) # example function
-```
-```python
-from pysil import *
-print(cpu.cpu_model()) # example function
-```
-```python
-import pysil
-print(pysil.cpu.cpu_model()) # example function
-```
+
 ------------------------
-### Here is the list of CPU functions that PySil library supports:
+### List of CPU functions that os.py library supports:
 ------------------------
+
 * cpu model
 * cpu clockspeed
 * cpu architecture
@@ -24,11 +13,13 @@ print(pysil.cpu.cpu_model()) # example function
 * cpu usage
 * cpu temperature
 * cpu vendor id
+
 ------------------------
-### Usage of each PySil CPU functions:
+### Usage of each os.py CPU functions:
 ------------------------
+
 ```python
-from pysil import cpu
+from os_py import cpu
 
 # getting cpu model
 print(cpu.cpu_model()) # example return: AMD Ryzen 7 4800H with Radeon Graphics
@@ -40,7 +31,13 @@ print(cpu.cpu_clockspeed()) # example return: 2.9000 GHz
 print(cpu.cpu_architecture()) # example return: X86_64
 
 # getting cpu processor number
-print(cpu.cpu_processor_number()) # example return: 16
+print(cpu.cpu_physical_cores()) # example return: 8
+
+# getting cpu processor number
+print(cpu.cpu_logical_cores()) # example return: 8
+
+# getting cpu processor number
+print(cpu.cpu_total_cores()) # example return: 16
 
 # getting cpu usage
 print(cpu.cpu_usage()) # example return: 17.5%

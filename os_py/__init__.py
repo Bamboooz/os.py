@@ -1,10 +1,9 @@
 import platform
-import sys
 
 from collections import defaultdict
 
 from scripts.err import Errors
-from os_py import _battery, _inet, _machine, _sys
+from os_py import _battery, _inet, _machine, _sys, _cpu
 
 from os_py.arch.linux import ldistro
 
@@ -12,11 +11,13 @@ from os_py.arch.linux import machine as lmach
 from os_py.arch.linux import device as ldev
 from os_py.arch.linux import sound as lso
 from os_py.arch.linux import motherboard as lmb
+from os_py.arch.linux import temp as ltmp
 
 from os_py.arch.windows import machine as wmach
 from os_py.arch.windows import device as wdev
 from os_py.arch.windows import sound as wso
 from os_py.arch.windows import motherboard as wmb
+from os_py.arch.windows import temp as wtmp
 
 
 class system:  # access for system functions from library
@@ -327,4 +328,109 @@ class motherboard:
                               windows=wmb.motherboard_node(),
                               linux=lmb.motherboard_node(),
                               linux2=lmb.motherboard_node())
+        return func_os[platform.system().lower()]
+
+
+class cpu:
+    @staticmethod
+    def cpu_model():
+        """
+             Returns your current processor model
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_model(),
+                              linux=_cpu.cpu_model(),
+                              linux2=_cpu.cpu_model())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_physical_cores():
+        """
+            Returns number of physical cores that your cpu possesses
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_physical_cores(),
+                              linux=_cpu.cpu_physical_cores(),
+                              linux2=_cpu.cpu_physical_cores())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_logical_cores():
+        """
+            Returns number of logical cores that your cpu possesses
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_logical_cores(),
+                              linux=_cpu.cpu_logical_cores(),
+                              linux2=_cpu.cpu_logical_cores())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_total_cores():
+        """
+            Returns number of total cores that your cpu possesses
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_total_cores(),
+                              linux=_cpu.cpu_total_cores(),
+                              linux2=_cpu.cpu_total_cores())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_clockspeed():
+        """
+            Returns your cpu's default clockspeed
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_clockspeed(),
+                              linux=_cpu.cpu_clockspeed(),
+                              linux2=_cpu.cpu_clockspeed())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_architecture():
+        """
+            Returns your current cpu architecture
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_architecture(),
+                              linux=_cpu.cpu_architecture(),
+                              linux2=_cpu.cpu_clockspeed())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_usage():
+        """
+            Returns your current processor usage
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_usage(),
+                              linux=_cpu.cpu_usage(),
+                              linux2=_cpu.cpu_usage())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_vendor_id():
+        """
+            Returns your current cpu vendor id
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_cpu.cpu_vendor_id(),
+                              linux=_cpu.cpu_vendor_id(),
+                              linux2=_cpu.cpu_vendor_id())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def cpu_temperature(unit='C'):
+        """
+            Returns you cpu's current temperature
+
+            Accepts 1 param, unit ['C', 'F', 'K'] (doesn't have to be uppercase)
+            Specifies unit that the cpu temperature will be returned in.
+            Optional parameter, default = 'C'
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=wtmp.cpu_temperature(unit),
+                              linux=ltmp.cpu_temperature(unit),
+                              linux2=ltmp.cpu_temperature(unit))
         return func_os[platform.system().lower()]
