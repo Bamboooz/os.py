@@ -3,7 +3,7 @@ import platform
 from collections import defaultdict
 
 from scripts.err import Errors
-from os_py import _battery, _inet, _machine, _sys, _cpu
+from os_py import _battery, _inet, _machine, _sys, _cpu, _storage
 
 from os_py.arch.linux import ldistro
 
@@ -11,13 +11,11 @@ from os_py.arch.linux import machine as lmach
 from os_py.arch.linux import device as ldev
 from os_py.arch.linux import sound as lso
 from os_py.arch.linux import motherboard as lmb
-from os_py.arch.linux import temp as ltmp
 
-from os_py.arch.windows import machine as wmach
-from os_py.arch.windows import device as wdev
-from os_py.arch.windows import sound as wso
-from os_py.arch.windows import motherboard as wmb
-from os_py.arch.windows import temp as wtmp
+from os_py.arch.win32 import machine as wmach
+from os_py.arch.win32 import device as wdev
+from os_py.arch.win32 import sound as wso
+from os_py.arch.win32 import motherboard as wmb
 
 
 class system:  # access for system functions from library
@@ -420,17 +418,95 @@ class cpu:
                               linux2=_cpu.cpu_vendor_id())
         return func_os[platform.system().lower()]
 
-    @staticmethod
-    def cpu_temperature(unit='C'):
-        """
-            Returns you cpu's current temperature
 
-            Accepts 1 param, unit ['C', 'F', 'K'] (doesn't have to be uppercase)
-            Specifies unit that the cpu temperature will be returned in.
-            Optional parameter, default = 'C'
+def _default_letter():
+    letter = defaultdict(lambda: Errors().unsupported_os(),
+                         windows='C',
+                         linux='/',
+                         linux2='/')
+    return letter[platform.system().lower()]
+
+
+class storage:
+    @staticmethod
+    def drive_list():
+        """
+            Returns all drives on your device
         """
         func_os = defaultdict(lambda: Errors().unsupported_os(),
-                              windows=wtmp.cpu_temperature(unit),
-                              linux=ltmp.cpu_temperature(unit),
-                              linux2=ltmp.cpu_temperature(unit))
+                              windows=_storage.drive_list(),
+                              linux=_storage.drive_list(),
+                              linux2=_storage.drive_list())
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def get_total_space(drive_letter=_default_letter()):
+        """
+            Returns total space of your selected drive
+
+            Accepts 1 param: drive letter (optional)
+            Defaults:
+                Windows : 'C'
+                Linux: '/'
+
+            Basically, the parameter defines the drive the data will be from.
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_storage.get_total_space(drive_letter),
+                              linux=_storage.get_total_space(drive_letter),
+                              linux2=_storage.get_total_space(drive_letter))
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def get_used_space(drive_letter=_default_letter()):
+        """
+            Returns used space of your selected drive
+
+            Accepts 1 param: drive letter (optional)
+            Defaults:
+                Windows : 'C'
+                Linux: '/'
+
+            Basically, the parameter defines the drive the data will be from.
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_storage.get_used_space(drive_letter),
+                              linux=_storage.get_used_space(drive_letter),
+                              linux2=_storage.get_used_space(drive_letter))
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def get_free_space(drive_letter=_default_letter()):
+        """
+            Returns free space of your selected drive
+
+            Accepts 1 param: drive letter (optional)
+            Defaults:
+                Windows : 'C'
+                Linux: '/'
+
+            Basically, the parameter defines the drive the data will be from.
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_storage.get_free_space(drive_letter),
+                              linux=_storage.get_free_space(drive_letter),
+                              linux2=_storage.get_free_space(drive_letter))
+        return func_os[platform.system().lower()]
+
+    @staticmethod
+    def get_used_space_percent(drive_letter=_default_letter()):
+        """
+            Returns used space of your selected drive as percentage
+
+            Accepts 1 param: drive letter (optional)
+            Defaults:
+                Windows : 'C'
+                Linux: '/'
+
+            Basically, the parameter defines the drive the data will be from.
+        """
+        func_os = defaultdict(lambda: Errors().unsupported_os(),
+                              windows=_storage.get_used_space_percent(drive_letter),
+                              linux=_storage.get_used_space_percent(drive_letter),
+                              linux2=_storage.get_used_space_percent(drive_letter))
         return func_os[platform.system().lower()]
