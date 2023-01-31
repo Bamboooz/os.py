@@ -17,8 +17,6 @@ Here is a detailed chart of all windows functions and their test results.
 | os.py cpu functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
 | cpu model           | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| cpu physical cores  | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| cpu logical cores   | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu total cores     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu clockspeed      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu architecture    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |

@@ -3,7 +3,6 @@
 /.idea
 /dev/pypi
 /dev/notes.txt
-/.vscode
 
 # project testing
 /dev/tests

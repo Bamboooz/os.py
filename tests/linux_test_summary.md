@@ -19,8 +19,6 @@ Here is a detailed chart of all windows functions and their test results.
 | os.py cpu functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
 | cpu model           | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
-| cpu physical cores  | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
-| cpu logical cores   | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | cpu total cores     | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | cpu clockspeed      | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | cpu architecture    | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
@@ -75,9 +73,9 @@ Here is a detailed chart of all windows functions and their test results.
 
 | os.py battery functions                   | Test Result                                                               |
 |-------------------------------------------|---------------------------------------------------------------------------|
-| getting battery percentage                | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| getting information is battery plugged in | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| getting battery time left                 | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| getting battery percentage                | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
+| getting information is battery plugged in | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
+| getting battery time left                 | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 
 | os.py network functions           | Test Result                                                             |
 |-----------------------------------|-------------------------------------------------------------------------|
