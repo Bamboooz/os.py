@@ -3,7 +3,7 @@ import platform
 from collections import defaultdict
 
 from scripts._common import Handler
-from os_py import _battery, _inet, _machine, _sys, _cpu, _storage
+from os_py import _battery, _inet, _machine, _sys, _storage
 
 from os_py.arch.linux import ldistro
 
@@ -326,96 +326,6 @@ class motherboard:
                               windows=wmb.motherboard_node(),
                               linux=lmb.motherboard_node(),
                               linux2=lmb.motherboard_node())
-        return func_os[platform.system().lower()]
-
-
-class cpu:
-    @staticmethod
-    def cpu_model():
-        """
-             Returns your current processor model
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_model(),
-                              linux=_cpu.cpu_model(),
-                              linux2=_cpu.cpu_model())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_physical_cores():
-        """
-            Returns number of physical cores that your cpu possesses
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_physical_cores(),
-                              linux=_cpu.cpu_physical_cores(),
-                              linux2=_cpu.cpu_physical_cores())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_logical_cores():
-        """
-            Returns number of logical cores that your cpu possesses
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_logical_cores(),
-                              linux=_cpu.cpu_logical_cores(),
-                              linux2=_cpu.cpu_logical_cores())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_total_cores():
-        """
-            Returns number of total cores that your cpu possesses
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_total_cores(),
-                              linux=_cpu.cpu_total_cores(),
-                              linux2=_cpu.cpu_total_cores())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_clockspeed():
-        """
-            Returns your cpu's default clockspeed
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_clockspeed(),
-                              linux=_cpu.cpu_clockspeed(),
-                              linux2=_cpu.cpu_clockspeed())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_architecture():
-        """
-            Returns your current cpu architecture
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_architecture(),
-                              linux=_cpu.cpu_architecture(),
-                              linux2=_cpu.cpu_clockspeed())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_usage():
-        """
-            Returns your current processor usage
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_usage(),
-                              linux=_cpu.cpu_usage(),
-                              linux2=_cpu.cpu_usage())
-        return func_os[platform.system().lower()]
-
-    @staticmethod
-    def cpu_vendor_id():
-        """
-            Returns your current cpu vendor id
-        """
-        func_os = defaultdict(lambda: Handler.exception("Unsupported platform"),
-                              windows=_cpu.cpu_vendor_id(),
-                              linux=_cpu.cpu_vendor_id(),
-                              linux2=_cpu.cpu_vendor_id())
         return func_os[platform.system().lower()]
 
 
