@@ -46,12 +46,3 @@ def win32_get_cpu_vendor_id():
         return libcpu.linux_get_cpu_vendor_id('proc')
     else:
         return 'Not detected'
-
-
-print(win32_get_cpu_model())
-print(win32_get_cpu_total_cores())
-print(win32_get_cpu_clockspeed())
-print(win32_get_cpu_architecture())
-print(win32_get_cpu_bits())
-print(win32_get_cpu_manufacturer())
-print(win32_get_cpu_vendor_id())
