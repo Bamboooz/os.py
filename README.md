@@ -62,7 +62,7 @@ A complete list of [os.py](https://github.com/Bamboooz/os.py) functions:
 
  * Operating system information
  * CPU information
- * GPU information
+ * GPU information (Currently no support for AMD GPU's)
  * RAM information
  * Motherboard information
  * Machine info
