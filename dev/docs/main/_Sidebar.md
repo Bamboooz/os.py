@@ -15,8 +15,6 @@
 
 [Motherboard Information](https://github.com/Bamboooz/os.py/wiki/Motherboard-information)
 
-[Display Information](https://github.com/Bamboooz/os.py/wiki/Display-information)
-
 [Device Information](https://github.com/Bamboooz/os.py/wiki/Device-information)
 
 [Sound Information](https://github.com/Bamboooz/os.py/wiki/Sound-information)

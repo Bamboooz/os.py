@@ -1,1 +1,1 @@
-global-include *.txt *.py *.c *.h *.so
+global-include *.txt *.py

@@ -8,19 +8,25 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
     - operating system platform
     - operating system release
     - operating system architecture
+    - machine architecture
     - Linux distro
 
  * #### CPU information
     - CPU model
     - CPU clockspeed
     - CPU architecture
-    - CPU processor number
+    - CPU total cores
     - CPU vendor id
+    - CPU bits
+    - CPU manufacturer
 
  * #### GPU information
     - GPU id
     - GPU model
     - GPU free, used, total memory
+    - GPU serial number
+    - GPU display mode
+    - GPU active display
 
  * #### RAM information
     - total RAM memory
@@ -28,7 +34,7 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
     - RAM serial number
     - RAM memory type
     - RAM form factor
-    - RAM clock speed
+    - RAM clockspeed
 
  * #### Motherboard information
     - motherboard model
@@ -55,11 +61,6 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
     - get hostname
     - get ping time
     - download and upload speeds
-
- * #### Display info
-    - display device
-    - screen resolution
-    - screen refresh frequency
 
  * #### Device info
     - connected external drive list

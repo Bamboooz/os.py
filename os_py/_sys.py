@@ -18,4 +18,8 @@ def os_release():
 
 
 def os_architecture():
+    return platform.architecture()[0]
+
+
+def machine_architecture():
     return platform.machine()

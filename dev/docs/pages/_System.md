@@ -30,9 +30,12 @@ print(system.os_platform()) # example return: Windows-10-10.0.19044-SP0
 # getting operating system release
 print(system.os_release()) # example return: 10
 
+# getting machine architecture
+print(system.machine_architecture()) # example return: AMD64
+
 # getting linux distribution (works only on linux systems)
 print(system.linux_distro()) # example return: Ubuntu
 
 # getting operating system architecture
-print(system.os_architecture()) # example return: AMD64
+print(system.os_architecture()) # example return: 64bit
 ```

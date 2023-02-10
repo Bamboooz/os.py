@@ -24,14 +24,14 @@ print(storage.drive_list())
 # example return: [{'device': 'C:\\'}, {'device': 'D:\\'}]
 
 # getting drive total space
-print(storage.get_total_space('C')) # example return: 476GB
+print(storage().get_total_space()) # example return: 476GB
 
 # getting drive used space
-print(storage.get_used_space('C')) # example return: 269GB
+print(storage().get_used_space()) # example return: 269GB
 
 # getting drive free space
-print(storage.get_free_space('C')) # example return: 207GB
+print(storage().get_free_space()) # example return: 207GB
 
 # getting drive used space ( in % )
-print(storage.get_used_space_percent('C')) # example return: 56.4%
+print(storage().get_used_space_percent()) # example return: 56.4%
 ```

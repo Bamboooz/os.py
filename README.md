@@ -68,7 +68,6 @@ A complete list of [os.py](https://github.com/Bamboooz/os.py) functions:
  * Machine info
  * Physical drives
  * Network interfaces
- * Display info
  * Device info
  * Sound info
  * Battery information
@@ -94,6 +93,14 @@ pip install os_py
 # make sure its os_py version 1.1.3 or above,
 # all versions below are deprecated and are not working
 ```
+
+## Required packages
+ - ``psutil>=5.9.0``
+ - ``netifaces>=0.11.0``
+ - ``setuptools>=57.4.0``
+ - ``sounddevice>=0.4.4``
+ - ``speedtest-cli>=2.1.3``
+ - ``distro>=1.7.0``
 
 ## Documentation
 

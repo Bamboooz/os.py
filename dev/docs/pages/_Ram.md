@@ -19,7 +19,7 @@
 from os_py import ram
 
 # getting ram total memory
-print(ram.ram_total_memory()) # example return: 15.362663269042969 GB
+print(ram.ram_capacity()) # example return: 15.362663269042969 GB
 
 # getting ram manufacturer
 print(ram.ram_manufacturer()) # example return: Hynix

@@ -4,7 +4,7 @@
 <br/>
 
 # Detailed results chart
-Here is a detailed chart of all windows functions and their test results.
+Here is a detailed chart of all Windows functions and their test results.
 
 | os.py system functions        | Test Result                                                               |
 |-------------------------------|---------------------------------------------------------------------------|
@@ -13,6 +13,7 @@ Here is a detailed chart of all windows functions and their test results.
 | operating system platform     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | operating system release      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | operating system architecture | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| machine architecture          | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py cpu functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
@@ -20,15 +21,21 @@ Here is a detailed chart of all windows functions and their test results.
 | cpu total cores     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu clockspeed      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu architecture    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| cpu bits            | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| cpu manufacturer    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | cpu vendor id       | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py gpu functions | NVIDIA                                                                    | AMD                                                                         |
 |---------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | gpu id              | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu name            | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
+| gpu serial number   | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
+| gpu uuid            | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
+| gpu total memory    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu free memory     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu used memory     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
-| gpu total memory    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
+| gpu display mode    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
+| gpu active display  | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 
 | os.py ram functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
@@ -54,12 +61,6 @@ Here is a detailed chart of all windows functions and their test results.
 | getting motherboard serial number | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | getting motherboard version       | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | getting motherboard node          | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-
-| os.py display functions          | Test Result                                                               |
-|----------------------------------|---------------------------------------------------------------------------|
-| getting display devices          | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting screen resolution        | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting screen refresh frequency | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py device functions   | Test Result                                                               |
 |--------------------------|---------------------------------------------------------------------------|
