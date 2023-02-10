@@ -1,5 +1,5 @@
 # Linux os.py tests result
- * Overall: <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/>
+ * Overall: <img src="https://img.shields.io/badge/Linux_build-partially_passing-yellow.svg"/>
 
 <br/>
 
@@ -24,17 +24,17 @@ Here is a detailed chart of all windows functions and their test results.
 | cpu architecture    | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | cpu vendor id       | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 
-| os.py gpu functions | Test Result                                                               |
-|---------------------|---------------------------------------------------------------------------|
-| gpu id              | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| gpu name            | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| gpu free memory     | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| gpu used memory     | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| gpu total memory    | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| os.py gpu functions | NVIDIA                                                                  | AMD                                                                       |
+|---------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| gpu id              | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| gpu name            | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| gpu free memory     | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| gpu used memory     | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| gpu total memory    | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
 
 | os.py ram functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
-| ram total memory    | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| ram total memory    | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/>   |
 | ram manufacturer    | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
 | ram serial number   | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
 | ram memory type     | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
@@ -57,11 +57,11 @@ Here is a detailed chart of all windows functions and their test results.
 | getting motherboard version       | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 | getting motherboard node          | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 
-| os.py display functions          | Test Result                                                               |
-|----------------------------------|---------------------------------------------------------------------------|
-| getting display devices          | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| getting screen resolution        | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
-| getting screen refresh frequency | <img src="https://img.shields.io/badge/Linux_build-not_passing-red.svg"/> |
+| os.py display functions          | Test Result                                                             |
+|----------------------------------|-------------------------------------------------------------------------|
+| getting display devices          | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
+| getting screen resolution        | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
+| getting screen refresh frequency | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 
 | os.py device functions   | Test Result                                                             |
 |--------------------------|-------------------------------------------------------------------------|
@@ -71,8 +71,8 @@ Here is a detailed chart of all windows functions and their test results.
 |----------------------------|-------------------------------------------------------------------------|
 | getting audio devices list | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 
-| os.py battery functions                   | Test Result                                                               |
-|-------------------------------------------|---------------------------------------------------------------------------|
+| os.py battery functions                   | Test Result                                                             |
+|-------------------------------------------|-------------------------------------------------------------------------|
 | getting battery percentage                | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 | getting information is battery plugged in | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
 | getting battery time left                 | <img src="https://img.shields.io/badge/Linux_build-passing-green.svg"/> |
