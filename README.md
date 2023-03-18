@@ -67,7 +67,6 @@ A complete list of [os.py](https://github.com/Bamboooz/os.py) functions:
  * Motherboard information
  * Machine info
  * Physical drives
- * Network interfaces
  * Device info
  * Sound info
  * Battery information

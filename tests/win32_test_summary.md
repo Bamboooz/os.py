@@ -76,17 +76,6 @@ Here is a detailed chart of all Windows functions and their test results.
 | getting information is battery plugged in | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | getting battery time left                 | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
-| os.py network functions           | Test Result                                                               |
-|-----------------------------------|---------------------------------------------------------------------------|
-| getting ipv4                      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting ipv6                      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting subnet mask               | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting default gateway           | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| is user connected to the internet | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting hostname                  | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting ping time                 | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting download speed            | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-
 | os.py machine functions            | Test Result                                                               |
 |------------------------------------|---------------------------------------------------------------------------|
 | getting machine name               | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
