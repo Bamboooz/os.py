@@ -95,10 +95,7 @@ pip install os_py
 
 ## Required packages
  - ``psutil>=5.9.0``
- - ``netifaces>=0.11.0``
- - ``setuptools>=57.4.0``
  - ``sounddevice>=0.4.4``
- - ``speedtest-cli>=2.1.3``
  - ``distro>=1.7.0``
 
 ## Documentation
