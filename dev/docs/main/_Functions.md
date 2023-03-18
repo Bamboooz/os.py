@@ -52,16 +52,6 @@ This is a complete list of all [os.py](https://github.com/Bamboooz/os.py) functi
     - total, used, free drive space
     - used drive space in percentage
 
- * #### Network interfaces
-    - user ipv4 address
-    - user ipv6 address
-    - subnet mask
-    - default gateway
-    - is user connected to the internet
-    - get hostname
-    - get ping time
-    - download and upload speeds
-
  * #### Device info
     - connected external drive list
 

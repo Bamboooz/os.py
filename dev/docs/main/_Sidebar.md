@@ -22,5 +22,3 @@
 [Battery Information](https://github.com/Bamboooz/os.py/wiki/Battery-information)
 
 [Machine Information](https://github.com/Bamboooz/os.py/wiki/Machine-information)
-
-[Network Information](https://github.com/Bamboooz/os.py/wiki/Network-information)

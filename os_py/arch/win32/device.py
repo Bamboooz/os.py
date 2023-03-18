@@ -1,7 +1,5 @@
-import win32com.client
+import os_py.arch.win32._winutil as _winutils
 
 
 def get_usb_list():
-    wmi = win32com.client.GetObject("winmgmts:")
-    for usb in wmi.InstancesOf("Win32_USBHub"):
-        return usb.DeviceID
+    return _winutils.run_and_get_stdout("wmic logicaldisk where drivetype=2 get DeviceID, VolumeName, Description")

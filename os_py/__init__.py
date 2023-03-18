@@ -4,7 +4,7 @@ import subprocess
 from collections import defaultdict
 
 from scripts._common import Handler
-from os_py import _battery, _inet, _machine, _sys, _storage
+from os_py import _battery, _machine, _sys, _storage
 from os_py.gpu.nvidia import arch_nvidia_gpu as nvidia
 
 from os_py.arch.linux import ldistro
@@ -563,107 +563,6 @@ class battery:
         fun = {
             'windows': _battery.battery_time_left,
             'linux': _battery.battery_time_left
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-
-class network:
-    @staticmethod
-    def get_ipv4():
-        """
-            Returns user IpV4 address
-        """
-        fun = {
-            'windows': _inet.get_ipv4,
-            'linux': _inet.get_ipv4
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def get_ipv6():
-        """
-            Returns user IpV6 address
-        """
-        fun = {
-            'windows': _inet.get_ipv6,
-            'linux': _inet.get_ipv6
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def get_subnet_mask():
-        """
-            Returns user subnet mask
-        """
-        fun = {
-            'windows': _inet.get_subnet_mask,
-            'linux': _inet.get_subnet_mask
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def get_default_gateway():
-        """
-            Returns user default gateway
-        """
-        fun = {
-            'windows': _inet.get_default_gateway,
-            'linux': _inet.get_default_gateway
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def is_connected():
-        """
-            Returns users internet connection state (connected/disconnected)
-        """
-        fun = {
-            'windows': _inet.is_connected,
-            'linux': _inet.is_connected
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def get_hostname():
-        """
-            Returns user host name
-        """
-        fun = {
-            'windows': _inet.get_hostname,
-            'linux': _inet.get_hostname
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def get_ping_time():
-        """
-            Returns user ping time
-        """
-        fun = {
-            'windows': _inet.get_ping_time,
-            'linux': _inet.get_ping_time
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def user_download_speed():
-        """
-            Returns users internet download speed
-        """
-        fun = {
-            'windows': _inet.get_download_speed,
-            'linux': _inet.get_download_speed
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def user_upload_speed():
-        """
-            Returns users internet upload speed
-        """
-        fun = {
-            'windows': _inet.get_upload_speed,
-            'linux': _inet.get_upload_speed
         }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
         return fun()
 

@@ -3,7 +3,7 @@
 	<img src="https://github.com/Bamboooz/os.py/blob/master/banner.png?raw=true">
 	<br>
 	<br>
-	<b>os.py</b>: Python library to know your operating system better.
+	<b>os.py</b>: Python library to know your operating system and hardware better.
 	<br>
 </p>
 
