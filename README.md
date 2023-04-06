@@ -23,9 +23,6 @@
   <a href="https://en.wikipedia.org/wiki/Operating_system">
 		<img src="https://img.shields.io/badge/operating%20system-windows,%20linux-purple"/>
 	</a>
-  <a href="https://github.com/Bamboooz/os.py/wiki">
-		<img src="https://img.shields.io/badge/docs-here-pink"/>
-	</a>
   <a href="https://github.com/Bamboooz/os.py">
 		<img src="https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square"/>
 	</a>
