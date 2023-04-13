@@ -1,9 +1,13 @@
-# dev folders
-/venv
+# IDE folders
 /.idea
-/dev/pypi
-/dev/notes.txt
+/.vscode
+
+# python virtual enviroment
+/venv
 
 # project testing
-/dev/tests
-/dev/rem_char.py
+/dev
+
+# debug
+*.exe
+__pycache__/

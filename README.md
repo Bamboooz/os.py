@@ -1,109 +1,95 @@
-<p align="center">
-	<br>
-	<img src="https://github.com/Bamboooz/os.py/blob/master/banner.png?raw=true">
-	<br>
-	<br>
-	<b>os.py</b>: Python library to know your operating system and hardware better.
-	<br>
-</p>
+<div align="center">
 
-<p align="center">
-	<a href="https://opensource.org/licenses/MIT">
-		<img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
-	</a>
-	<a href="https://pypi.org/project/os.py/">
-		<img src="https://img.shields.io/badge/version-1.1.7-yellow"/>
-	</a>
-	<a href="https://www.firsttimersonly.com/">
-		<img src="https://img.shields.io/badge/first--timers--only-friendly-orange.svg?style=flat-square"/>
-	</a>
-  <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">
-		<img src="https://img.shields.io/badge/python-3.8,%203.9-green"/>
-	</a>
-  <a href="https://en.wikipedia.org/wiki/Operating_system">
-		<img src="https://img.shields.io/badge/operating%20system-windows,%20linux-purple"/>
-	</a>
-  <a href="https://github.com/Bamboooz/os.py">
-		<img src="https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square"/>
-	</a>
-  
-  <br>
-  <br>
-</p>
+![os.py](https://i.ibb.co/fdb2nGv/os-py-removebg-preview.png)
 
-## About
+-----------------
 
-**Warning, os.py is currently under entire rebuild of its core, so it has been taken under maintenance for now.**<br>
-**To get some information, os.py currently uses some other python libraries but this should be changed in version 1.2.0**
+[![](https://img.shields.io/github/v/release/Bamboooz/os.py?color=yellow?style=flat-square)](https://github.com/Bamboooz/os.py/releases/)
+[![](https://img.shields.io/badge/python-3.8,%203.9-green)](https://en.wikipedia.org/wiki/Python_(programming_language))
+[![](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)](https://en.wikipedia.org/wiki/Operating_system)
+[![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
+![](https://img.shields.io/github/languages/code-size/Bamboooz/os.py?color=red)
+[![](https://img.shields.io/badge/License-BSD--3--Clause-blue)](https://opensource.org/license/bsd-3-clause/)
 
-os.py is a free Operating System and Hardware Information library for Python. It provides implementation to retrieve system and hardware information (e.g. cpu model), using pure python!
+-----------------
 
-Current version : 1.1.7
+[**Home**](https://github.com/Bamboooz/os.py)⠀
+[**Install**](https://github.com/Bamboooz/os.py#installation)⠀
+[**Documentation**](https://github.com/Bamboooz/os.py/wiki)⠀
+[**Contributing**](https://github.com/Bamboooz/os.py/blob/master/CONTRIBUTING.md)⠀
+[**Download**](https://pypi.org/project/os.py#files)⠀
+[**Security**](https://github.com/Bamboooz/os.py/blob/master/SECURITY.md)⠀
+[**License**](https://github.com/Bamboooz/os.py/blob/master/LICENSE)
 
-## Supported platforms
+-----------------
 
- •ㅤWindowsㅤ•ㅤLinuxㅤ•
+<div align="left">
 
-## Example usage
+## What is os.py?
+**os.py** is a free, open-source Python library to retrieve system and hardware information, as well as modifying and manipulating system settings e.g. windows registry keys.
 
-```python
-from os_py import system, cpu
+## Installation
+### You can install os.py using pip:
+Remember, that os.py is currently in [Private Alpha stage](https://github.com/Bamboooz/os.py/#roadmap), and the package is not uploaded to pip yet.
 
-print(system.os_name())
- >> Windows
-
-print(cpu.cpu_model())
- >> AMD Ryzen 7 4800H with Radeon Graphics
-```
-
-## Supported Features
-
-A complete list of [os.py](https://github.com/Bamboooz/os.py) functions:
-
- * Operating system information
- * CPU information
- * GPU information (Currently no support for AMD GPU's)
- * RAM information
- * Motherboard information
- * Machine info
- * Physical drives
- * Device info
- * Sound info
- * Battery information
-<br><br>
- * To get more detailed information about specific os.py functions, visit [Detailed os.py Functions](https://github.com/Bamboooz/os.py/wiki/os.py-Functions).<br>
- * To see example usages of os.py library, visit [os.py examples](https://github.com/Bamboooz/os.py/tree/master/examples).
-
-## Future updates
-
-### Future updates for os.py library:
-
- - [ ] Making os.py free of other python libraries, [What does it mean?](https://github.com/Bamboooz/os.py#about)
- - [ ] Support for other platforms
- - [ ] More functions
- - [ ] Fixing known bugs
- - [ ] Porting os.py library to other languages (java, c#)
-
-## Installing
-
-Installing library using python package installer (pip):
-```python
+```bash
 pip install os_py
-# make sure its os_py version 1.1.3 or above,
-# all versions below are deprecated and are not working
 ```
 
-## Required packages
- - ``psutil>=5.9.0``
- - ``sounddevice>=0.4.4``
- - ``distro>=1.7.0``
+## Usage
+### Retrieving System Information
+You can use os.py to retrieve system information, such as the firmware type, operating system version, and processor information.
+
+```python
+import os_py
+
+# Get the firmware type (BIOS or UEFI)
+firmware_type = os_py.sys.get_firmware_type()
+
+# Get the operating system version
+os_version = os_py.sys.get_os_version()
+
+# Get the processor model
+processor_info = os_py.cpu.get_processor_info()['model']
+```
+
+### Working with the Windows Registry
+You can use os.py to read from and write to the Windows registry.
+
+```python
+import os_py
+
+# Read a value from the registry
+value = os_py.registry.read_registry_key(
+    os_py.registry.HKEY_CURRENT_USER,
+    r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders',
+    'Desktop'
+)
+
+# Write a value to the registry
+os_py.registry.write_registry_key(
+    os_py.registry.HKEY_CURRENT_USER,
+    r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders',
+    'Desktop',
+    'C:\\Users\\User\\Desktop'
+)
+```
+> These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
+
+## Roadmap
+> **os.py** launched in **May 2022**. As of April 2023, we are in the **Private Alpha** stage ❌.<br/>
+
+❌ **Private Alpha:** os.py is currently being developed, and you cannot install the library yet.<br/>
+✅ **Public Alpha:** Anyone can install and use os.py. There may be issues, but we are working to resolve them actively.<br/>
+🔶 **Public Beta:** Stable enough for non-enterprise use-cases.<br/>
+💻 **Public:** os.py is production ready.
+
 
 ## Documentation
 
  * [Documentation](https://github.com/Bamboooz/os.py/wiki)
- * [Change Log](https://github.com/Bamboooz/os.py/blob/master/CHANGELOG.txt)
  * [PyPi page](https://pypi.org/project/os.py/)
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the [BSD-3 Clause License](https://opensource.org/license/bsd-3-clause/).
