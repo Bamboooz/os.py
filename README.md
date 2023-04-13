@@ -1,6 +1,6 @@
 <div align="center">
 
-![os.py](https://i.ibb.co/fdb2nGv/os-py-removebg-preview.png)
+![os.py](https://i.ibb.co/WPD4fyr/banner.png)
 
 -----------------
 
@@ -88,7 +88,7 @@ os_py.registry.write_registry_key(
 ## Documentation
 
  * [Documentation](https://github.com/Bamboooz/os.py/wiki)
- * [PyPi page](https://pypi.org/project/os.py/)
+ * [PyPi page](https://pypi.org/project/os_py/)
 
 ## License
 
