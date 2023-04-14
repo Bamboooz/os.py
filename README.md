@@ -88,7 +88,7 @@ os_py --dump=txt --file={specify your filepath}
 ```
 
 ### And many more!
-> These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
+These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
 
 ## Roadmap
 > **os.py** launched in **May 2022**. As of April 2023, we are in the **Private Alpha** stage ❌.<br/>
