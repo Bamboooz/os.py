@@ -73,6 +73,23 @@ os_py.registry.write_registry_key(
     'C:\\Users\\User\\Desktop'
 )
 ```
+
+### Reading system and hardware data from command prompt.
+You can use os.py directly from the command prompt.
+
+```bash
+os_py
+```
+```bash
+os_py --dump=cmd 
+```
+
+You can also dump the os.py information into a .txt file
+
+```bash
+os_py --dump=txt --file={specify your filepath}
+```
+<br/>
 > These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
 
 ## Roadmap
