@@ -5,7 +5,7 @@
 -----------------
 
 [![](https://img.shields.io/github/v/release/Bamboooz/os.py?color=yellow?style=flat-square)](https://github.com/Bamboooz/os.py/releases/)
-[![pyver](https://img.shields.io/badge/python-3.8,%203.9-green)](https://en.wikipedia.org/wiki/Python_(programming_language))
+[![](https://img.shields.io/badge/python-3.6%20and%20newer-brightgreen)](https://en.wikipedia.org/wiki/Python_(programming_language))
 [![](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)](https://en.wikipedia.org/wiki/Operating_system)
 [![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
 ![](https://img.shields.io/github/languages/code-size/Bamboooz/os.py?color=red)
@@ -26,11 +26,10 @@
 <div align="left">
 
 ## What is os.py?
-**os.py** is a free, open-source Python library to retrieve system and hardware information, as well as modifying and manipulating system settings e.g. windows registry keys.
-
+**os.py** is a free, open-source Python library which makes retrieving system and hardware information, as well as modifying and manipulating system settings e.g. Windows registry keys much easier.
 ## Installation
 ### You can install os.py using pip:
-Remember, that os.py is currently in [Private Alpha stage](https://github.com/Bamboooz/os.py/#roadmap), and the package is not uploaded to pip yet.
+Remember, that os.py is currently in [Private Alpha ❌](https://github.com/Bamboooz/os.py/#roadmap) stage, and the package is not uploaded to pip yet.
 
 ```bash
 pip install os_py
