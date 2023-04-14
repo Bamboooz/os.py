@@ -89,7 +89,8 @@ You can also dump the os.py information into a .txt file
 ```bash
 os_py --dump=txt --file={specify your filepath}
 ```
-<br/>
+
+### And many more!
 > These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
 
 ## Roadmap
