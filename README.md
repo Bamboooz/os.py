@@ -78,9 +78,6 @@ os_py.registry.write_registry_key(
 You can use os.py directly from the command prompt.
 
 ```bash
-os_py
-```
-```bash
 os_py --dump=cmd 
 ```
 
