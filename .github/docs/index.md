@@ -1,3 +1,9 @@
+---
+title: "os.py project website."
+permalink: /
+layout: default
+---
+
 <div align="center">
 
 ![os.py](https://i.ibb.co/WPD4fyr/banner.png)
