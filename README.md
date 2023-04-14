@@ -5,7 +5,7 @@
 -----------------
 
 [![](https://img.shields.io/github/v/release/Bamboooz/os.py?color=yellow?style=flat-square)](https://github.com/Bamboooz/os.py/releases/)
-[![](https://img.shields.io/badge/python-3.8,%203.9-green)](https://en.wikipedia.org/wiki/Python_(programming_language))
+[![pyver](https://img.shields.io/badge/python-3.8,%203.9-green)](https://en.wikipedia.org/wiki/Python_(programming_language))
 [![](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)](https://en.wikipedia.org/wiki/Operating_system)
 [![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
 ![](https://img.shields.io/github/languages/code-size/Bamboooz/os.py?color=red)
