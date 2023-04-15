@@ -6,7 +6,7 @@
 
 [![](https://img.shields.io/github/v/release/Bamboooz/os.py?color=yellow?style=flat-square)](https://github.com/Bamboooz/os.py/releases/)
 [![](https://img.shields.io/badge/python-3.6%20and%20newer-brightgreen)](https://en.wikipedia.org/wiki/Python_(programming_language))
-[![](https://img.shields.io/badge/operating%20system-windows,%20linux-purple)](https://en.wikipedia.org/wiki/Operating_system)
+[![](https://img.shields.io/badge/operating%20system-windows-purple)](https://en.wikipedia.org/wiki/Operating_system)
 [![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
 ![](https://img.shields.io/github/languages/code-size/Bamboooz/os.py?color=red)
 [![](https://img.shields.io/badge/License-BSD--3--Clause-blue)](https://opensource.org/license/bsd-3-clause/)
@@ -87,25 +87,28 @@ You can also dump the os.py information into a .txt file
 os_py --dump=txt --file={specify your filepath}
 ```
 
-### Logging errors, warnings and operations
-You can log os.py moves, errors, warnings etc. directly from the library.
-```python
-from os_py import logger
-
-logging = logger.set_logger()
-logging.start_logging(errors=True, warnings=True, data=False, method=False)
-```
-
 ### And many more!
 These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
 
 ## Roadmap
-> **os.py** launched in **May 2022**. As of April 2023, we are in the **Private Alpha** stage ❌.<br/>
+### Project launch state
+> **os.py** launched in **May 2022**. As of **April 2023**, we are in the **Private Alpha** stage ❌.<br/>
 
 ❌ **Private Alpha:** os.py is currently being developed, and you cannot install the library yet.<br/>
 ✅ **Public Alpha:** Anyone can install and use os.py. There may be issues, but we are working to resolve them actively.<br/>
 🔶 **Public Beta:** Stable enough for non-enterprise use-cases.<br/>
 💻 **Public:** os.py is production ready.
+
+### What's left to do for the library to be published
+> [ ] Gathering system and hardware information on Windows
+> [x] Using os.py from the command prompt
+> [x] Using os.py to modify registry. and other system settings.
+
+### Future ideas
+> [ ] os.py logging class
+> [ ] Gathering system and hardware information on Linux
+> [ ] Support for machines with multiple motherboards, CPU's, GPU's etc.
+> [ ] Support for more operating systems. (Linux is first priority)
 
 
 ## Documentation

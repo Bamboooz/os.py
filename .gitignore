@@ -8,6 +8,9 @@
 # project testing
 /dev
 
+# Linux support tests
+/os_py/arch/linux
+
 # debug
 *.exe
 __pycache__/
