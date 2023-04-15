@@ -10,6 +10,7 @@
 
 # Linux support tests
 /os_py/arch/linux
+/os_py/os_py_linux.py
 
 # debug
 *.exe
