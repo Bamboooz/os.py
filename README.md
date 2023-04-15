@@ -102,7 +102,7 @@ These were just random examples of os.py usage, but there's a lot more to explor
 ### What's left to do for the library to be published
  * [ ] Gathering system and hardware information on Windows
  * [x] Using os.py from the command prompt
- * [x] Using os.py to modify registry. and other system settings.
+ * [x] Using os.py to modify registry, and other system settings.
 
 ### Future ideas
  * [ ] os.py logging class
