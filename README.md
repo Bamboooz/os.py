@@ -87,6 +87,15 @@ You can also dump the os.py information into a .txt file
 os_py --dump=txt --file={specify your filepath}
 ```
 
+### Logging errors, warnings and operations
+You can log os.py moves, errors, warnings etc. directly from the library.
+```python
+from os_py import logger
+
+logging = logger.set_logger()
+logging.start_logging(errors=True, warnings=True, data=False, method=False)
+```
+
 ### And many more!
 These were just random examples of os.py usage, but there's a lot more to explore, visit [os.py docs](https://github.com/Bamboooz/os.py/wiki) to learn about everything you can do with os.py.
 
