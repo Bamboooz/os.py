@@ -100,15 +100,15 @@ These were just random examples of os.py usage, but there's a lot more to explor
 💻 **Public:** os.py is production ready.
 
 ### What's left to do for the library to be published
-> [ ] Gathering system and hardware information on Windows
-> [x] Using os.py from the command prompt
-> [x] Using os.py to modify registry. and other system settings.
+ * [ ] Gathering system and hardware information on Windows
+ * [x] Using os.py from the command prompt
+ * [x] Using os.py to modify registry. and other system settings.
 
 ### Future ideas
-> [ ] os.py logging class
-> [ ] Gathering system and hardware information on Linux
-> [ ] Support for machines with multiple motherboards, CPU's, GPU's etc.
-> [ ] Support for more operating systems. (Linux is first priority)
+ * [ ] os.py logging class
+ * [ ] Gathering system and hardware information on Linux
+ * [ ] Support for machines with multiple motherboards, CPU's, GPU's etc.
+ * [ ] Support for more operating systems. (Linux is first priority)
 
 
 ## Documentation
