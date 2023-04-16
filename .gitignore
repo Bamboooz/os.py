@@ -13,6 +13,7 @@
 /os_py/os_py_linux.py
 /tests/arch_linux_os.py_tests.py
 tests/linux_test_summary.md
+/examples/linux_os.py_cmd_example.sh
 
 # Other tests
 /os_py/logger.py
