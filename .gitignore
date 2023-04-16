@@ -5,12 +5,17 @@
 # python virtual enviroment
 /venv
 
-# project testing
+# project development
 /dev
 
 # Linux support tests
 /os_py/arch/linux
 /os_py/os_py_linux.py
+/tests/arch_linux_os.py_tests.py
+tests/linux_test_summary.md
+
+# Other tests
+/os_py/logger.py
 
 # debug
 *.exe
