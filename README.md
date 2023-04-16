@@ -26,10 +26,12 @@
 <div align="left">
 
 ## What is os.py?
-**os.py** is a free, open-source Python library which makes retrieving system and hardware information, as well as modifying and manipulating system settings e.g. Windows registry keys much easier.
+**os.py** is a free, open-source Python library which makes retrieving system and hardware information, as well as modifying and manipulating system settings e.g. Windows registry keys much easier.<br/>
+**os.py** is also available in command prompt mode, which you can use to print the output to the screen, or save it to a file.
+
 ## Installation
 ### You can install os.py using pip:
-Remember, that os.py is currently in [Private Alpha ❌](https://github.com/Bamboooz/os.py/#roadmap) stage, and the package is not uploaded to pip yet.
+> Remember, that os.py is currently in [Private Alpha ❌](https://github.com/Bamboooz/os.py/#roadmap) stage, and the package is not uploaded to pip yet.
 
 ```bash
 pip install os_py
