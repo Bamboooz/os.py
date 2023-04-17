@@ -1,5 +1,5 @@
 # Windows os.py tests result
- * Overall: <img src="https://img.shields.io/badge/Windows_build-partially_passing-yellow.svg"/>
+ * Overall: <img src="https://img.shields.io/badge/Windows_build-mostly_passing-yellow.svg"/>
 
 <br/>
 
@@ -13,7 +13,7 @@ Here is a detailed chart of all Windows functions and their test results.
 | operating system platform     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | operating system release      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | operating system architecture | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| machine architecture          | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| hostname                      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py cpu functions | Test Result                                                               |
 |---------------------|---------------------------------------------------------------------------|
@@ -37,14 +37,15 @@ Here is a detailed chart of all Windows functions and their test results.
 | gpu display mode    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 | gpu active display  | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> | <img src="https://img.shields.io/badge/Windows_build-not_passing-red.svg"/> |
 
-| os.py ram functions | Test Result                                                               |
-|---------------------|---------------------------------------------------------------------------|
-| ram total memory    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| ram manufacturer    | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| ram serial number   | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| ram memory type     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| ram form factor     | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| ram clockspeed      | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| os.py ram memory functions | Test Result                                                               |
+|----------------------------|---------------------------------------------------------------------------|
+| ram total memory           | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| number of ram sticks       | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| ram manufacturer           | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| ram serial number          | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| ram memory type            | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| ram form factor            | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| ram clockspeed             | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py storage functions       | Test Result                                                               |
 |-------------------------------|---------------------------------------------------------------------------|
@@ -58,25 +59,12 @@ Here is a detailed chart of all Windows functions and their test results.
 |-----------------------------------|---------------------------------------------------------------------------|
 | getting motherboard model         | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | getting motherboard manufacturer  | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting motherboard serial number | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 | getting motherboard version       | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting motherboard node          | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
 | os.py device functions   | Test Result                                                               |
 |--------------------------|---------------------------------------------------------------------------|
 | getting usb devices list | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
 
-| os.py sound functions      | Test Result                                                               |
-|----------------------------|---------------------------------------------------------------------------|
-| getting audio devices list | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-
-| os.py battery functions                   | Test Result                                                               |
-|-------------------------------------------|---------------------------------------------------------------------------|
-| getting battery percentage                | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting information is battery plugged in | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting battery time left                 | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-
-| os.py machine functions            | Test Result                                                               |
-|------------------------------------|---------------------------------------------------------------------------|
-| getting machine name               | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
-| getting boot type ( BIOS or UEFI ) | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |
+| os.py machine functions                | Test Result                                                               |
+|----------------------------------------|---------------------------------------------------------------------------|
+| getting firmware type ( BIOS or UEFI ) | <img src="https://img.shields.io/badge/Windows_build-passing-green.svg"/> |

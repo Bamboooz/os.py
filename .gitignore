@@ -8,6 +8,11 @@
 # project development
 /dev
 
+# pypi tests
+/os_py_tests.egg-info
+/os_py.egg-info
+/dist
+
 # Linux support tests
 /os_py/arch/linux
 /os_py/os_py_linux.py
@@ -17,7 +22,9 @@ tests/linux_test_summary.md
 
 # Other tests
 /os_py/logger.py
+/os_py/registry
 
 # debug
 *.exe
 __pycache__/
+/build

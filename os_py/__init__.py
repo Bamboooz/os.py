@@ -1,591 +1,233 @@
+# Copyright (c) 2022, Bamboooz
+# All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import datetime
 import platform
-import subprocess
 
-from collections import defaultdict
+# import shared modules
+from os_py.shared import gpu as _gpu
+from os_py.shared import sys as _sys
 
-from scripts._common import Handler
-from os_py import _battery, _machine, _sys, _storage
-from os_py.gpu.nvidia import arch_nvidia_gpu as nvidia
+# import Windows modules
+from os_py.os_py_windows import processor as _win_proc
+from os_py.os_py_windows import device as _win_device
+from os_py.os_py_windows import machine as _win_machine
+from os_py.os_py_windows import storage as _win_storage
+from os_py.os_py_windows import motherboard as _win_board
+from os_py.arch.windows import memory as _win_ram
 
-from os_py.arch.linux import ldistro
-
-from os_py.arch.linux import machine as lmach
-from os_py.arch.linux import device as ldev
-from os_py.arch.linux import sound as lso
-from os_py.arch.linux import motherboard as lmb
-from os_py.arch.win32.cpu import arch_win32_cpu as wincpu
-from os_py.arch.win32.ram import arch_win32_ram as winram
-
-from os_py.arch.win32 import machine as wmach
-from os_py.arch.win32 import device as wdev
-from os_py.arch.win32 import sound as wso
-from os_py.arch.win32 import motherboard as wmb
-from os_py.arch.linux.cpu import arch_linux_cpu as linuxcpu
-from os_py.arch.linux.ram import arch_linux_ram as linuxram
+# import registry module
+from os_py.registry import winreg as _winreg
 
 
-class system:  # access for system functions from library
-    @staticmethod
-    def os_name():
-        """
-            Returns operating system's name e.g. Windows, Linux etc.
-        """
-        fun = {
-            'windows': _sys.os_name,
-            'linux': _sys.os_name
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+__version__ = '0.0.1'
+
+
+class sys:
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
 
     @staticmethod
-    def os_version():
+    def get_os_info():
         """
-            Returns operating system's version e.g. 10.0.19045
-        """
-        fun = {
-            'windows': _sys.os_version,
-            'linux': _sys.os_version
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns a dictionary containing information about the installed operating system.
 
-    @staticmethod
-    def os_platform():
-        """
-            Returns a single string identifying the underlying platform
-        """
-        fun = {
-            'windows': _sys.os_name,
-            'linux': _sys.os_platform
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns:
+            A dictionary containing information about the installed operating system.
+            If any of the information cannot be obtained, its value in the dictionary will be None.
 
-    @staticmethod
-    def os_release():
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-            Detects your operating system's release e.g. Windows 10
-        """
-        fun = {
-            'windows': _sys.os_release,
-            'linux': _sys.os_release
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def os_architecture():
-        """
-            Detects operating systems architecture e.g. 32-bit or 64-bit
-        """
-        fun = {
-            'windows': _sys.os_architecture,
-            'linux': _sys.os_architecture
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def machine_architecture():
-        """
-            Detects machines architecture e.g. AMD64
-        """
-        fun = {
-            'windows': _sys.machine_architecture,
-            'linux': _sys.machine_architecture
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def linux_distro():
-        """
-            Detects specific distributions on Linux-based systems
-        """
-        fun = {
-            'windows': lambda: Handler.exception("Windows operating systems don't have distibutions"),
-            'linux': ldistro.linux_distro
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return {
+            "name": _sys.os_name(),
+            "hostname": _sys.machine_hostname(),
+            "version": _sys.os_version(),
+            "platform": _sys.os_platform(),
+            "release": _sys.os_release(),
+            "arch": _sys.os_architecture()
+        }
 
 
 class cpu:
-    @staticmethod
-    def cpu_model():
-        """
-            Detects CPU model eg. AMD Ryzen 7 4800H
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_model,
-            'linux': linuxcpu.linux_get_cpu_model
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
 
     @staticmethod
-    def cpu_total_cores():
+    def get_processor_info():
         """
-            Returns total number of your CPU's cores
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_total_cores,
-            'linux': linuxcpu.linux_get_cpu_total_cores
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Gets information about the CPU, and return it in a form of a dictionary.
 
-    @staticmethod
-    def cpu_clockspeed():
-        """
-            Detects CPU clockspeed
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_clockspeed,
-            'linux': linuxcpu.linux_get_cpu_clockspeed
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns:
+            A dictionary containing information about the CPU.
 
-    @staticmethod
-    def cpu_architecture():
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-            Returns your processors architecture: e.g. AMD64
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_architecture,
-            'linux': linuxcpu.linux_get_cpu_architecture
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def cpu_bits():
-        """
-            Detects CPU's bit count e.g. 64bit
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_bits,
-            'linux': linuxcpu.linux_get_cpu_bits
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def cpu_manufacturer():
-        """
-            Returns your processors manufacturer e.g.: AMD
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_manufacturer,
-            'linux': linuxcpu.linux_get_cpu_manufacturer
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def cpu_vendor_id():
-        """
-            Detects your CPU's vendor id e.g.: AuthenticAMD
-        """
-        fun = {
-            'windows': wincpu.win32_get_cpu_vendor_id,
-            'linux': linuxcpu.linux_get_cpu_vendor_id
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return {
+            "model": _win_proc.get_cpu_model(),
+            "clockspeed": _win_proc.get_cpu_clockspeed(),
+            "total_cores": _win_proc.get_cpu_total_cores(),
+            "arch": _win_proc.get_cpu_architecture(),
+            "vendor_id": _win_proc.get_cpu_vendor_id(),
+            "manufacturer": _win_proc.get_cpu_manufacturer()
+        }
 
 
 class gpu:
-    def __init__(self):
-        try:
-            subprocess.getoutput('nvidia-smi')
-            self.gpu_manufacturer = 'nvidia'
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'widows': raise Exception('Error: Unsupported operating system.')
+
+        try:  # checking if installed GPU is made by NVIDIA
+            _gpu.nvidia_smi_get_gpu_info()
         except:
-            self.gpu_manufacturer = 'amd'
-
-    def gpu_id(self):
-        """
-            Detects your GPU's id (main GPU is 1, next one is 2 and so on)
-        """
-        fun = {
-            'nvidia': nvidia.gpu_id,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_name(self):
-        """
-            Retrieves your GPU's model e.g.: NVIDIA GTX 1660 Ti
-        """
-        fun = {
-            'nvidia': nvidia.gpu_name,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_serial_number(self):
-        """
-            Returns your GPU's serial number
-        """
-        fun = {
-            'nvidia': nvidia.gpu_serial_number,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_uuid(self):
-        """
-            Returns your GPU's uuid
-        """
-        fun = {
-            'nvidia': nvidia.gpu_uuid,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_memory_total(self):
-        """
-            Returns your GPU's total available memory
-        """
-        fun = {
-            'nvidia': nvidia.gpu_memory_total,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_memory_free(self):
-        """
-            Returns your GPU's free memory
-        """
-        fun = {
-            'nvidia': nvidia.gpu_memory_free,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_memory_used(self):
-        """
-            Returns your GPU's used memory
-        """
-        fun = {
-            'nvidia': nvidia.gpu_memory_used,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_display_mode(self):
-        """
-            Returns your GPU's display mode
-        """
-        fun = {
-            'nvidia': nvidia.gpu_display_mode,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def gpu_display_active(self):
-        """
-            Returns your GPU's active display
-        """
-        fun = {
-            'nvidia': nvidia.gpu_display_active,
-            'amd': lambda: Handler.exception("Error: Currently os.py does not support AMD GPU's.")
-        }.get(self.gpu_manufacturer, lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-
-class ram:
-    @staticmethod
-    def ram_capacity():
-        """
-            Detects your entire RAM memory capacity
-        """
-        fun = {
-            'windows': winram.win32_ram_capacity,
-            'linux': lambda: Handler.exception("Error: Currently still working on linux ram functions.")
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+            raise Exception("Error: os.py supports only nvidia GPU's.")
 
     @staticmethod
-    def ram_form_factor():
+    def get_graphics_card_info(index=None):
         """
-            Detects your RAM's form factor
+        Returns a dictionary containing information about the installed GPU's.
+
+        Returns:
+            A dictionary containing information about the installed GPU's.
+            If any of the information cannot be obtained, its value in the dictionary will be None.
+
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-        fun = {
-            'windows': winram.win32_ram_form_factor,
-            'linux': lambda: Handler.exception("Error: Currently still working on linux ram functions.")
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        if index is None:
+            return _gpu.nvidia_smi_get_gpu_info()
+        else:
+            return _gpu.nvidia_smi_get_gpu_info()[index]
+
+
+class memory:
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
 
     @staticmethod
-    def ram_memory_type():
+    def get_ram_info():
         """
-            Detects your RAM's memory type
-        """
-        fun = {
-            'windows': winram.win32_ram_memory_type,
-            'linux': lambda: Handler.exception("Error: Currently still working on linux ram functions.")
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns a dictionary containing information about the installed RAM memory.
 
-    @staticmethod
-    def ram_manufacturer():
-        """
-            Detects your RAM's manufacturer
-        """
-        fun = {
-            'windows': winram.win32_ram_manufacturer,
-            'linux': lambda: Handler.exception("Error: Currently still working on linux ram functions.")
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns:
+            A dictionary containing information about the installed RAM memory.
+            If any of the information cannot be obtained, its value in the dictionary will be None.
 
-    @staticmethod
-    def ram_clockspeed():
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-            Detects your RAM'S clockspeed
-        """
-        fun = {
-            'windows': winram.win32_ram_clockspeed,
-            'linux': lambda: Handler.exception("Error: Currently still working on linux ram functions.")
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def ram_serial_number():
-        """
-            Detects your RAM's serial number
-        """
-        fun = {
-            'windows': winram.win32_ram_serial_number,
-            'linux': lambda: Handler.exception("Error: Currently still working on linux ram functions.")
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return {
+            "capacity": _win_ram.wmic_get_ram_capacity(),
+            "number_of_sticks": _win_ram.wmic_get_ram_sticks_number(),
+            "form_factor": _win_ram.wmic_get_ram_form_factor(),
+            "type": _win_ram.wmic_get_ram_memory_type(),
+            "manufacturer": _win_ram.wmic_get_ram_manufacturer(),
+            "clockspeed": _win_ram.wmic_get_ram_clockspeed(),
+            "serial_number": _win_ram.wmic_get_ram_serial_number()
+        }
 
 
 class storage:
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
+
     @staticmethod
-    def _default_letter():
+    def get_drive_list():
+        """
+        Returns a list of drives installed on your device.
+
+        Returns:
+            Returns a list of drives installed on your device.
+            If any of the information cannot be obtained, its value in the dictionary will be None.
+
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
+        """
+        return _win_storage.get_drive_list()
+
+    @staticmethod
+    def get_drive_info(drive=''):
+        """
+        Returns a dictionary containing information about the machine's storage.
+
+        Returns:
+            A dictionary containing information about the installed storage (total, used, free memory etc.)
+            If any of the information cannot be obtained, its value in the dictionary will be None.
+
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
+        """
         return {
-            'windows': 'C:\\',
-            'linux': '/'
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-
-    @staticmethod
-    def drive_list():
-        """
-            Returns all drives on your device
-        """
-        fun = {
-            'windows': _storage.drive_list,
-            'linux': _storage.drive_list
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    def get_total_space(self, drive_letter=None):
-        """
-            Returns total space of your selected drive
-
-            Accepts 1 param: drive letter (optional)
-            Defaults:
-                Windows : 'C:\\'
-                Linux: '/'
-
-            Basically, the parameter defines the drive the data will be from.
-        """
-        if drive_letter is None:
-            drive_letter = self._default_letter()
-
-        fun = {
-            'windows': _storage.get_total_space,
-            'linux': _storage.get_total_space
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun(drive_letter)
-
-    def get_used_space(self, drive_letter=None):
-        """
-            Returns used space of your selected drive
-
-            Accepts 1 param: drive letter (optional)
-            Defaults:
-                Windows : 'C:\\'
-                Linux: '/'
-
-            Basically, the parameter defines the drive the data will be from.
-        """
-        if drive_letter is None:
-            drive_letter = self._default_letter()
-
-        fun = {
-            'windows': _storage.get_used_space,
-            'linux': _storage.get_used_space
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun(drive_letter)
-
-    def get_free_space(self, drive_letter=None):
-        """
-            Returns free space of your selected drive
-
-            Accepts 1 param: drive letter (optional)
-            Defaults:
-                Windows : 'C:\\'
-                Linux: '/'
-
-            Basically, the parameter defines the drive the data will be from.
-        """
-        if drive_letter is None:
-            drive_letter = self._default_letter()
-
-        fun = {
-            'windows': _storage.get_free_space,
-            'linux': _storage.get_free_space
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun(drive_letter)
-
-    def get_used_space_percent(self, drive_letter=None):
-        """
-            Returns used space of your selected drive as percentage
-
-            Accepts 1 param: drive letter (optional)
-            Defaults:
-                Windows : 'C:\\'
-                Linux: '/'
-
-            Basically, the parameter defines the drive the data will be from.
-        """
-        if drive_letter is None:
-            drive_letter = self._default_letter()
-
-        fun = {
-            'windows': _storage.get_used_space_percent,
-            'linux': _storage.get_used_space_percent
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun(drive_letter)
+            "total": _win_storage.get_disk_total_space(drive),
+            "used": _win_storage.get_disk_free_space(drive),
+            "free": _win_storage.get_disk_free_space(drive),
+            "used_percent": _win_storage.get_disk_used_space_percent(drive)
+        }
 
 
 class motherboard:
-    @staticmethod
-    def model():
-        """
-           Returns your current motherboard model
-        """
-        fun = {
-            'windows': wmb.motherboard_model,
-            'linux': lmb.motherboard_model
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
 
     @staticmethod
-    def manufacturer():
+    def get_motherboard_info():
         """
-           Returns your current motherboard manufacturer
-        """
-        fun = {
-            'windows': wmb.motherboard_manufacturer,
-            'linux': lmb.motherboard_manufacturer
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns a dictionary containing information about the motherboard of the machine.
 
-    @staticmethod
-    def serial_number():
-        """
-           Returns your current motherboard serial number
-        """
-        fun = {
-            'windows': wmb.motherboard_serial_number,
-            'linux': lmb.motherboard_serial_number
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        Returns:
+            A dictionary containing information about the installed motherboard.
+            If any of the information cannot be obtained, its value in the dictionary will be None.
 
-    @staticmethod
-    def version():
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-           Returns your current motherboard version
-        """
-        fun = {
-            'windows': wmb.motherboard_version,
-            'linux': lmb.motherboard_version
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-    @staticmethod
-    def node():
-        """
-           Returns your current motherboard node
-        """
-        fun = {
-            'windows': wmb.motherboard_node,
-            'linux': lmb.motherboard_node
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return {
+            "model": _win_board.get_motherboard_product(),
+            "manufacturer": _win_board.get_motherboard_manufacturer(),
+            "version": _win_board.get_motherboard_version()
+        }
 
 
 class device:
-    @staticmethod
-    def lst_extern_drives():
-        """
-            Lists external drives connected to your device
-        """
-        fun = {
-            'windows': wdev.get_usb_list,
-            'linux': ldev.get_usb_list
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-
-class sound:
-    @staticmethod
-    def get_sound_devices():
-        """
-            Lists all connected sound devices
-        """
-        fun = {
-            'windows': wso.get_audio_devices,
-            'linux': lso.get_audio_devices
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
-
-
-class battery:
-    @staticmethod
-    def battery_percentage():
-        """
-            Returns users internet download speed
-        """
-        fun = {
-            'windows': _battery.battery_percentage,
-            'linux': _battery.battery_percentage
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
 
     @staticmethod
-    def is_plugged_in():
+    def get_number_of_external_drives():
         """
-            Returns if users device is plugged in
+        Attempts to retrieve the number of external drives on a Windows device using either the WMI client or PowerShell.
+
+        Returns:
+            An integer representing the number of external drives on the device, if successful.
+            None if the attempt(s) to retrieve the number of external drives fail.
+
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-        fun = {
-            'windows': _battery.is_plugged_in,
-            'linux': _battery.is_plugged_in
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return _win_device.get_number_of_external_drives()
 
     @staticmethod
-    def battery_time_left():
+    def get_external_drives():
         """
-            Returns users estimated remaining battery life
+        Attempts to retrieve information about the external drives on a Windows device using either the "wmic" command or PowerShell.
+
+        Returns:
+            List representing the external drives and letters assigned to them.
+            None if the attempt(s) to retrieve the external drive information fail.
+
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-        fun = {
-            'windows': _battery.battery_time_left,
-            'linux': _battery.battery_time_left
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return _win_device.get_external_drives()
 
 
 class machine:
-    @staticmethod
-    def machine_name():
-        """
-            Detects machines names and returns it to the user
-        """
-        fun = {
-            'windows': _machine.machine_name,
-            'linux': _machine.machine_name
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+    def __init__(self):  # raise exception if the operating system if unsupported
+        if platform.system().lower() != 'windows': raise Exception('Error: Unsupported operating system.')
 
     @staticmethod
-    def boot_type():
+    def get_firmware_type():
         """
-            Detects your operating system's boot method (BIOS/UEFI)
+        Attempts to retrieve machine's firmware type (BIOS/UEFI) using different methods such as setupact, Windows registry etc.
+
+        Returns:
+            The machines firmware type (BIOS/UEFI).
+            None if the attempt(s) to retrieve the external drive information fail.
+
+        For more information visit: https://github.com/Bamboooz/os.py/wiki
         """
-        fun = {
-            'windows': wmach.boot_type,
-            'linux': lmach.boot_type
-        }.get(platform.system().lower(), lambda: Handler.exception("Unsupported platform"))
-        return fun()
+        return _win_machine.get_firmware_type()
