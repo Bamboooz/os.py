@@ -31,10 +31,8 @@
 
 ## Installation
 ### You can install os.py using pip:
-> Remember, that os.py is currently in [Private Alpha ❌](https://github.com/Bamboooz/os.py/#roadmap) stage, and the package is not uploaded to pip yet.
-
 ```bash
-pip install os_py
+pip install os_py  # it will be available really really soon, I am having problems with pypi administration.
 ```
 
 ## Usage
@@ -45,35 +43,13 @@ You can use os.py to retrieve system information, such as the firmware type, ope
 import os_py
 
 # Get the firmware type (BIOS or UEFI)
-firmware_type = os_py.sys.get_firmware_type()
+firmware_type = os_py.machine.get_firmware_type()
 
 # Get the operating system version
-os_version = os_py.sys.get_os_version()
+os_version = os_py.sys.get_os_info()['version']
 
 # Get the processor model
 processor_info = os_py.cpu.get_processor_info()['model']
-```
-
-### Working with the Windows Registry
-You can use os.py to read from and write to the Windows registry.
-
-```python
-import os_py
-
-# Read a value from the registry
-value = os_py.registry.read_registry_key(
-    os_py.registry.HKEY_CURRENT_USER,
-    r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders',
-    'Desktop'
-)
-
-# Write a value to the registry
-os_py.registry.write_registry_key(
-    os_py.registry.HKEY_CURRENT_USER,
-    r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders',
-    'Desktop',
-    'C:\\Users\\User\\Desktop'
-)
 ```
 
 ### Reading system and hardware data from command prompt.
@@ -94,22 +70,19 @@ These were just random examples of os.py usage, but there's a lot more to explor
 
 ## Roadmap
 ### Project launch state
-> **os.py** launched in **May 2022**. As of **April 2023**, we are in the **Private Alpha** stage ❌.<br/>
+> **os.py** launched in **May 2022**. As of **April 2023**, we are in the **Public Alpha  ✅** stage.<br/>
 
 ❌ **Private Alpha:** os.py is currently being developed, and you cannot install the library yet.<br/>
 ✅ **Public Alpha:** Anyone can install and use os.py. There may be issues, but we are working to resolve them actively.<br/>
 🔶 **Public Beta:** Stable enough for non-enterprise use-cases.<br/>
 💻 **Public:** os.py is production ready.
 
-### What's left to do for the library to be published
- * [ ] Gathering system and hardware information on Windows
- * [x] Using os.py from the command prompt
- * [x] Using os.py to modify registry, and other system settings.
-
 ### Future ideas
+ * [ ] modifying os settings using os.py
  * [ ] os.py logging class
  * [ ] Gathering system and hardware information on Linux
- * [ ] Support for machines with multiple motherboards, CPU's, GPU's etc.
+ * [ ] Support for machines with multiple motherboards, CPU's etc.
+ * [ ] Support for AMD GPU's.
  * [ ] Support for more operating systems. (Linux is first priority)
 
 
