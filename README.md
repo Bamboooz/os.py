@@ -93,7 +93,7 @@ These were just random examples of os.py usage, but there's a lot more to explor
  * [PyPi page](https://pypi.org/project/os_py/)
 
 # Support os.py
-You can buy me a coffee if you enjoy my work [Buy me a coffe ☕](https://www.buymeacoffee.com/Bamboooz)
+You can buy me a coffee if you enjoy my work [Buy me a coffee ☕](https://www.buymeacoffee.com/Bamboooz)
 
 ## License
 
