@@ -78,9 +78,10 @@ These were just random examples of os.py usage, but there's a lot more to explor
 💻 **Public:** os.py is production ready.
 
 ### Future ideas
+ * [ ] Gathering system and hardware information on Linux
+ * [ ] GUI coverage for os.py
  * [ ] modifying os settings using os.py
  * [ ] os.py logging class
- * [ ] Gathering system and hardware information on Linux
  * [ ] Support for machines with multiple motherboards, CPU's etc.
  * [ ] Support for AMD GPU's.
  * [ ] Support for more operating systems. (Linux is first priority)
