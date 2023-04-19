@@ -32,7 +32,7 @@
 ## Installation
 ### You can install os.py using pip:
 ```bash
-pip install os_py  # it will be available really really soon, I am having problems with pypi administration.
+pip install ospy  # it should be available really really soon, I am having problems with pypi administration.
 ```
 
 ## Usage
@@ -40,29 +40,29 @@ pip install os_py  # it will be available really really soon, I am having proble
 You can use os.py to retrieve system information, such as the firmware type, operating system version, and processor information.
 
 ```python
-import os_py
+import ospy
 
 # Get the firmware type (BIOS or UEFI)
-firmware_type = os_py.machine.get_firmware_type()
+firmware_type = ospy.machine.get_firmware_type()
 
 # Get the operating system version
-os_version = os_py.sys.get_os_info()['version']
+os_version = ospy.sys.get_os_info()['version']
 
 # Get the processor model
-processor_info = os_py.cpu.get_processor_info()['model']
+processor_info = ospy.cpu.get_processor_info()['model']
 ```
 
 ### Reading system and hardware data from command prompt.
 You can use os.py directly from the command prompt.
 
 ```bash
-os_py --dump=cmd 
+ospy --dump=cmd 
 ```
 
 You can also dump the os.py information into a .txt file
 
 ```bash
-os_py --dump=txt --file={specify your filepath}
+ospy --dump=txt --file={specify your filepath}
 ```
 
 ### And many more!

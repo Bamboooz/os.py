@@ -3,7 +3,7 @@ os.py - Python library as well as command prompt tool to read and manipulate mac
 Installation
 
 You can install os.py using pip:
-pip install os_py
+pip install ospy
 
 Usage
 
