@@ -92,6 +92,9 @@ These were just random examples of os.py usage, but there's a lot more to explor
  * [Documentation](https://github.com/Bamboooz/os.py/wiki)
  * [PyPi page](https://pypi.org/project/os_py/)
 
+# Support os.py
+You can buy me a coffee if you enjoy my work [Buy me a coffe ☕](https://www.buymeacoffee.com/Bamboooz)
+
 ## License
 
 This project is licensed under the [BSD-3 Clause License](https://opensource.org/license/bsd-3-clause/).
