@@ -3,7 +3,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from os_py.arch.windows import wintools
+from ospy.arch.windows import wintools
 
 
 # Define GB as a constant

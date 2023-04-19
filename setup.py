@@ -25,14 +25,14 @@ setup(
     classifiers=classifiers,
     entry_points={
         'console_scripts': [
-            'os_py.cmd=os_py.cmd.__main__:main'
+            'ospy.cmd=ospy.cmd.__main__:main'
         ]
     },
     keywords=['python', 'windows', 'library', 'device', 'cpu',
               'hardware', 'storage', 'gpu', 'display',
               'motherboard', 'system-monitor', 'terminal',
               'hardware-information', 'network-information'],
-    packages=['os_py'],
+    packages=['ospy', 'ospy/cmd', 'ospy/arch', 'ospy/shared', 'ospy/arch/windows'],
     install_requires=required_packages
 )
 

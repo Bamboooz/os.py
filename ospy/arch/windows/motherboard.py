@@ -5,7 +5,7 @@
 
 import winreg
 
-from os_py.arch.windows import wintools
+from ospy.arch.windows import wintools
 
 # Define constants for WMIC commands
 WMIC_PRODUCT = 'wmic baseboard get product'

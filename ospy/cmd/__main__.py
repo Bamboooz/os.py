@@ -6,7 +6,7 @@
 import argparse
 import sys as system
 
-from os_py import *
+from ospy import *
 
 
 def print_output_to_command_prompt():

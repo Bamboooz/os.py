@@ -6,11 +6,11 @@
 # this file is responsible for choosing method of information retrieval
 
 
-from os_py.arch.windows import processor as win_processor
-from os_py.arch.windows import device as win_device
-from os_py.arch.windows import machine as win_machine
-from os_py.arch.windows import storage as win_storage
-from os_py.arch.windows import motherboard as win_motherboard
+from ospy.arch.windows import processor as win_processor
+from ospy.arch.windows import device as win_device
+from ospy.arch.windows import machine as win_machine
+from ospy.arch.windows import storage as win_storage
+from ospy.arch.windows import motherboard as win_motherboard
 
 
 class processor:
@@ -20,7 +20,7 @@ class processor:
         Tries to get the CPU model using WMIC, and if that fails, tries to get it using the Windows registry.
 
         Returns:
-            - The CPU model, or None if it cannot be obtained.
+            The CPU model, or None if it cannot be obtained.
         """
         try:
             return win_processor.wmic_get_cpu_model()
@@ -36,7 +36,7 @@ class processor:
         Tries to get the CPU clockspeed using WMIC, and if that fails, tries to get it using the Windows registry.
 
         Returns:
-            - The CPU clockspeed, or None if it cannot be obtained.
+            The CPU clockspeed, or None if it cannot be obtained.
         """
         try:
             return win_processor.wmic_get_cpu_clockspeed()
@@ -52,7 +52,7 @@ class processor:
         Tries to get the total number of CPU cores using multiprocessing.
 
         Returns:
-            - The total number of CPU cores, or None if it cannot be obtained.
+            The total number of CPU cores, or None if it cannot be obtained.
         """
         try:
             return win_processor.multiprocessing_get_cpu_total_cores()
@@ -66,7 +66,7 @@ class processor:
         the Windows registry.
 
         Returns:
-            - The CPU architecture, or None if it cannot be obtained.
+            The CPU architecture, or None if it cannot be obtained.
         """
         try:
             return win_processor.platform_get_cpu_architecture()
@@ -86,7 +86,7 @@ class processor:
         Tries to get the CPU vendor ID using WMIC, and if that fails, tries to get it using the Windows registry.
 
         Returns:
-            - The CPU vendor ID, or None if it cannot be obtained.
+            The CPU vendor ID, or None if it cannot be obtained.
         """
         try:
             return win_processor.wmic_get_cpu_vendor_id()
@@ -102,7 +102,7 @@ class processor:
         Tries to get the CPU manufacturer using WMIC, and if that fails, tries to get it using the Windows registry.
 
         Returns:
-            - The CPU manufacturer, or None if it cannot be obtained.
+            The CPU manufacturer, or None if it cannot be obtained.
         """
         try:
             return win_processor.wmic_get_cpu_manufacturer()
@@ -120,8 +120,8 @@ class machine:
         Attempts to determine the firmware type of the machine using several different methods.
 
         Returns:
-            - A string representing the firmware type, such as 'BIOS' or 'UEFI', if successful.
-            - None if unable to determine the firmware type using any of the methods.
+            A string representing the firmware type, such as 'BIOS' or 'UEFI', if successful.
+            None if unable to determine the firmware type using any of the methods.
         """
         try:
             return win_machine.setupact_get_firmware_type()
@@ -145,8 +145,8 @@ class motherboard:
         Attempts to obtain the product name of the motherboard using two different methods.
 
         Returns:
-            - A string representing the product name of the motherboard if successful.
-            - None if unable to obtain the product name using any of the methods.
+            A string representing the product name of the motherboard if successful.
+            None if unable to obtain the product name using any of the methods.
         """
         try:
             return win_motherboard.wmic_get_motherboard_product()
@@ -162,8 +162,8 @@ class motherboard:
         Attempts to obtain the manufacturer name of the motherboard using two different methods.
 
         Returns:
-            - A string representing the manufacturer name of the motherboard if successful.
-            - None if unable to obtain the manufacturer name using any of the methods.
+            A string representing the manufacturer name of the motherboard if successful.
+            None if unable to obtain the manufacturer name using any of the methods.
         """
         try:
             return win_motherboard.wmic_get_motherboard_manufacturer()
@@ -179,8 +179,8 @@ class motherboard:
         Attempts to obtain the version number of the motherboard using two different methods.
 
         Returns:
-            - A string representing the version number of the motherboard if successful.
-            - None if unable to obtain the version number using any of the methods.
+            A string representing the version number of the motherboard if successful.
+            None if unable to obtain the version number using any of the methods.
         """
         try:
             return win_motherboard.wmic_get_motherboard_version()
@@ -198,8 +198,8 @@ class device:
         Attempts to retrieve the number of external drives on a Windows device using either the "wmic" command or PowerShell.
 
         Returns:
-        - an integer representing the number of external drives on the device, if successful.
-        - None if the attempt(s) to retrieve the number of external drives fail.
+            An integer representing the number of external drives on the device, if successful.
+            None if the attempt(s) to retrieve the number of external drives fail.
         """
         try:
             return win_device.wmic_get_number_of_external_drives()
@@ -215,8 +215,8 @@ class device:
         Attempts to retrieve information about the external drives on a Windows device using either the "wmic" command or PowerShell.
 
         Returns:
-            - a data structure (such as a list or dictionary) representing the external drives and their properties, if successful.
-            - None if the attempt(s) to retrieve the external drive information fail.
+            A data structure (such as a list or dictionary) representing the external drives and their properties, if successful.
+            None if the attempt(s) to retrieve the external drive information fail.
         """
         try:
             return win_device.wmic_get_external_drives()
@@ -234,7 +234,7 @@ class storage:
         This method returns a list of available drives on the system
 
         Returns:
-            - A list of available drive letters
+            A list of available drive letters
         """
         try:
             return win_storage.os_path_drive_list()
@@ -251,10 +251,10 @@ class storage:
         This method returns the total space of a specified drive
 
         Args:
-            - drive: the drive letter of the drive to get the total space of
+            drive: the drive letter of the drive to get the total space of
 
         Returns:
-            - The total space of the drive in gigabytes
+            The total space of the drive in gigabytes
         """
         try:
             return win_storage.shutil_disk_total_space(drive)
@@ -271,10 +271,10 @@ class storage:
         This method returns the used space of a specified drive
 
         Args:
-            - drive: the drive letter of the drive to get the used space of
+            drive: the drive letter of the drive to get the used space of
 
         Returns:
-            - The used space of the drive in gigabytes
+            The used space of the drive in gigabytes
         """
         try:
             return win_storage.shutil_disk_used_space(drive)
@@ -291,10 +291,10 @@ class storage:
         This method returns the free space of a specified drive
 
         Args:
-            - drive: the drive letter of the drive to get the free space of
+            drive: the drive letter of the drive to get the free space of
 
         Returns:
-            - The free space of the drive in gigabytes
+            The free space of the drive in gigabytes
         """
         try:
             return win_storage.shutil_disk_free_space(drive)
@@ -311,10 +311,10 @@ class storage:
         This method returns the percentage of used space of a specified drive
 
         Args:
-            - drive: the drive letter of the drive to get the used space percentage of
+            drive: the drive letter of the drive to get the used space percentage of
 
         Returns:
-            - The percentage of used space of the drive as a float value
+            The percentage of used space of the drive as a float value
         """
         try:
             return win_storage.shutil_disk_used_space_percent(drive)

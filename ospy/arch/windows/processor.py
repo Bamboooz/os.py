@@ -7,7 +7,7 @@ import multiprocessing
 import platform
 import winreg
 
-from os_py.arch.windows import wintools
+from ospy.arch.windows import wintools
 
 # Windows registry keys for retrieving CPU information
 WINREG_CPU_MODEL = [winreg.HKEY_LOCAL_MACHINE, r"Hardware\Description\System\CentralProcessor\0", "ProcessorNameString"]

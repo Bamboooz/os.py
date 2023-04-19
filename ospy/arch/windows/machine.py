@@ -7,7 +7,7 @@ import ctypes
 import re
 import winreg
 
-from os_py.arch.windows import wintools
+from ospy.arch.windows import wintools
 
 
 # Windows Registry key for firmware boot device

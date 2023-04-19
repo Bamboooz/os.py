@@ -3,23 +3,22 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-import datetime
 import platform
 
 # import shared modules
-from os_py.shared import gpu as _gpu
-from os_py.shared import sys as _sys
+from ospy.shared import gpu as _gpu
+from ospy.shared import sys as _sys
 
 # import Windows modules
-from os_py.os_py_windows import processor as _win_proc
-from os_py.os_py_windows import device as _win_device
-from os_py.os_py_windows import machine as _win_machine
-from os_py.os_py_windows import storage as _win_storage
-from os_py.os_py_windows import motherboard as _win_board
-from os_py.arch.windows import memory as _win_ram
+from ospy.ospy_windows import processor as _win_proc
+from ospy.ospy_windows import device as _win_device
+from ospy.ospy_windows import machine as _win_machine
+from ospy.ospy_windows import storage as _win_storage
+from ospy.ospy_windows import motherboard as _win_board
+from ospy.arch.windows import memory as _win_ram
 
 # import registry module
-from os_py.registry import winreg as _winreg
+from ospy.registry import winreg as _winreg
 
 
 __version__ = '0.0.1'
