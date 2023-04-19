@@ -3,7 +3,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from os_py import *
+from ospy import *
+
 
 print(f"[os.py information dump file, dump created on {datetime.datetime.now()}]:\n")
 
