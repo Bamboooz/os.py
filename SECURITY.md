@@ -25,6 +25,6 @@ We will provide security updates for the latest stable version of `os.py`. We ma
 
 | Version | Supported          |
 |---------|--------------------|
-| 1.1.x   | :white_check_mark: |
+| 0.0.x   | :white_check_mark: |
 
 Thank you for helping us keep `os.py` secure!
