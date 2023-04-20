@@ -8,10 +8,6 @@
 # project development
 /dev
 
-# pypi tests
-/ospy.egg-info
-/dist
-
 # Linux support tests
 /ospy/arch/linux
 /ospy/ospy_linux.py
@@ -25,4 +21,3 @@ tests/linux_test_summary.md
 # debug
 *.exe
 __pycache__/
-/build
