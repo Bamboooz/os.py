@@ -86,6 +86,7 @@ These were just random examples of os.py usage, but there's a lot more to explor
  * [ ] Support for AMD GPU's.
  * [ ] Support for more operating systems. (Linux is first priority)
 
+> You can view the current development status on our [trello page](https://trello.com/b/5rmlwrUg/ospy) as well.
 
 ## Documentation
 
