@@ -7,8 +7,7 @@ import multiprocessing
 import platform
 import winreg
 
-from ospy.arch.windows import wintools
-
+from ospy import toolbox
 
 # Windows registry keys for retrieving CPU information
 WINREG_CPU_MODEL = [winreg.HKEY_LOCAL_MACHINE, r"Hardware\Description\System\CentralProcessor\0", "ProcessorNameString"]
@@ -75,17 +74,17 @@ def platform_get_cpu_architecture():
 
 def wmic_get_cpu_model():
     """Get the CPU model using the Windows Management Instrumentation Command-line (WMIC)"""
-    return wintools.parse_wmic(WMIC_CPU_MODEL)[1]['output']
+    return toolbox.parse_wmic(WMIC_CPU_MODEL)[1]['output']
 
 
 def wmic_get_cpu_clockspeed():
     """Get the CPU clock speed using WMIC"""
-    return wintools.parse_wmic(WMIC_CPU_CLOCKSPEED)[1]['output']
+    return toolbox.parse_wmic(WMIC_CPU_CLOCKSPEED)[1]['output']
 
 
 def wmic_get_cpu_architecture():
     """Get the CPU architecture using WMIC"""
-    arch_value = int(wintools.parse_wmic(WMIC_CPU_ARCHITECTURE)[1]['output'])
+    arch_value = int(toolbox.parse_wmic(WMIC_CPU_ARCHITECTURE)[1]['output'])
     architecture = architectures.get(arch_value, None)
 
     # Raise an exception if architecture is not recognized
@@ -95,12 +94,12 @@ def wmic_get_cpu_architecture():
 
 def wmic_get_cpu_vendor_id():
     """Get the CPU vendor ID using WMIC"""
-    return wintools.parse_wmic(WMIC_CPU_VENDOR_ID)[1]['output']
+    return toolbox.parse_wmic(WMIC_CPU_VENDOR_ID)[1]['output']
 
 
 def wmic_get_cpu_manufacturer():
     """Get the CPU manufacturer name using WMIC"""
-    vendor_id = wintools.parse_wmic(WMIC_CPU_VENDOR_ID)[1]['output']
+    vendor_id = toolbox.parse_wmic(WMIC_CPU_VENDOR_ID)[1]['output']
     manufacturer = vendors.get(vendor_id.lower().replace(' ', ''), None)
 
     # Raise an exception if architecture is not recognized
@@ -111,27 +110,27 @@ def wmic_get_cpu_manufacturer():
 
 def winreg_get_cpu_model():
     """Get the CPU model using the Windows registry"""
-    return wintools.load_winreg_key(WINREG_CPU_MODEL)
+    return toolbox.load_winreg_key(WINREG_CPU_MODEL)
 
 
 def winreg_get_cpu_clockspeed():
     """Get the CPU clock speed using the Windows registry"""
-    return wintools.load_winreg_key(WINREG_CPU_CLOCKSPEED)
+    return toolbox.load_winreg_key(WINREG_CPU_CLOCKSPEED)
 
 
 def winreg_get_cpu_architecture():
     """Get CPU architecture using Windows Registry"""
-    return wintools.load_winreg_key(WINREG_CPU_ARCHITECTURE)
+    return toolbox.load_winreg_key(WINREG_CPU_ARCHITECTURE)
 
 
 def winreg_get_cpu_vendor_id():
     """Get CPU vendor ID using Windows Registry"""
-    return wintools.load_winreg_key(WINREG_CPU_VENDOR_ID)
+    return toolbox.load_winreg_key(WINREG_CPU_VENDOR_ID)
 
 
 def winreg_get_cpu_manufacturer():
     """Get CPU manufacturer using Windows Registry"""
-    vendor_id = wintools.load_winreg_key(WINREG_CPU_VENDOR_ID)
+    vendor_id = toolbox.load_winreg_key(WINREG_CPU_VENDOR_ID)
     manufacturer = vendors.get(vendor_id.lower().replace(' ', ''), None)
 
     # Raise an exception if architecture is not recognized

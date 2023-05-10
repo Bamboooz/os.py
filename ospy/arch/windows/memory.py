@@ -3,8 +3,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from ospy.arch.windows import wintools
-
+from ospy import toolbox
 
 # Define GB as a constant
 GB = 1024 * 1024 * 1024
@@ -82,8 +81,8 @@ def wmic_get_ram_capacity():
     """Uses WMIC to retrieve the RAM capacity."""
     capacities = {}
 
-    for stick in wintools.parse_wmic(WMIC_CAPACITY):
-        capacities[stick] = round(float(wintools.parse_wmic(WMIC_CAPACITY)[stick]['output']), 2) / GB
+    for stick in toolbox.parse_wmic(WMIC_CAPACITY):
+        capacities[stick] = round(float(toolbox.parse_wmic(WMIC_CAPACITY)[stick]['output']), 2) / GB
 
     return capacities
 
@@ -91,15 +90,15 @@ def wmic_get_ram_capacity():
 wmic_get_ram_capacity()
 def wmic_get_ram_sticks_number():
     """Uses WMIC to retrieve the number of RAM sticks."""
-    return len(wintools.parse_wmic(WMIC_CAPACITY))
+    return len(toolbox.parse_wmic(WMIC_CAPACITY))
 
 
 def wmic_get_ram_form_factor():
     """Uses WMIC to retrieve the RAM form factor."""
     form_factors = {}
 
-    for stick in wintools.parse_wmic(WMIC_FORM_FACTOR):
-        form_factors[stick] = factors.get(int(wintools.parse_wmic(WMIC_FORM_FACTOR)[1]['output']), None)
+    for stick in toolbox.parse_wmic(WMIC_FORM_FACTOR):
+        form_factors[stick] = factors.get(int(toolbox.parse_wmic(WMIC_FORM_FACTOR)[1]['output']), None)
 
     return form_factors
 
@@ -108,8 +107,8 @@ def wmic_get_ram_memory_type():
     """Uses WMIC to retrieve the RAM memory type."""
     mem_types = {}
 
-    for stick in wintools.parse_wmic(WMIC_FORM_FACTOR):
-        mem_types[stick] = factors.get(int(wintools.parse_wmic(WMIC_MEMORY_TYPE)[1]['output']), None)
+    for stick in toolbox.parse_wmic(WMIC_FORM_FACTOR):
+        mem_types[stick] = factors.get(int(toolbox.parse_wmic(WMIC_MEMORY_TYPE)[1]['output']), None)
 
     return mem_types
 
@@ -118,8 +117,8 @@ def wmic_get_ram_manufacturer():
     """Uses WMIC to retrieve the RAM manufacturer."""
     manufacturers = {}
 
-    for stick in wintools.parse_wmic(WMIC_MANUFACTURER):
-        manufacturers[stick] = wintools.parse_wmic(WMIC_MANUFACTURER)[stick]['output']
+    for stick in toolbox.parse_wmic(WMIC_MANUFACTURER):
+        manufacturers[stick] = toolbox.parse_wmic(WMIC_MANUFACTURER)[stick]['output']
 
     return manufacturers
 
@@ -128,8 +127,8 @@ def wmic_get_ram_clockspeed():
     """Uses WMIC to retrieve the RAM clockspeed."""
     clock_speeds = {}
 
-    for stick in wintools.parse_wmic(WMIC_CLOCKSPEED):
-        clock_speeds[stick] = wintools.parse_wmic(WMIC_CLOCKSPEED)[stick]['output']
+    for stick in toolbox.parse_wmic(WMIC_CLOCKSPEED):
+        clock_speeds[stick] = toolbox.parse_wmic(WMIC_CLOCKSPEED)[stick]['output']
 
     return clock_speeds
 
@@ -138,7 +137,7 @@ def wmic_get_ram_serial_number():
     """Uses WMIC to retrieve the RAM serial number."""
     serial_numbers = {}
 
-    for stick in wintools.parse_wmic(WMIC_SERIAL_NUMBER):
-        serial_numbers[stick] = wintools.parse_wmic(WMIC_SERIAL_NUMBER)[stick]['output']
+    for stick in toolbox.parse_wmic(WMIC_SERIAL_NUMBER):
+        serial_numbers[stick] = toolbox.parse_wmic(WMIC_SERIAL_NUMBER)[stick]['output']
 
     return serial_numbers

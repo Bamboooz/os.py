@@ -7,8 +7,7 @@ import ctypes
 import re
 import winreg
 
-from ospy.arch.windows import wintools
-
+from ospy import toolbox
 
 # Windows Registry key for firmware boot device
 WINREG_FIRMWARE = [winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\CurrentControlSet\Control", "FirmwareBootDevice"]
@@ -16,7 +15,7 @@ WINREG_FIRMWARE = [winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\CurrentControlSet\Control
 
 def winreg_get_firmware_type():
     """Determines the firmware type (BIOS or UEFI) using the Windows Registry."""
-    firmware_type = wintools.load_winreg_key(WINREG_FIRMWARE)
+    firmware_type = toolbox.load_winreg_key(WINREG_FIRMWARE)
 
     # Check if the value is set to \EFI, which indicates UEFI
     if firmware_type == r"\EFI":
@@ -69,7 +68,7 @@ def powershell_get_firmware_type():
     Uses PowerShell to determine the firmware type (BIOS or UEFI).
     Call the read_powershell_command() function from the wintools module to execute a PowerShell command
     """
-    output = wintools.read_powershell_command("(Get-WmiObject -Class Win32_ComputerSystem).BootupState")[1]['output'].lower()
+    output = toolbox.read_powershell_command("(Get-WmiObject -Class Win32_ComputerSystem).BootupState")[1]['output'].lower()
 
     if 'normal' in output:  # Check if the output contains "normal", which indicates BIOS
         return 'BIOS'
