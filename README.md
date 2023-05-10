@@ -1,6 +1,6 @@
 <div align="center">
 
-![os.py](https://github.com/Bamboooz/os.py/assets/blob/master/logo.png?raw=true)
+![os.py](https://github.com/Bamboooz/os.py/blob/master/assets/logo.png?raw=true)
 
 -----------------
 
