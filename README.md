@@ -1,6 +1,6 @@
 <div align="center">
 
-![os.py](https://github.com/Bamboooz/os.py/blob/master/banner.png?raw=true)
+![os.py](https://github.com/Bamboooz/os.py/assets/blob/master/logo.png?raw=true)
 
 -----------------
 
@@ -24,6 +24,8 @@
 -----------------
 
 <div align="left">
+
+# os.py
 
 ## What is os.py?
 **os.py** is a free, open-source Python library which makes retrieving system and hardware information, as well as modifying and manipulating system settings e.g. Windows registry keys much easier.<br/>

@@ -16,23 +16,23 @@
 ------------------------
 
 ```python
-from os_py import ram
+from ospy import ram
 
 # getting ram total memory
-print(ram.ram_capacity()) # example return: 15.362663269042969 GB
+print(ram.ram_capacity())  # example return: 15.362663269042969 GB
 
 # getting ram manufacturer
-print(ram.ram_manufacturer()) # example return: Hynix
+print(ram.ram_manufacturer())  # example return: Hynix
 
 # getting ram serial number
-print(ram.ram_serial_number()) # example return: 543B8173
+print(ram.ram_serial_number())  # example return: 543B8173
 
 # getting ram memory type
-print(ram.ram_memory_type()) # example return: DDR4
+print(ram.ram_memory_type())  # example return: DDR4
 
 # getting ram form factor
-print(ram.ram_form_factor()) # example return: SODIMM
+print(ram.ram_form_factor())  # example return: SODIMM
 
 # getting ram clockspeed
-print(ram.ram_clockspeed()) # example return: 3200Hz
+print(ram.ram_clockspeed())  # example return: 3200Hz
 ```

@@ -11,10 +11,10 @@
 ------------------------
 
 ```python
-from os_py import device
+from ospy import device
 
 # getting usb devices list
-print(device.lst_extern_drives()) # example return:
+print(device.lst_extern_drives())  # example return:
 #  USB\VID_30C9&PID_000E\6&2E165888&0&3
 #  USB\VID_25A7&PID_FA61\6&2E165888&0&2
 #  USB\ROOT_HUB30\5&78FB108&0&0

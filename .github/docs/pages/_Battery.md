@@ -14,14 +14,14 @@
 ------------------------
 
 ```python
-from os_py import battery
+from ospy import battery
 
 # getting battery percentage
-print(battery.battery_percentage()) # example return: 57%
+print(battery.battery_percentage())  # example return: 57%
 
 # getting information is battery plugged in
-print(battery.is_plugged_in()) # example return: True
+print(battery.is_plugged_in())  # example return: True
 
 # getting battery time left
-print(battery.battery_time_left()) # example return: 1.3h
+print(battery.battery_time_left())  # example return: 1.3h
 ```

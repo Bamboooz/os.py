@@ -15,6 +15,9 @@
 tests/linux_test_summary.md
 /examples/linux_os.py_cmd_example.sh
 
+# macOS support tests
+/ospy/arch/macos
+
 # Other tests
 /ospy/logger.py
 

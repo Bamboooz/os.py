@@ -15,20 +15,20 @@
 ------------------------
 
 ```python
-from os_py import motherboard
+from ospy import motherboard
 
 # getting motherboard model
-print(motherboard.model()) # example return: 8786
+print(motherboard.model())  # example return: 8786
 
 # getting motherboard manufacturer
-print(motherboard.manufacturer()) # example return: HP
+print(motherboard.manufacturer())  # example return: HP
 
 # getting motherboard serial number
-print(motherboard.serial_number()) # example return: 31444335-3530-4331-5736-6C02E073D649
+print(motherboard.serial_number())  # example return: 31444335-3530-4331-5736-6C02E073D649
 
 # getting motherboard version
-print(motherboard.version()) # example return: 22.54
+print(motherboard.version())  # example return: 22.54
 
 # getting motherboard node
-print(motherboard.node()) # example return: 145253501163834
+print(motherboard.node())  # example return: 145253501163834
 ```

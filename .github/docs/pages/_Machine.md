@@ -12,11 +12,11 @@
 ------------------------
 
 ```python
-from os_py import machine
+from ospy import machine
 
 # getting machine name
-print(machine.machine_name()) # example return: DESKTOP-236TBJV
+print(machine.machine_name())  # example return: DESKTOP-236TBJV
 
 # getting bios type ( BIOS or UEFI )
-print(machine.boot_type()) # example return: UEFI
+print(machine.boot_type())  # example return: UEFI
 ```

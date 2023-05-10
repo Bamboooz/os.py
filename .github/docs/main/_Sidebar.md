@@ -1,24 +1,26 @@
-## Wiki Home
-[Home](https://github.com/Bamboooz/os.py/wiki)
+## os.py Wiki Home
 
-[os.py Functions](https://github.com/Bamboooz/os.py/wiki/os.py-Functions)
-## Documentation
-[System Information](https://github.com/Bamboooz/os.py/wiki/System-information)
+<details><summary><a href="https://github.com/Bamboooz/os.py/wiki/"><b>Home</b></a></summary>
+<br/>
 
-[CPU Information](https://github.com/Bamboooz/os.py/wiki/CPU-information)
+[os.py functions](https://github.com/Bamboooz/Kyanite/wiki/Commands)<br/>
+ * [Wiki home](https://github.com/Bamboooz/os.py/wiki)<br/>
+ * [Github page](https://github.com/Bamboooz/os.py)<br/>
+ * [pypi page]()<br/>
 
-[GPU Information](https://github.com/Bamboooz/os.py/wiki/GPU-information)
+</details>
 
-[RAM Information](https://github.com/Bamboooz/os.py/wiki/RAM-information)
+<details><summary><a href="https://github.com/Bamboooz/os.py#usage"><b>Functions</b></a></summary>
+<br/>
 
-[Storage Information](https://github.com/Bamboooz/os.py/wiki/Storage-information)
+[os.py functions](https://github.com/Bamboooz/os.py#usage)<br/>
+ * [Library](https://github.com/Bamboooz/os.py/wiki)<br/>
+ * [Command prompt](https://github.com/Bamboooz/os.py/wiki)<br/>
 
-[Motherboard Information](https://github.com/Bamboooz/os.py/wiki/Motherboard-information)
+</details>
 
-[Device Information](https://github.com/Bamboooz/os.py/wiki/Device-information)
+<a href="https://github.com/Bamboooz/os.py#future-ideas"><b>Future updates</b></a></details>
 
-[Sound Information](https://github.com/Bamboooz/os.py/wiki/Sound-information)
+<a href="https://github.com/Bamboooz/os.py/blob/master/CONTRIBUTING.md"><b>Contributing</b></a>
 
-[Battery Information](https://github.com/Bamboooz/os.py/wiki/Battery-information)
-
-[Machine Information](https://github.com/Bamboooz/os.py/wiki/Machine-information)
+<a href="https://github.com/Bamboooz/os.py/blob/master/SECURITY.md"><b>Security</b></a>

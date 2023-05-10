@@ -11,10 +11,10 @@
 ------------------------
 
 ```python
-from os_py import sound
+from ospy import sound
 
 # getting audio devices
-print(sound.get_sound_devices()) # example return:
+print(sound.get_sound_devices())  # example return:
 #  0 Microsoft Sound Mapper - Input, MME (2 in, 0 out)
 #  1 Internal Microphone (AMD Audio , MME (2 in, 0 out)
 #  2 Microsoft Sound Mapper - Output, MME (0 in, 2 out)
