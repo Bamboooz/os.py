@@ -25,8 +25,6 @@
 
 <div align="left">
 
-# os.py
-
 ## What is os.py?
 **os.py** is a free, open-source Python library which makes retrieving system and hardware information, as well as modifying and manipulating system settings e.g. Windows registry keys much easier.<br/>
 **os.py** is also available in command prompt mode, which you can use to print the output to the screen, or save it to a file.
