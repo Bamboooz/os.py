@@ -6,7 +6,7 @@
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 
-from ospy import *
+from ospylib import *
 
 
 def print_text():

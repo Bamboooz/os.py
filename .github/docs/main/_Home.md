@@ -32,7 +32,7 @@
 ## Installation
 ### You can install os.py using pip:
 ```bash
-pip install ospy
+pip install ospylib
 ```
 
 #### Links

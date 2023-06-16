@@ -15,7 +15,7 @@
 ------------------------
 
 ```python
-from ospy import cpu
+from ospylib import cpu
 
 # getting cpu model
 print(cpu.cpu_model())  # example return: AMD Ryzen 7 4800H with Radeon Graphics

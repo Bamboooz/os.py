@@ -16,7 +16,7 @@
 ------------------------
 
 ```python
-from ospy import system
+from ospylib import system
 
 # getting operating system name
 print(system.os_name())  # example return: Windows

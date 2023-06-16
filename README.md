@@ -4,15 +4,6 @@
 
 -----------------
 
-[![](https://img.shields.io/github/v/release/Bamboooz/os.py?color=yellow?style=flat-square)](https://github.com/Bamboooz/os.py/releases/)
-[![](https://img.shields.io/badge/python-3.6%20and%20newer-brightgreen)](https://en.wikipedia.org/wiki/Python_(programming_language))
-[![](https://img.shields.io/badge/operating%20system-windows-purple)](https://en.wikipedia.org/wiki/Operating_system)
-[![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
-![](https://img.shields.io/github/languages/code-size/Bamboooz/os.py?color=red)
-[![](https://img.shields.io/badge/License-BSD--3--Clause-blue)](https://opensource.org/license/bsd-3-clause/)
-
------------------
-
 [**Home**](https://github.com/Bamboooz/os.py)⠀
 [**Install**](https://github.com/Bamboooz/os.py#installation)⠀
 [**Documentation**](https://github.com/Bamboooz/os.py/wiki)⠀
@@ -26,13 +17,15 @@
 <div align="left">
 
 ## What is os.py?
-**os.py** is a free, open-source Python library which makes retrieving system and hardware information, as well as modifying and manipulating system settings e.g. Windows registry keys much easier.<br/>
+> yeah uhh, so i work on this project everyday like i enjoy doing it but im like still learning don't expect it to work too soon. like its not that much left but still yeah thank you for starring my project i guess
+
+**os.py** is a free, open-source Python library which makes retrieving system and hardware information much easier.<br/>
 **os.py** is also available in command prompt mode, which you can use to print the output to the screen, or save it to a file.
 
 ## Installation
 ### You can install os.py using pip:
 ```bash
-pip install ospy  # it should be available really really soon, I am having problems with pypi administration.
+pip install ospylib
 ```
 
 ## Usage
@@ -40,29 +33,29 @@ pip install ospy  # it should be available really really soon, I am having probl
 You can use os.py to retrieve system information, such as the firmware type, operating system version, and processor information.
 
 ```python
-import ospy
+import ospylib
 
 # Get the firmware type (BIOS or UEFI)
-firmware_type = ospy.machine.get_firmware_type()
+firmware_type = ospylib.system.arch.windows.sys.firmware()
 
-# Get the operating system version
-os_version = ospy.sys.get_os_info()['version']
+# Get the operating system name
+os_version = ospylib.system.arch.windows.sys.name()
 
 # Get the processor model
-processor_info = ospy.cpu.get_processor_info()['model']
+processor_info = ospylib.cpu.model()
 ```
 
 ### Reading system and hardware data from command prompt.
 You can use os.py directly from the command prompt.
 
 ```bash
-ospy --dump=cmd 
+ospylib --dump=cmd 
 ```
 
 You can also dump the os.py information into a .txt file
 
 ```bash
-ospy --dump=txt --file={specify your filepath}
+ospylib --dump=txt --file={specify your filepath}
 ```
 
 ### And many more!
@@ -70,7 +63,7 @@ These were just random examples of os.py usage, but there's a lot more to explor
 
 ## Roadmap
 ### Project launch state
-> **os.py** launched in **May 2022**. As of **April 2023**, we are in the **Public Alpha  ✅** stage.<br/>
+> **os.py** launched in **May 2022**. As of **June 2023**, we are in the **Public Alpha  ✅** stage.<br/>
 
 ❌ **Private Alpha:** os.py is currently being developed, and you cannot install the library yet.<br/>
 ✅ **Public Alpha:** Anyone can install and use os.py. There may be issues, but we are working to resolve them actively.<br/>
@@ -80,8 +73,6 @@ These were just random examples of os.py usage, but there's a lot more to explor
 ### Future ideas
  * [ ] Gathering system and hardware information on Linux
  * [ ] GUI coverage for os.py
- * [ ] modifying os settings using os.py
- * [ ] os.py logging class
  * [ ] Support for machines with multiple motherboards, CPU's etc.
  * [ ] Support for AMD GPU's.
  * [ ] Support for more operating systems. (Linux is first priority)
@@ -91,7 +82,7 @@ These were just random examples of os.py usage, but there's a lot more to explor
 ## Documentation
 
  * [Documentation](https://github.com/Bamboooz/os.py/wiki)
- * [PyPi page](https://pypi.org/project/os_py/)
+ * [PyPi page](https://pypi.org/project/ospylib/)
 
 ## Support os.py
 You can buy me a coffee if you enjoy my work [Buy me a coffee ☕](https://www.buymeacoffee.com/Bamboooz)

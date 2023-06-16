@@ -11,7 +11,7 @@
 ------------------------
 
 ```python
-from ospy import device
+from ospylib import device
 
 # getting usb devices list
 print(device.lst_extern_drives())  # example return:

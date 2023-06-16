@@ -3,13 +3,13 @@ os.py - Python library as well as command prompt tool to read and manipulate mac
 Installation
 
 You can install os.py using pip:
-pip install ospy
+pip install ospylib
 
 Usage
 
 To use os.py, simply import it at the beginning of your Python script:
 
-import os_py
+import ospylib
 
 Contributing
 

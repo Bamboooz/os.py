@@ -9,17 +9,9 @@
 /dev
 
 # Linux support tests
-/ospy/arch/linux
-/ospy/ospy_linux.py
 /tests/arch_linux_os.py_tests.py
-tests/linux_test_summary.md
+/tests/linux_test_summary.md
 /examples/linux_os.py_cmd_example.sh
-
-# macOS support tests
-/ospy/arch/macos
-
-# Other tests
-/ospy/logger.py
 
 # debug
 *.exe

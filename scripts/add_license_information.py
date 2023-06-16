@@ -6,29 +6,43 @@
 import os
 
 
-LICENSE_INFO = '''# Copyright (c) 2022, Bamboooz
+LICENSE_INFO_PYTHON = '''# Copyright (c) 2022, Bamboooz
 # All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 '''
 
+LICENSE_INFO_CPP = '''/*
+Copyright (c) 2022, Bamboooz
+All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+*/
 
-DIRECTORY = '\\'.join(os.getcwd().split('\\')[:-1])  # default working directory if you keep the scripts in the os.py/scripts directory
-
-
-def add_license(path):
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            if file.endswith('.py'):
-                file_path = os.path.join(root, file)
-                with open(file_path, 'r+') as f:
-                    content = f.read()
-                    if content.startswith(LICENSE_INFO):
-                        continue
-                    f.seek(0, 0)
-                    f.write(LICENSE_INFO + content)
+'''
 
 
-if __name__ == '__main__':
-    add_license(DIRECTORY)
+def add_license_header(file_path):
+    _, ext = os.path.splitext(file_path)
+    if ext == '.py':
+        header = LICENSE_INFO_PYTHON
+    elif ext in ['.cpp', '.hpp', '.c', '.h']:
+        header = LICENSE_INFO_CPP
+    else:
+        return
+
+    with open(file_path, 'r+', encoding='utf-8') as f:
+        content = f.read()
+        if not content.startswith(header):
+            f.seek(0)
+            f.write(header + content)
+
+
+if __name__ == "__main__":
+    DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # the os.py code directory if you got this scripts in the script folder
+
+    for root, dirs, files in os.walk(DIR):
+        for file_name in files:
+            file_path = os.path.join(root, file_name)
+            add_license_header(file_path)

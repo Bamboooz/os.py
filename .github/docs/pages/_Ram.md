@@ -16,7 +16,7 @@
 ------------------------
 
 ```python
-from ospy import ram
+from ospylib import ram
 
 # getting ram total memory
 print(ram.ram_capacity())  # example return: 15.362663269042969 GB

@@ -14,7 +14,7 @@
 ------------------------
 
 ```python
-from ospy import battery
+from ospylib import battery
 
 # getting battery percentage
 print(battery.battery_percentage())  # example return: 57%

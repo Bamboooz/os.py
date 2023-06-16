@@ -12,7 +12,7 @@
 ------------------------
 
 ```python
-from ospy import machine
+from ospylib import machine
 
 # getting machine name
 print(machine.machine_name())  # example return: DESKTOP-236TBJV

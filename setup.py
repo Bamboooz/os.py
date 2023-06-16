@@ -26,16 +26,16 @@ keywords = [
 
 entry_points = {
     'console_scripts': [
-        'ospy.cmd=ospy.cmd.__main__:main'
+        'ospylib.cmd=ospylib.__main__:main'
     ]
 }
 
-packages = ['ospy', 'ospy/cmd', 'ospy/arch', 'ospy/shared', 'ospy/arch/windows']
+packages = ['ospylib']
 
 
 setup(
-    name='ospy',
-    version='0.0.1',
+    name='ospylib',
+    version='0.0.3',
     description=description,
     long_description=open('README.txt').read(),
     url='https://github.com/Bamboooz/os.py',

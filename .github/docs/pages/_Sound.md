@@ -11,7 +11,7 @@
 ------------------------
 
 ```python
-from ospy import sound
+from ospylib import sound
 
 # getting audio devices
 print(sound.get_sound_devices())  # example return:

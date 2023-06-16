@@ -19,7 +19,7 @@
 ------------------------
 
 ```python
-from ospy import gpu
+from ospylib import gpu
 
 # getting gpu id
 print(gpu().gpu_id())  # example return: 0

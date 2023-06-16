@@ -15,7 +15,7 @@
 ------------------------
 
 ```python
-from ospy import motherboard
+from ospylib import motherboard
 
 # getting motherboard model
 print(motherboard.model())  # example return: 8786
