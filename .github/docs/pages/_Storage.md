@@ -15,7 +15,8 @@
 ------------------------
 
 ```python
-from ospylib import storage
+
+import storage
 
 # as for drive_letter you insert drive letter you want to get information about, example: 'C'
 # default drive letter for windows 'C', and for linux its '/'
