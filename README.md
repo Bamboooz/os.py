@@ -36,10 +36,10 @@ You can use os.py to retrieve system information, such as the firmware type, ope
 import ospylib
 
 # Get the firmware type (BIOS or UEFI)
-firmware_type = ospylib.system.arch.windows.sys.firmware()
+firmware_type = ospylib.system.firmware()
 
 # Get the operating system name
-os_version = ospylib.system.arch.windows.sys.name()
+os_version = ospylib.system.name()
 
 # Get the processor model
 processor_info = ospylib.cpu.model()
