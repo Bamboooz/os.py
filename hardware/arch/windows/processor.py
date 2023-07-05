@@ -5,8 +5,8 @@
 
 import winreg
 
-from ospylib.common.registry import read_registry_value
-from ospylib.common.prompt import execute_command
+from common.regedit.registry import read_registry_value
+from common.prompt.prompt import execute_command
 
 WMIC_CPU_MODEL = 'wmic cpu get name'
 WMIC_CPU_CORES = 'wmic cpu get NumberOfLogicalProcessors'
