@@ -27,7 +27,7 @@ def add_license_header(file_path):
     _, ext = os.path.splitext(file_path)
     if ext == '.py':
         header = LICENSE_INFO_PYTHON
-    elif ext in ['.cpp', '.hpp', '.c', '.h']:
+    elif ext in ['.c', '.h']:
         header = LICENSE_INFO_CPP
     else:
         return
@@ -40,7 +40,7 @@ def add_license_header(file_path):
 
 
 if __name__ == "__main__":
-    DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # the os.py code directory if you got this scripts in the script folder
+    DIR = r""  # the os.py code directory if you got this scripts in the script folder
 
     for root, dirs, files in os.walk(DIR):
         for file_name in files:

@@ -4,8 +4,7 @@
 # found in the LICENSE file.
 
 import sys as system
-from ospylib import system
-
+import system
 
 if __name__ == '__main__':
     # simple_example.py - runs the program if the user is running Windows, raise an error otherwise.
