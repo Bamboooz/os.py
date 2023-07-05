@@ -1,7 +1,14 @@
+/*
+Copyright (c) 2022, Bamboooz
+All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+*/
+
 #include <windows.h>
 #include <stdio.h>
 
-double mem_usage() {
+double usage() {
     MEMORYSTATUS status;
     GlobalMemoryStatus(&status);
 
@@ -10,8 +17,4 @@ double mem_usage() {
 
     double memoryUsage = 100.0 - ((double)availablePhysicalMemory / (double)totalPhysicalMemory) * 100.0;
     return memoryUsage;
-}
-
-double mem_usage_per_stick() {
-    return 0.0;
 }
