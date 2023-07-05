@@ -5,6 +5,7 @@
 
 import os
 import shutil
+import system
 
 from setuptools import setup
 
@@ -18,24 +19,25 @@ classifiers = [
 ]
 
 keywords = [
-    'python', 'windows', 'library', 'device', 'cpu',
-    'hardware', 'storage', 'gpu', 'display',
+    'python', 'windows', 'linux', 'library', 'device', 'cpu',
+    'hardware', 'storage', 'gpu', 'display', 'drivers'
     'motherboard', 'system-monitor', 'terminal',
     'hardware-information', 'network-information'
 ]
 
-entry_points = {
-    'console_scripts': [
-        'ospylib.cmd=ospylib.__main__:main'
-    ]
-}
+packages = ['battery', 'common', 'device', 'display', 'drivers', 'hardware', 'sensors', 'storage', 'system']
 
-packages = ['ospylib']
+if system.name() == 'Windows':
+    install_requirements=[
+        'wmi'
+    ]
+else:
+    install_requirements = []
 
 
 setup(
     name='ospylib',
-    version='0.0.3',
+    version='1.0.0',
     description=description,
     long_description=open('README.txt').read(),
     url='https://github.com/Bamboooz/os.py',
@@ -43,16 +45,17 @@ setup(
     author_email='bambusixmc@gmail.com',
     license='BSD-3-Clause',
     classifiers=classifiers,
-    entry_points=entry_points,
     keywords=keywords,
-    packages=packages
+    packages=packages,
+    install_requires=install_requirements
 )
 
 
 if __name__ == '__main__':
     # run this file using python setup.py sdist bdist_wheel
     password = input('Enter your pypi password: ')
-    os.system(f'twine upload --repository-url https://upload.pypi.org/legacy/ -u Bamboooz -p {password} dist/*')
+    api_key = input('Enter your pypi API key: ')
+    os.system(f'twine upload --repository-url https://upload.pypi.org/legacy/ --username __token__ --password {api_key} dist/*')
 
     # remove pypi build directories
     shutil.rmtree(f'{os.getcwd()}\\build')
