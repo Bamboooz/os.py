@@ -8,17 +8,15 @@ found in the LICENSE file.
 #include <stdio.h>
 #include <windows.h>
 
-const char * resolution() {
-    int screenWidth = GetSystemMetrics(SM_CXSCREEN);
-    int screenHeight = GetSystemMetrics(SM_CYSCREEN);
-
-    static char result[16];  // Buffer to hold the resolution string
-    sprintf(result, "%dx%d", screenWidth, screenHeight);
-
-    return result;
+const int x_res() {
+    return GetSystemMetrics(SM_CXSCREEN);
 }
 
-int refreq() {
+const int y_res() {
+    return GetSystemMetrics(SM_CYSCREEN);
+}
+
+const int refreq() {
     DEVMODE devMode;
     memset(&devMode, 0, sizeof(devMode));
     devMode.dmSize = sizeof(devMode);
