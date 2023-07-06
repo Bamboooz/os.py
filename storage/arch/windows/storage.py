@@ -6,6 +6,7 @@
 import os
 import string
 import ctypes
+import device
 
 
 def drives() -> list:
