@@ -63,21 +63,12 @@ These were just random examples of os.py usage, but there's a lot more to explor
 
 ## Roadmap
 ### Project launch state
-> **os.py** launched in **May 2022**. As of **June 2023**, we are in the **Public Alpha  ✅** stage.<br/>
+> **os.py** launched in **May 2022**. As of **July 2023**, we are in the **Private Alpha  ❌** stage.<br/>
 
 ❌ **Private Alpha:** os.py is currently being developed, and you cannot install the library yet.<br/>
 ✅ **Public Alpha:** Anyone can install and use os.py. There may be issues, but we are working to resolve them actively.<br/>
 🔶 **Public Beta:** Stable enough for non-enterprise use-cases.<br/>
 💻 **Public:** os.py is production ready.
-
-### Future ideas
- * [ ] Gathering system and hardware information on Linux
- * [ ] GUI coverage for os.py
- * [ ] Support for machines with multiple motherboards, CPU's etc.
- * [ ] Support for AMD GPU's.
- * [ ] Support for more operating systems. (Linux is first priority)
-
-> You can view the current development status on our [trello page](https://trello.com/b/5rmlwrUg/ospy) as well.
 
 ## Documentation
 
