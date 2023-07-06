@@ -6,13 +6,13 @@
 from common.load import import_by_os, WINDOWS, LINUX
 
 
-devices: dict = import_by_os({
-    WINDOWS: 'windows',
-    LINUX: 'linux'
+devices = import_by_os({
+    WINDOWS: 'device.arch.windows.device',
+    LINUX: 'device.arch.windows.device'
 }, 'devices')
 
 
-num_devices: int = import_by_os({
-    WINDOWS: 'windows',
-    LINUX: 'linux'
+num_devices = import_by_os({
+    WINDOWS: 'device.arch.windows.device',
+    LINUX: 'device.arch.windows.device'
 }, 'num_devices')

@@ -7,17 +7,17 @@ from common.load import import_by_os, WINDOWS, LINUX
 
 
 class baseboard:
-    product: str = import_by_os({
+    product = import_by_os({
         WINDOWS: 'hardware.arch.windows.baseboard',
         LINUX: 'hardware.arch.linux.baseboard'
     }, 'product')
 
-    manufacturer: str = import_by_os({
+    manufacturer = import_by_os({
         WINDOWS: 'hardware.arch.windows.baseboard',
         LINUX: 'hardware.arch.linux.baseboard'
     }, 'manufacturer')
 
-    version: str = import_by_os({
+    version = import_by_os({
         WINDOWS: 'hardware.arch.windows.baseboard',
         LINUX: 'hardware.arch.linux.baseboard'
     }, 'version')

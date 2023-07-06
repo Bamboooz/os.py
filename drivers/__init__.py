@@ -6,7 +6,7 @@
 from common.load import import_by_os, WINDOWS, LINUX
 
 
-get_drivers: dict = import_by_os({
+get_drivers = import_by_os({
     WINDOWS: 'drivers.arch.windows.drivers',
     LINUX: 'drivers.arch.linux.drivers'
 }, 'get_drivers')
