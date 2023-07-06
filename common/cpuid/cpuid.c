@@ -7,6 +7,8 @@ found in the LICENSE file.
 
 #include <stdio.h>
 
+#include "types.h"
+
 void executeCpuid(unsigned int cpuidResults[4], unsigned int eaxValue, unsigned int ecxValue) {
     __asm__ volatile (
         "cpuid"
@@ -22,8 +24,8 @@ void executeCpuid(unsigned int cpuidResults[4], unsigned int eaxValue, unsigned 
 int cpuid_supported() {
     unsigned int cpuidResults[4];
     
-    executeCpuid(cpuidResults, 0x0, 0x0);
+    executeCpuid(cpuidResults, ECX, ECX);
 
     // Check if the CPUID instruction is supported
-    return (cpuidResults[0] >= 0x0);
+    return (cpuidResults[0] >= ECX);
 }
