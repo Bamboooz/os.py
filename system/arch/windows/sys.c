@@ -9,9 +9,6 @@ found in the LICENSE file.
 
 #include "../../../common/regedit/registry.c"
 
-#define USER_PERMISSION_ADMINISTRATOR 1
-#define USER_PERMISSION_NORMAL 0
-
 typedef BOOL (WINAPI * PIsHvciEnabled)();
 
 int admin() {
