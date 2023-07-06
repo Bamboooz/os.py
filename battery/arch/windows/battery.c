@@ -9,6 +9,7 @@ found in the LICENSE file.
 
 int percentage() {
     SYSTEM_POWER_STATUS powerStatus;
+
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryLifePercent != BATTERY_PERCENTAGE_UNKNOWN)
@@ -24,6 +25,7 @@ int percentage() {
 
 int charging() {
     SYSTEM_POWER_STATUS powerStatus;
+
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.ACLineStatus == AC_LINE_ONLINE)
@@ -43,6 +45,7 @@ int charging() {
 
 int present() {
     SYSTEM_POWER_STATUS powerStatus;
+
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryFlag & BATTERY_FLAG_NO_BATTERY)
@@ -68,6 +71,7 @@ int flag() {
     -1      Unknown status—unable to read the battery flag information
     */
     SYSTEM_POWER_STATUS powerStatus;
+
     if (GetSystemPowerStatus(&powerStatus))
     {
         return powerStatus.BatteryFlag;
@@ -78,6 +82,7 @@ int flag() {
 
 int time() {
     SYSTEM_POWER_STATUS powerStatus;
+
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryLifeTime != -1 && powerStatus.BatteryLifeTime != 0xFFFFFFFF)
