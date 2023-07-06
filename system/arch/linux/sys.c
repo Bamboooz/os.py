@@ -31,21 +31,3 @@ int uptime() {
     fclose(file);
     return (int)uptimeValue;
 }
-
-int is_vm() {
-    FILE * file = fopen("/proc/cpuinfo", "r");
-    if (file == NULL) {
-        return 0;
-    }
-
-    char buffer[256];
-    while (fgets(buffer, sizeof(buffer), file) != NULL) {
-        if (strstr(buffer, "hypervisor") != NULL) {
-            fclose(file);
-            return 1;
-        }
-    }
-
-    fclose(file);
-    return 0;
-}
