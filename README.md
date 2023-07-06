@@ -19,6 +19,8 @@
 ## What is os.py?
 > yeah uhh, so i work on this project everyday like i enjoy doing it but im like still learning don't expect it to work too soon. like its not that much left but still yeah thank you for starring my project i guess
 
+[![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
+
 **os.py** is a free, open-source Python library which makes retrieving system and hardware information much easier.<br/>
 **os.py** is also available in command prompt mode, which you can use to print the output to the screen, or save it to a file.
 
