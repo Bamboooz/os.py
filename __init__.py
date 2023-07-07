@@ -11,3 +11,5 @@ import drivers
 import display
 import device
 import battery
+import audio
+import peripherals
