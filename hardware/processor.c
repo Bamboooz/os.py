@@ -73,16 +73,6 @@ const int logical_cores() {
     return numCores;
 }
 
-const int cores(int logical) {
-    if (logical) {
-        return logical_cores();
-    }
-    else
-    {
-        return physical_cores();
-    }
-}
-
 const int hyper_threading_enabled() {
     unsigned int cpuidResults[FEATURE_CPUID_BUFFER];
     executeCpuid(cpuidResults, EAX, ECX);

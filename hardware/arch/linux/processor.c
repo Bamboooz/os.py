@@ -84,16 +84,6 @@ int logical_cores() {
     return num_processors;
 }
 
-int cores(int logical) {
-    if (logical) {
-        return logical_cores();
-    }
-    else
-    {
-        return physical_cores();
-    }
-}
-
 const char * vendor() {
     char cpuinfo[MAX_BUFFER_SIZE];
     read_file("/proc/cpuinfo", cpuinfo, sizeof(cpuinfo));
