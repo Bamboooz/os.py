@@ -7,6 +7,8 @@ import os
 import locale
 import platform as _platform
 
+from common.load import import_by_os, WINDOWS, LINUX
+
 
 USER_PERMISSION_ADMINISTRATOR = 1
 USER_PERMISSION_NORMAL = 0
@@ -64,11 +66,18 @@ def architecture() -> str:
     return _platform.architecture()[0]
 
 
-def user() -> str:
+def user() -> tuple:
     """
-    Returns the username of the current user.
+    Returns the username of the current user and his privileges.
     """
-    return os.environ.get('USERNAME')
+    username = os.environ.get('USERNAME')
+
+    is_admin = import_by_os({
+        WINDOWS: 'system.arch.windows.sys',
+        LINUX: 'system.arch.windows.sys'
+    }, 'is_admin')
+
+    return username, is_admin
 
 
 def lang() -> tuple:

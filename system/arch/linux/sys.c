@@ -12,10 +12,6 @@ found in the LICENSE file.
 #define USER_PERMISSION_ADMINISTRATOR 1
 #define USER_PERMISSION_NORMAL 0
 
-int admin() {
-    return (getuid() == 0);
-}
-
 int uptime() {
     FILE * file = fopen("/proc/uptime", "r");
     if (!file) {

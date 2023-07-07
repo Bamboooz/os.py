@@ -7,30 +7,13 @@ found in the LICENSE file.
 
 #include <Windows.h>
 
-#include "../../../common/regedit/registry.c"
-
 typedef BOOL (WINAPI * PIsHvciEnabled)();
-
-int admin() {
-    BOOL isAdmin = FALSE;
-    SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
-    PSID AdministratorsGroup;
-
-    if (AllocateAndInitializeSid(&NtAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &AdministratorsGroup)) {
-        if (!CheckTokenMembership(NULL, AdministratorsGroup, &isAdmin)) {
-            isAdmin = FALSE;
-        }
-        FreeSid(AdministratorsGroup);
-    }
-    
-    return isAdmin;
-}
 
 int uptime() {
     return (int)(GetTickCount() / 1000);
 }
 
-int safeMode() {
+int safe_mode() {
     return (int)(GetSystemMetrics(SM_CLEANBOOT) != 0);
 }
 
