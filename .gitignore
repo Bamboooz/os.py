@@ -7,7 +7,6 @@
 
 # project development
 /dev
-/tests
 
 # Linux support tests
 /tests/arch_linux_os.py_tests.py
