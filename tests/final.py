@@ -120,18 +120,9 @@ _ = ospylib.sensors_battery().charging
 # ospylib peripherals module #
 # -------------------------- #
 
-_ = ospylib.mouse().model
-_ = ospylib.mouse().dpi
-_ = ospylib.mouse().driver
+# I want to get more but getting peripherals information is hell.
 
-_ = ospylib.keyboard().model
 _ = ospylib.keyboard().layout
-_ = ospylib.keyboard().lang
-_ = ospylib.keyboard().driver
-
-_ = ospylib.webcam().model
-_ = ospylib.webcam().resolution
-_ = ospylib.webcam().driver
 
 # ---------------------- #
 # ospylib storage module #
