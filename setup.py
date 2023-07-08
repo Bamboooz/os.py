@@ -25,7 +25,7 @@ keywords = [
     'hardware-information', 'network-information'
 ]
 
-packages = ['battery', 'common', 'device', 'display', 'drivers', 'hardware', 'sensors', 'storage', 'system']
+packages = ['battery', 'common', 'device', 'display', 'drivers', 'hardware', 'sensors', 'storage', 'system', 'peripherals', 'process', 'audio']
 
 if system.name() == 'Windows':
     install_requirements=[
@@ -33,6 +33,12 @@ if system.name() == 'Windows':
     ]
 else:
     install_requirements = []
+
+entry_points={
+    'console_scripts': [
+        'ospylib = prompt.__init__:main'
+    ]
+}
 
 
 setup(
