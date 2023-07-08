@@ -7,6 +7,15 @@ found in the LICENSE file.
 
 #include <windows.h>
 
+#define BATTERY_STATUS_HIGH       0
+#define BATTERY_STATUS_MEDIUM     1
+#define BATTERY_STATUS_LOW        2
+#define BATTERY_STATUS_CRITICAL   4
+#define BATTERY_STATUS_CHARGING   8
+#define BATTERY_STATUS_NO_BATTERY 128
+#define BATTERY_STATUS_FAILED     255
+
+
 int percentage() {
     SYSTEM_POWER_STATUS powerStatus;
 
@@ -61,23 +70,42 @@ int present() {
 
 int flag() {
     /*
-    Value	Meaning
-    1       High—the battery capacity is at more than 66 percent
-    2       Low—the battery capacity is at less than 33 percent
-    4       Critical—the battery capacity is at less than five percent
-    8       Charging
-    128     No system battery
-    255     Unknown status—unable to read the battery flag information
-    -1      Unknown status—unable to read the battery flag information
-    */
-    SYSTEM_POWER_STATUS powerStatus;
+    Value	  Meaning
+    0         High—the battery capacity is 66 percent or higher
+    1         Medium—the battery percentage is higher or equal to 33 and lower than 66 percent
+    2         Low—the battery percentage higher or equal to 5 and lower than 33 percent
+    4         Critical—the battery percentage is at less than five percent
+    8         Charging
+    128       No system battery
+    255       Unknown status—unable to read the battery flag information
 
-    if (GetSystemPowerStatus(&powerStatus))
-    {
-        return powerStatus.BatteryFlag;
+    Using a custom flag system as the default one makes literally no sense.
+    It makes values 33 to 66 percent not be detected as any flag returning None.
+    */
+    if (!present) {
+        return BATTERY_STATUS_NO_BATTERY;
     }
 
-    return -1; // Battery information retrieval failed
+    if (charging) {
+        return BATTERY_STATUS_CHARGING;
+    }
+
+    if (percentage == -1) {
+        return BATTERY_STATUS_FAILED;
+    }
+
+    if (percentage < 5) {
+        return BATTERY_STATUS_CRITICAL;
+    }
+    else if (5 <= percentage < 33) {
+        return BATTERY_STATUS_LOW;
+    }
+    else if (33 <= percentage < 66) {
+        return BATTERY_STATUS_MEDIUM;
+    }
+    else if (percentage >= 66) {
+        return BATTERY_STATUS_HIGH;
+    }
 }
 
 int time() {
@@ -87,7 +115,7 @@ int time() {
     {
         if (powerStatus.BatteryLifeTime != -1 && powerStatus.BatteryLifeTime != 0xFFFFFFFF)
         {
-            return powerStatus.BatteryLifeTime / 60; // BatteryLifeTime is in seconds, convert to minutes
+            return powerStatus.BatteryLifeTime;
         }
 
         return -1; // Failed to retrieve battery time left
