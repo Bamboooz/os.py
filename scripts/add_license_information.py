@@ -37,6 +37,7 @@ def add_license_header(file_path):
         if not content.startswith(header):
             f.seek(0)
             f.write(header + content)
+            print(f'Successfully added copyright notice to: {file_path}')
 
 
 if __name__ == "__main__":
