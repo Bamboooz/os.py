@@ -12,12 +12,14 @@ Available for Windows and Linux, support for more operating systems soon.
 <div align="center">
 
 -----------------
+
 [**Home**](https://github.com/Bamboooz/os.py)⠀
 [**Install**](https://github.com/Bamboooz/os.py#installation)⠀
 [**Documentation**](https://github.com/Bamboooz/os.py/wiki)⠀
 [**Contributing**](https://github.com/Bamboooz/os.py/blob/master/CONTRIBUTING.md)⠀
 [**Download**](https://pypi.org/project/os.py#files)⠀
 [**Security**](https://github.com/Bamboooz/os.py/blob/master/SECURITY.md)⠀
+
 -----------------
 
 <div align="left">
