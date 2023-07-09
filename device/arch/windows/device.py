@@ -10,12 +10,8 @@ from common.path import drive_to_path as _dtp
 
 def devices() -> dict:
     logical_disks = {
-        num: [_dtp(disk.DeviceID), disk.VolumeName, disk.FileSystem]
+        _dtp(disk.DeviceID): [disk.VolumeName, disk.FileSystem]
         for num, disk in enumerate(wmi.WMI().Win32_LogicalDisk(DriveType=2))
     }
 
     return logical_disks
-
-
-def num_devices() -> int:
-    return len(devices())

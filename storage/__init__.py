@@ -5,7 +5,6 @@
 
 import os
 import shutil
-import system
 import device
 
 from collections import namedtuple
@@ -14,7 +13,7 @@ from common.load import import_by_os, WINDOWS, LINUX
 from common.path import drive_to_path as _dtp
 
 
-drives: list = import_by_os({
+drives = import_by_os({
     WINDOWS: 'storage.arch.windows.storage',
     LINUX: 'storage.arch.linux.storage'
 }, 'drives')
@@ -23,8 +22,7 @@ drives: list = import_by_os({
 def disk_usage(drive) -> namedtuple:
     disk_stat_format = namedtuple('disk_stat_format', ['total', 'used', 'free', 'perc_free', 'perc_used'])
 
-    if system.name() == 'Windows':
-        drive = _dtp(drive)
+    drive = _dtp(drive)
 
     is_mount = os.path.exists(drive) and drive.startswith("/") and not os.path.isfile(drive)
     is_drive = os.path.exists(drive) and os.path.isabs(drive) and len(os.path.splitdrive(drive)[0]) == 2 and not os.path.isfile(drive)
@@ -45,12 +43,11 @@ def disk_partitions(drive) -> namedtuple:
     disk_partitions_format = namedtuple('disk_partitions_format', ['fstype', 'type'])
     disk_type_format = namedtuple('disk_type_format', ['removable', 'drive', 'mount'])
 
-    if system.name() == 'Windows':
-        drive = _dtp(drive)
+    drive = _dtp(drive)
 
     is_mount = os.path.exists(drive) and drive.startswith("/") and not os.path.isfile(drive)
     is_drive = os.path.exists(drive) and os.path.isabs(drive) and len(os.path.splitdrive(drive)[0]) == 2 and not os.path.isfile(drive)
-    is_removable = drive in device.devices()
+    is_removable = drive in device.ext_dev()
 
     if not is_mount and not is_drive:
         disk_type = disk_type_format(removable=None, drive=None, mount=None)

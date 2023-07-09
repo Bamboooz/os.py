@@ -3,16 +3,31 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+from collections import namedtuple
+
 from common.load import import_by_os, WINDOWS, LINUX
+from common.path import drive_to_path as _dtp
 
 
-devices = import_by_os({
-    WINDOWS: 'device.arch.windows.device',
-    LINUX: 'device.arch.windows.device'
-}, 'devices')
+def ext_dev(device: str=None) -> namedtuple or list:
+    ext_dev_format = namedtuple('ext_dev_format', ['name', 'fstype'])
+
+    device_data = import_by_os({
+        WINDOWS: 'device.arch.windows.device',
+        LINUX: 'device.arch.windows.device'
+    }, 'devices')()
+
+    devices = list(device_data.keys())
+
+    if device is None:
+        return devices
+
+    device = _dtp(device)
+
+    if device in devices:
+        name = device_data[device][0]
+        fstype = device_data[device][1]
+        return ext_dev_format(name=name, fstype=fstype)
 
 
-num_devices = import_by_os({
-    WINDOWS: 'device.arch.windows.device',
-    LINUX: 'device.arch.windows.device'
-}, 'num_devices')
+    return ext_dev_format(name=None, fstype=None)

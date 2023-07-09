@@ -17,10 +17,6 @@ def devices() -> dict:
 
     for index, (usb, fstype) in enumerate(zip(usbs, fstypes)):
         if usb.startswith('/media'):
-            f_devices[len(f_devices)] = [usb, usb.split('/')[-1], fstype]
+            f_devices[usb] = [usb.split('/')[-1], fstype]
 
     return f_devices
-
-
-def num_devices() -> int:
-    return len(devices())
