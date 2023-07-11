@@ -9,6 +9,21 @@ found in the LICENSE file.
 
 typedef BOOL (WINAPI * PIsHvciEnabled)();
 
+int is_admin() {
+    BOOL isAdmin = FALSE;
+    SID_IDENTIFIER_AUTHORITY ntAuthority = SECURITY_NT_AUTHORITY;
+    PSID administratorsGroup;
+
+    if (AllocateAndInitializeSid(&ntAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &administratorsGroup)) {
+        if (!CheckTokenMembership(NULL, administratorsGroup, &isAdmin)) {
+            isAdmin = FALSE;
+        }
+        FreeSid(administratorsGroup);
+    }
+
+    return isAdmin;
+}
+
 int uptime() {
     return (int)(GetTickCount() / 1000);
 }
