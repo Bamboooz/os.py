@@ -27,6 +27,8 @@ Available for Windows and Linux, support for more operating systems soon.
 ## What is os.py?
 > yeah uhh, so i work on this project everyday like I enjoy doing it but im like still learning don't expect it to work too soon. like it's not that much left but still yeah thank you for starring my project i guess
 
+[![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
+
 os.py exposes system and hardware information in a form of a python library. This allows you to write Python-based code to access low-level operating system and hardware data.
 
 os.py allows retrieval of information such us: cpu, gpu information, statistics, supported features and sensors, ram and swap utilization and features, storage device information, external storage device information, machine peripherals and drivers and much more.
