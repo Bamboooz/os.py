@@ -5,7 +5,8 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <windows.h>
+#include <Python.h>
+#include <Windows.h>
 
 #define BATTERY_STATUS_HIGH       0
 #define BATTERY_STATUS_MEDIUM     1
@@ -15,61 +16,59 @@ found in the LICENSE file.
 #define BATTERY_STATUS_NO_BATTERY 128
 #define BATTERY_STATUS_FAILED     255
 
-
-int percentage() {
+static PyObject * percentage(PyObject * self, PyObject * args) {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryLifePercent != BATTERY_PERCENTAGE_UNKNOWN)
         {
-            return powerStatus.BatteryLifePercent;
+            return PyLong_FromLong(powerStatus.BatteryLifePercent);
         }
-
-        return -1; // Failed to retrieve charge percentage
     }
 
-    return -1; // Battery percentage retrieval failed
+    Py_RETURN_NONE;
 }
 
-int charging() {
+static PyObject * charging(PyObject * self, PyObject * args) {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.ACLineStatus == AC_LINE_ONLINE)
         {
-            return 1; // Device is connected to a power source
+            Py_RETURN_TRUE;
         }
         else if (powerStatus.ACLineStatus == AC_LINE_OFFLINE)
         {
-            return 0; // Device is not connected to a power source
+            Py_RETURN_FALSE;
         }
-
-        return -1; // Failed to retrieve charge status
     }
 
-    return -1; // Cannot determine if device is connected to a power source
+    Py_RETURN_NONE;
 }
 
-int present() {
+static PyObject * present(PyObject * self, PyObject * args) {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryFlag & BATTERY_FLAG_NO_BATTERY)
         {
-            return 0; // No system battery installed
+            Py_RETURN_FALSE;
         }
-
-        return 1; // Found battery
+        else
+        {
+            Py_RETURN_TRUE;
+        }
     }
 
-    return -1; // Battery information retrieval failed
+    Py_RETURN_NONE;
 }
 
-int flag() {
+static PyObject * flag(PyObject * self, PyObject * args) {
     /*
+    Possible battery flags:
     Value	  Meaning
     0         High—the battery capacity is 66 percent or higher
     1         Medium—the battery percentage is higher or equal to 33 and lower than 66 percent
@@ -81,45 +80,51 @@ int flag() {
 
     Using a custom flag system as the default one makes literally no sense.
     It makes values 33 to 66 percent not be detected as any flag returning None.
+
+    Don't have to implement the not found as it is covered directly in sensors_battery()
     */
-    if (!present) {
-        return BATTERY_STATUS_NO_BATTERY;
+    SYSTEM_POWER_STATUS powerStatus;
+
+    if (!GetSystemPowerStatus(&powerStatus)) {
+        return PyLong_FromLong(BATTERY_STATUS_FAILED);
     }
 
-    if (charging) {
-        return BATTERY_STATUS_CHARGING;
+    if (powerStatus.ACLineStatus == AC_LINE_ONLINE) {
+        return PyLong_FromLong(BATTERY_STATUS_CHARGING);
     }
 
-    if (percentage == -1) {
-        return BATTERY_STATUS_FAILED;
+    int percentage = powerStatus.BatteryLifePercent;
+
+    if (percentage == BATTERY_PERCENTAGE_UNKNOWN) {
+        return PyLong_FromLong(BATTERY_STATUS_FAILED);
     }
 
     if (percentage < 5) {
-        return BATTERY_STATUS_CRITICAL;
+        return PyLong_FromLong(BATTERY_STATUS_CRITICAL);
     }
-    else if (5 <= percentage < 33) {
-        return BATTERY_STATUS_LOW;
+    else if (percentage >= 5 && percentage < 33) {
+        return PyLong_FromLong(BATTERY_STATUS_LOW);
     }
-    else if (33 <= percentage < 66) {
-        return BATTERY_STATUS_MEDIUM;
+    else if (percentage >= 33 && percentage < 66) {
+        return PyLong_FromLong(BATTERY_STATUS_MEDIUM);
     }
     else if (percentage >= 66) {
-        return BATTERY_STATUS_HIGH;
+        return PyLong_FromLong(BATTERY_STATUS_HIGH);
     }
+
+    return PyLong_FromLong(BATTERY_STATUS_FAILED);
 }
 
-int time() {
+static PyObject * battery_time(PyObject * self, PyObject * args) {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryLifeTime != -1 && powerStatus.BatteryLifeTime != 0xFFFFFFFF)
         {
-            return powerStatus.BatteryLifeTime;
+            return PyLong_FromLong(powerStatus.BatteryLifeTime);
         }
-
-        return -1; // Failed to retrieve battery time left
     }
-    
-    return -1; // Battery time left retrieval failed
+
+    Py_RETURN_NONE;
 }
