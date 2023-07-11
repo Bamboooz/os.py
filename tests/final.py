@@ -34,8 +34,8 @@ _ = ospylib.ext_dev().total
 # ospylib display module #
 # ---------------------- #
 
-x, y = ospylib.display().resolution
-_ = ospylib.display().refreq
+x, y = ospylib.display_device().resolution
+_ = ospylib.display_device().refreq
 
 # ---------------------- #
 # ospylib drivers module #
