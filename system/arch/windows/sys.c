@@ -5,11 +5,12 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
+#include <Python.h>
 #include <Windows.h>
 
 typedef BOOL (WINAPI * PIsHvciEnabled)();
 
-int is_admin() {
+static PyObject * is_admin(PyObject * self, PyObject * args) {
     BOOL isAdmin = FALSE;
     SID_IDENTIFIER_AUTHORITY ntAuthority = SECURITY_NT_AUTHORITY;
     PSID administratorsGroup;
@@ -21,18 +22,21 @@ int is_admin() {
         FreeSid(administratorsGroup);
     }
 
-    return isAdmin;
+    return PyBool_FromLong((long)isAdmin);
 }
 
-int uptime() {
-    return (int)(GetTickCount() / 1000);
+static PyObject * uptime(PyObject * self, PyObject * args) {
+    DWORD ticks = GetTickCount();
+    double seconds = (double)ticks / 1000.0;
+    return PyFloat_FromDouble(seconds);
 }
 
-int safe_mode() {
-    return (int)(GetSystemMetrics(SM_CLEANBOOT) != 0);
+static PyObject * safe_mode(PyObject * self, PyObject * args) {
+    BOOL inSafeMode = GetSystemMetrics(SM_CLEANBOOT) != 0;
+    return PyBool_FromLong((long)inSafeMode);
 }
 
-int hvci() {
+static PyObject * hvci(PyObject * self, PyObject * args) {
     int hvciEnabled = 0;
     HMODULE kernel32 = GetModuleHandleA("kernel32.dll");
     if (kernel32) {
@@ -40,5 +44,5 @@ int hvci() {
         PIsHvciEnabled pIsHvciEnabled = (PIsHvciEnabled)proc;
         hvciEnabled = (pIsHvciEnabled != NULL) ? pIsHvciEnabled() : 0;
     }
-    return hvciEnabled;
+    return PyBool_FromLong((long)hvciEnabled);
 }

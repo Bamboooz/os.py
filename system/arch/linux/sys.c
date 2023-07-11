@@ -5,29 +5,28 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <stdio.h>
+#include <Python.h>
 #include <unistd.h>
-#include <string.h>
 
-#define USER_PERMISSION_ADMINISTRATOR 1
-#define USER_PERMISSION_NORMAL 0
-
-int is_admin() {
-    return geteuid() == 0;
+static PyObject * is_admin(PyObject * self, PyObject * args) {
+    int isAdmin = geteuid() == 0;
+    return PyBool_FromLong(isAdmin);
 }
 
-int uptime() {
+static PyObject * uptime(PyObject * self, PyObject * args) {
     FILE * file = fopen("/proc/uptime", "r");
     if (!file) {
-        return -1;  // Error occurred
+        PyErr_SetString(PyExc_IOError, "Failed to open /proc/uptime");
+        return NULL;
     }
 
     double uptimeValue;
     if (fscanf(file, "%lf", &uptimeValue) != 1) {
         fclose(file);
-        return -1;  // Error occurred
+        PyErr_SetString(PyExc_IOError, "Failed to read /proc/uptime");
+        return NULL;
     }
 
     fclose(file);
-    return (int)uptimeValue;
+    return PyLong_FromLong((long)uptimeValue);
 }

@@ -7,12 +7,6 @@ import os
 import locale
 import platform as _platform
 
-from common.load import import_by_os, WINDOWS, LINUX
-
-
-USER_PERMISSION_ADMINISTRATOR = 1
-USER_PERMISSION_NORMAL = 0
-
 
 def name() -> str:
     """ 
@@ -72,10 +66,7 @@ def user() -> tuple:
     """
     username = os.environ.get('USERNAME')
 
-    is_admin = import_by_os({
-        WINDOWS: 'system.arch.windows.sys',
-        LINUX: 'system.arch.windows.sys'
-    }, 'is_admin')
+    is_admin = None  # ospylib C extensions not yet connected with the Python code.
 
     return username, is_admin
 
