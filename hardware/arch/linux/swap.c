@@ -5,12 +5,13 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
+#include <Python.h>
 #include <stdio.h>
 
-int total() {
+static PyObject * total(PyObject * self, PyObject * args) {
     FILE * file = fopen("/proc/meminfo", "r");
     if (file == NULL) {
-        return -1;
+        Py_RETURN_NONE;
     }
 
     char line[256];
@@ -24,5 +25,5 @@ int total() {
     }
 
     fclose(file);
-    return totalSwapMemory * 1024;  // Convert kilobytes to bytes
+    return PyLong_FromLong(totalSwapMemory * 1024);
 }
