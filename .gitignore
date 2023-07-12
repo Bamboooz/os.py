@@ -10,9 +10,6 @@
 /examples
 
 # some extra currently in development stuff
-/sensors/fans
-/sensors/temperature
-/sensors/voltage
 /tests/usage_sensors_tests.py
 
 # Linux support tests
