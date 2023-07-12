@@ -6,7 +6,6 @@
 from system import *
 from storage import *
 from sensors import *
-from hardware import *
 from drivers import *
 from display import *
 from device import *
@@ -14,6 +13,12 @@ from audio import *
 from peripherals import *
 from firmware import *
 from process import *
+
+from hardware.baseboard import *
+from hardware.graphics import *
+from hardware.memory import *
+from hardware.processor import *
+from hardware.swap import *
 
 from sensors.battery import *
 from sensors.fans import *
