@@ -5,6 +5,8 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
+#include <Python.h>
+
 #include "arch/windows/display.c"
 
 static PyMethodDef ospylib_display_module_methods[] = {

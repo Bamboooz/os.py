@@ -6,6 +6,7 @@ found in the LICENSE file.
 */
 
 #include <Python.h>
+
 #include "arch/windows/battery.c"
 
 static PyMethodDef ospylib_battery_module_methods[] = {
