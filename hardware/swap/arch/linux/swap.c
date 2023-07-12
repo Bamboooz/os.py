@@ -9,7 +9,7 @@ found in the LICENSE file.
 
 #define SWAP_INFORMATION_BUFFER 256
 
-static PyObject * swap_percent(PyObject * self, PyObject * args) {
+static PyObject * swap_memory(PyObject * self, PyObject * args) {
     FILE * meminfo = fopen("/proc/meminfo", "r");
 
     if (meminfo == NULL) {
@@ -17,12 +17,12 @@ static PyObject * swap_percent(PyObject * self, PyObject * args) {
     }
 
     char buffer[SWAP_INFORMATION_BUFFER];
-    long totalSwap = 0;
-    long freeSwap = 0;
+    long long totalSwap = 0;
+    long long freeSwap = 0;
 
     while (fgets(buffer, sizeof(buffer), meminfo)) {
-        sscanf(buffer, "SwapTotal: %ld kB", &totalSwap);
-        sscanf(buffer, "SwapFree: %ld kB", &freeSwap);
+        sscanf(buffer, "SwapTotal: %lld", &totalSwap);
+        sscanf(buffer, "SwapFree: %lld", &freeSwap);
     }
 
     fclose(meminfo);
@@ -31,8 +31,7 @@ static PyObject * swap_percent(PyObject * self, PyObject * args) {
         Py_RETURN_NONE;
     }
 
-    long usedSwap = totalSwap - freeSwap;
-    double swapUsage = ((double)usedSwap / (double)totalSwap) * 100.0;
-    
-    return PyFloat_FromDouble(swapUsage);
+    long long usedSwap = totalSwap - freeSwap;
+
+    return Py_BuildValue("(LLL)", totalSwap * 1024, usedSwap * 1024, freeSwap * 1024);  // Convert to bytes
 }

@@ -11,7 +11,7 @@ found in the LICENSE file.
 
 #include <sys/utsname.h>
 
-#include "../../../common/cpuid/types.h"
+#include "../../../../common/cpuid/types.h"
 
 #define MAX_BUFFER_SIZE 1024
 

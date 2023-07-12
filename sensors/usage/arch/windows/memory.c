@@ -20,5 +20,6 @@ static PyObject * memory_percent(PyObject * self, PyObject * args) {
     double usedMemory = totalMemory - (double)status.ullAvailPhys; // used = total - free memory
 
     double memoryUsage = (usedMemory / totalMemory) * 100.0;
+    
     return PyFloat_FromDouble(memoryUsage);
 }

@@ -5,9 +5,9 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include "../common/cpuid/types.h"
-#include "../common/cpuid/cpuid.c"
-#include "../common/strlib.h"
+#include "../../../common/cpuid/types.h"
+#include "../../../common/cpuid/cpuid.c"
+#include "../../../common/strlib.h"
 
 #define MAX_BUFFER_SIZE 1024
 

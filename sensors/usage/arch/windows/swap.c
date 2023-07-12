@@ -18,7 +18,7 @@ static PyObject * swap_percent(PyObject * self, PyObject * args) {
 
     double totalSwap = (double)status.ullTotalPageFile;
     double usedSwap = totalSwap - (double)status.ullAvailPageFile; // used = total - free swap
-
     double swapUsage = (usedSwap / totalSwap) * 100.0;
+
     return PyFloat_FromDouble(swapUsage);
 }
