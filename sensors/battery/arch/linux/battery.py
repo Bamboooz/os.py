@@ -3,9 +3,22 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import os
+
 from collections import namedtuple
 
-from _ospy_linux import *
+POWER_SUPPLY_PATH = "/sys/class/power_supply"
+
+BATTERIES = [battery for battery in os.listdir(POWER_SUPPLY_PATH) if battery.startswith('BAT') or 'battery' in battery.lower()]
+HAS_BATTERY = False if not BATTERIES else True
+
+BATTERY_STATUS_HIGH = 0
+BATTERY_STATUS_MEDIUM = 1
+BATTERY_STATUS_LOW = 2
+BATTERY_STATUS_CRITICAL = 4
+BATTERY_STATUS_CHARGING = 8
+BATTERY_STATUS_NO_BATTERY = 128
+BATTERY_STATUS_FAILED = 255
 
 
 def sensors_battery() -> namedtuple:
