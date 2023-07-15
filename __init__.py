@@ -3,6 +3,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import platform
+
 from system import *
 from storage import *
 from drivers import *
@@ -30,7 +32,7 @@ __author__ = "Bamboooz"
 __repo__ = "https://github.com/Bamboooz/os.py"
 __version__ = "0.0.1"
 __supported_os__ = ['Windows', 'Linux']
-__os__ = name()
+__os__ = platform.system()
 
 
 if __os__ not in __supported_os__:

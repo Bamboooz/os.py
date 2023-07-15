@@ -39,8 +39,8 @@ def disk_usage(drive) -> namedtuple:
     return disk_stat
 
 
-def disk_partitions(drive) -> namedtuple:
-    disk_partitions_format = namedtuple('disk_partitions_format', ['fstype', 'type'])
+def disk_info(drive) -> namedtuple:
+    disk_info_format = namedtuple('disk_info_format', ['fstype', 'type'])
     disk_type_format = namedtuple('disk_type_format', ['removable', 'drive', 'mount'])
 
     drive = _dtp(drive)
@@ -51,7 +51,7 @@ def disk_partitions(drive) -> namedtuple:
 
     if not is_mount and not is_drive:
         disk_type = disk_type_format(removable=None, drive=None, mount=None)
-        disk_stat = disk_partitions_format(fstype=None, type=disk_type)
+        disk_stat = disk_info_format(fstype=None, type=disk_type)
         return disk_stat
 
     filesystem = import_by_os({
@@ -60,5 +60,5 @@ def disk_partitions(drive) -> namedtuple:
     }, 'filesystem')(drive)
 
     disk_type = disk_type_format(drive=is_drive, mount=is_mount, removable=is_removable)
-    partitions = disk_partitions_format(fstype=filesystem, type=disk_type)
+    partitions = disk_info_format(fstype=filesystem, type=disk_type)
     return partitions

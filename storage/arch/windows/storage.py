@@ -6,14 +6,13 @@
 import os
 import string
 import ctypes
-import device
 
 
 def drives() -> list:
     return [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
 
 
-def filesystem(drive_letter):
+def filesystem(drive_letter):  # port this to C in the future
     # Get the volume information for the drive
     volume_name_buffer = ctypes.create_unicode_buffer(1024)
     file_system_name_buffer = ctypes.create_unicode_buffer(1024)

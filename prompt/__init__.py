@@ -5,7 +5,7 @@
 
 import os
 import argparse
-import system
+import platform
 
 RED = '\033[91m'
 GREEN = '\033[92m'
@@ -27,7 +27,7 @@ def main():
     parser.add_argument('--file', help='Specify a file path you want to store ospylib information in.')
     args = parser.parse_args()
 
-    if system.name() == 'Windows':
+    if platform.system() == 'Windows':
         os.system('color')
 
     if args.file:

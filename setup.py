@@ -5,7 +5,7 @@
 
 import os
 import shutil
-import system
+import platform
 
 from setuptools import setup
 
@@ -27,12 +27,14 @@ keywords = [
 
 packages = ['battery', 'common', 'device', 'display', 'drivers', 'hardware', 'sensors', 'storage', 'system', 'peripherals', 'process', 'audio']
 
-if system.name() == 'Windows':
+if platform.system() == 'Windows':
     install_requirements=[
         'wmi'
     ]
 else:
-    install_requirements = []
+    install_requirements = [
+        'XLib'
+    ]
 
 entry_points={
     'console_scripts': [

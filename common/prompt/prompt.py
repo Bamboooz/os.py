@@ -6,7 +6,7 @@
 import subprocess
 
 
-def execute_command(command, trim, encodings=None):
+def execute_command(command, trim, encodings=None):  # refactor to check for the correct encoding system itself
     if encodings is None:
         encodings = ['utf-8']
 

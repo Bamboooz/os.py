@@ -3,7 +3,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-import system
+import platform
 import subprocess
 
 
@@ -21,7 +21,7 @@ def execute_command(command, trim):
 
 
 def get_nvidia_smi() -> str:
-    if system.name() == 'Windows':
+    if platform.system() == 'Windows':
         n_smi = execute_command("where nvidia-smi", 0)
     else:
         n_smi = "nvidia-smi"
