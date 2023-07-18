@@ -3,13 +3,12 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from collections import namedtuple
-
+from common.data import ospylib_data_format
 from common.load import import_by_os, WINDOWS, LINUX
 from common.path import drive_to_path as _dtp
 
 
-def ext_dev(device: str=None) -> namedtuple or list:
+def ext_dev(device: str=None) -> ospylib_data_format or list:
     ext_dev_format = namedtuple('ext_dev_format', ['name', 'fstype'])
 
     device_data = import_by_os({
