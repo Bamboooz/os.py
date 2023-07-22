@@ -26,7 +26,7 @@ Available for Windows and Linux, support for more operating systems soon.
 <div align="left">
 
 ## What is os.py?
-> yeah uhh, so i work on this project everyday like I enjoy doing it but im like still learning don't expect it to work too soon. like it's not that much left but still yeah thank you for starring my project i guess
+> Yeah uhh, so I work on this project everyday like I enjoy doing it but im like still learning don't expect it to work too soon. like it's not that much left but still yeah thank you for starring my project I guess.
 
 [![](https://www.aschey.tech/tokei/github/Bamboooz/os.py?style=flat-square)](https://github.com/Bamboooz/os.py)
 
