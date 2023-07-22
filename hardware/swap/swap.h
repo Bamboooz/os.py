@@ -7,11 +7,7 @@ found in the LICENSE file.
 
 #include <Python.h>
 
-#ifdef _WIN32
-    #include "arch/windows/swap.c"
-#elif __linux__
-    #include "arch/linux/swap.c"
-#endif
+#include "arch/windows/swap.c"
 
 static PyMethodDef ospylib_hardware_swap_module_methods[] = {
     {"swap_memory", swap_memory, METH_NOARGS, "Get total swap memory."},

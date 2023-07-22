@@ -7,7 +7,7 @@ import platform
 import subprocess
 
 
-def execute_command(command, trim):
+def execute_command(command, trim):  # update to common.prompt.prompt.execute_command, remove shell=True due to security issues
     result = subprocess.check_output(command, shell=True, text=True, stderr=subprocess.DEVNULL)
     lines = result.split('\n')
 

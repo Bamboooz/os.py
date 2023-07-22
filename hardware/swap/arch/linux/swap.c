@@ -5,33 +5,45 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define SWAP_INFORMATION_BUFFER 256
-
-static PyObject * swap_memory(PyObject * self, PyObject * args) {
+char * swap_memory() {
     FILE * meminfo = fopen("/proc/meminfo", "r");
-
-    if (meminfo == NULL) {
-        Py_RETURN_NONE;
+    if (!meminfo) {
+        return NULL;
     }
 
-    char buffer[SWAP_INFORMATION_BUFFER];
-    long long totalSwap = 0;
-    long long freeSwap = 0;
+    long total_swap = 0;
+    long free_swap = 0;
+    char line[128];
 
-    while (fgets(buffer, sizeof(buffer), meminfo)) {
-        sscanf(buffer, "SwapTotal: %lld", &totalSwap);
-        sscanf(buffer, "SwapFree: %lld", &freeSwap);
+    while (fgets(line, sizeof(line), meminfo)) {
+        if (strncmp(line, "SwapTotal:", 10) == 0) {
+            total_swap = atol(line + 10);
+        } else if (strncmp(line, "SwapFree:", 9) == 0) {
+            free_swap = atol(line + 9);
+        }
     }
 
     fclose(meminfo);
 
-    if (totalSwap < 0 || freeSwap < 0) {
-        Py_RETURN_NONE;
+    if (total_swap <= 0 || free_swap < 0) {
+        return NULL;
     }
 
-    long long usedSwap = totalSwap - freeSwap;
+    long used_swap = total_swap - free_swap;
 
-    return Py_BuildValue("(LLL)", totalSwap * 1024, usedSwap * 1024, freeSwap * 1024);  // Convert to bytes
+    long long total_swap_bytes = total_swap * 1024;
+    long long used_swap_bytes = used_swap * 1024;
+    long long free_swap_bytes = free_swap * 1024;
+
+    char buffer[128]; // Adjust the buffer size as needed
+
+    // Use sprintf or snprintf to format the integers into the buffer
+    snprintf(buffer, sizeof(buffer), "%lld,%lld,%lld", total_swap_bytes, used_swap_bytes, free_swap_bytes);
+
+    // Duplicate the buffer so that it can be returned from the function
+    return strdup(buffer);
 }

@@ -3,30 +3,28 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import platform
+
 from common.data import ospylib_data_format
-from common.load import import_by_os, WINDOWS, LINUX
-from common.path import drive_to_path as _dtp
+from common.load import import_by_os
+from common.fs.path import drive_to_path as _dtp
 
 
-def ext_dev(device: str=None) -> ospylib_data_format or list:
-    ext_dev_format = namedtuple('ext_dev_format', ['name', 'fstype'])
-
-    device_data = import_by_os({
-        WINDOWS: 'device.arch.windows.device',
-        LINUX: 'device.arch.windows.device'
-    }, 'devices')()
-
-    devices = list(device_data.keys())
+def ext_dev(device=None) -> ospylib_data_format or list:
+    devices = import_by_os(windows="device.arch.windows.device", linux="device.arch.linux.device", function="devices")()
 
     if device is None:
         return devices
 
     device = _dtp(device)
 
-    if device in devices:
-        name = device_data[device][0]
-        fstype = device_data[device][1]
-        return ext_dev_format(name=name, fstype=fstype)
+    if device not in devices:
+        return ospylib_data_format(name=None, fstype=None)
 
+    name = import_by_os(windows="device.arch.windows.device", linux="device.arch.linux.device", function="device_name")
+    fstype = import_by_os(windows="device.arch.windows.device", linux="device.arch.linux.device", function="device_fstype")
 
-    return ext_dev_format(name=None, fstype=None)
+    if platform.system() == 'Windows':
+        return ospylib_data_format(name=[name, [device, devices]], fstype=[fstype, [device, devices]])
+
+    return ospylib_data_format(name=[name, [device]], fstype=[fstype, [device, devices]])

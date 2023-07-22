@@ -5,8 +5,6 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
-
-static PyObject * gpu_percent(PyObject * self, PyObject * args) {
+double gpu_percent() {
 
 }

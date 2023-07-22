@@ -5,34 +5,36 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define SWAP_INFORMATION_BUFFER 256
-
-static PyObject * swap_percent(PyObject * self, PyObject * args) {
+double swap_percent() {
     FILE * meminfo = fopen("/proc/meminfo", "r");
-
-    if (meminfo == NULL) {
-        Py_RETURN_NONE;
+    if (!meminfo) {
+        return -1.0; // Error opening file
     }
 
-    char buffer[SWAP_INFORMATION_BUFFER];
-    long totalSwap = 0;
-    long freeSwap = 0;
+    long total_swap = 0;
+    long free_swap = 0;
+    char line[128];
 
-    while (fgets(buffer, sizeof(buffer), meminfo)) {
-        sscanf(buffer, "SwapTotal: %ld kB", &totalSwap);
-        sscanf(buffer, "SwapFree: %ld kB", &freeSwap);
+    while (fgets(line, sizeof(line), meminfo)) {
+        if (strncmp(line, "SwapTotal:", 10) == 0) {
+            total_swap = atol(line + 10);
+        } else if (strncmp(line, "SwapFree:", 9) == 0) {
+            free_swap = atol(line + 9);
+        }
     }
 
     fclose(meminfo);
 
-    if (totalSwap < 0 || freeSwap < 0) {
-        Py_RETURN_NONE;
+    if (total_swap <= 0 || free_swap <= 0) {
+        return -1.0; // Invalid swap values
     }
 
-    long usedSwap = totalSwap - freeSwap;
-    double swapUsage = ((double)usedSwap / (double)totalSwap) * 100.0;
-    
-    return PyFloat_FromDouble(swapUsage);
+    long used_swap = total_swap - free_swap;
+    double swap_usage = ((double)used_swap / total_swap) * 100.0;
+
+    return swap_usage;
 }

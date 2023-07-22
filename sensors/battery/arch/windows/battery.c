@@ -16,58 +16,58 @@ found in the LICENSE file.
 #define BATTERY_STATUS_NO_BATTERY 128
 #define BATTERY_STATUS_FAILED     255
 
-static PyObject * percentage(PyObject * self, PyObject * args) {
+int percentage() {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryLifePercent != BATTERY_PERCENTAGE_UNKNOWN)
         {
-            return PyLong_FromLong(powerStatus.BatteryLifePercent);
+            return powerStatus.BatteryLifePercent;
         }
     }
 
-    Py_RETURN_NONE;
+    return NULL;
 }
 
-static PyObject * charging(PyObject * self, PyObject * args) {
+int charging() {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.ACLineStatus == AC_LINE_ONLINE)
         {
-            Py_RETURN_TRUE;
+            return 1;
         }
         else if (powerStatus.ACLineStatus == AC_LINE_OFFLINE)
         {
-            Py_RETURN_FALSE;
+            return 0;
         }
     }
 
-    Py_RETURN_NONE;
+    return NULL;
 }
 
-static PyObject * present(PyObject * self, PyObject * args) {
+int present() {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryFlag & BATTERY_FLAG_NO_BATTERY)
         {
-            Py_RETURN_FALSE;
+            return 0;
         }
         else
         {
-            Py_RETURN_TRUE;
+            return 1;
         }
     }
 
-    Py_RETURN_NONE;
+    return NULL;
 }
 
-static PyObject * flag(PyObject * self, PyObject * args) {
-    /*
+int flag() {
+        /*
     Possible battery flags:
     Value	  Meaning
     0         High—the battery capacity is 66 percent or higher
@@ -86,45 +86,45 @@ static PyObject * flag(PyObject * self, PyObject * args) {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (!GetSystemPowerStatus(&powerStatus)) {
-        return PyLong_FromLong(BATTERY_STATUS_FAILED);
+        return BATTERY_STATUS_FAILED;
     }
 
     if (powerStatus.ACLineStatus == AC_LINE_ONLINE) {
-        return PyLong_FromLong(BATTERY_STATUS_CHARGING);
+        return BATTERY_STATUS_CHARGING;
     }
 
     int percentage = powerStatus.BatteryLifePercent;
 
     if (percentage == BATTERY_PERCENTAGE_UNKNOWN) {
-        return PyLong_FromLong(BATTERY_STATUS_FAILED);
+        return BATTERY_STATUS_FAILED;
     }
 
     if (percentage < 5) {
-        return PyLong_FromLong(BATTERY_STATUS_CRITICAL);
+        return BATTERY_STATUS_CRITICAL;
     }
     else if (percentage >= 5 && percentage < 33) {
-        return PyLong_FromLong(BATTERY_STATUS_LOW);
+        return BATTERY_STATUS_LOW;
     }
     else if (percentage >= 33 && percentage < 66) {
-        return PyLong_FromLong(BATTERY_STATUS_MEDIUM);
+        return BATTERY_STATUS_MEDIUM;
     }
     else if (percentage >= 66) {
-        return PyLong_FromLong(BATTERY_STATUS_HIGH);
+        return BATTERY_STATUS_HIGH;
     }
 
-    return PyLong_FromLong(BATTERY_STATUS_FAILED);
+    return BATTERY_STATUS_FAILED;
 }
 
-static PyObject * battery_time(PyObject * self, PyObject * args) {
+int battery_time() {
     SYSTEM_POWER_STATUS powerStatus;
 
     if (GetSystemPowerStatus(&powerStatus))
     {
         if (powerStatus.BatteryLifeTime != -1 && powerStatus.BatteryLifeTime != 0xFFFFFFFF)
         {
-            return PyLong_FromLong(powerStatus.BatteryLifeTime);
+            return powerStatus.BatteryLifeTime;
         }
     }
 
-    Py_RETURN_NONE;
+    return NULL;
 }

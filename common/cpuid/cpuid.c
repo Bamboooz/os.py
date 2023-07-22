@@ -7,7 +7,7 @@ found in the LICENSE file.
 
 #include <stdio.h>
 
-#include "types.h"
+#include "const.h"
 
 void executeCpuid(unsigned int cpuidResults[4], unsigned int eaxValue, unsigned int ecxValue) {
     __asm__ volatile (

@@ -5,21 +5,19 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
 #include <Windows.h>
 
-static PyObject * memory_percent(PyObject * self, PyObject * args) {
+double memory_percent() {
     MEMORYSTATUSEX status;
     status.dwLength = sizeof(status);
-    
+
     if (!GlobalMemoryStatusEx(&status)) {
-        Py_RETURN_NONE;
+        return -1.0;
     }
 
     double totalMemory = (double)status.ullTotalPhys;
     double usedMemory = totalMemory - (double)status.ullAvailPhys; // used = total - free memory
-
     double memoryUsage = (usedMemory / totalMemory) * 100.0;
-    
-    return PyFloat_FromDouble(memoryUsage);
+
+    return memoryUsage;
 }

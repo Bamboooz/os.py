@@ -5,21 +5,28 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
 #include <stdio.h>
-#include <windows.h>
+#include <Windows.h>
 
-static PyObject * swap_memory(PyObject * self, PyObject * args) {
+char * swap_memory() {
     MEMORYSTATUSEX status;
     status.dwLength = sizeof(status);
 
     if (!GlobalMemoryStatusEx(&status)) {
-        Py_RETURN_NONE;
+        return NULL;
     }
 
     long long totalSwap = (long long)status.ullTotalPageFile;
     long long freeSwap = (long long)status.ullAvailPageFile;
     long long usedSwap = totalSwap - freeSwap;
+    
+    char buffer[128]; // Adjust the buffer size as needed
 
-    return Py_BuildValue("(LLL)", totalSwap, usedSwap, freeSwap);
+    // Use sprintf or snprintf to format the integers into the buffer
+    snprintf(buffer, sizeof(buffer), "%lld,%lld,%lld", totalSwap, freeSwap, usedSwap);
+
+    // Duplicate the buffer so that it can be returned from the function
+    char * result = strdup(buffer);
+
+    return result;
 }

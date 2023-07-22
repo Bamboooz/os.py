@@ -5,59 +5,57 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include "../../../common/cpuid/types.h"
+#include "../../../common/cpuid/const.h"
 #include "../../../common/cpuid/cpuid.c"
 #include "../../../common/strlib.h"
 
 #define MAX_BUFFER_SIZE 1024
 
-void get_vendor(char vendorId[13]) {
+char * vendor() {
     unsigned int cpuidResults[4];
     executeCpuid(cpuidResults, 0x0, 0x0);
+
+    char * vendorId = (char*)malloc(13); // 13 is always size for CPU vendor id
+    if (vendorId == NULL) {
+        return NULL;
+    }
+
     memcpy(vendorId, &(cpuidResults[1]), 4);
     memcpy(vendorId + 4, &(cpuidResults[3]), 4);
     memcpy(vendorId + 8, &(cpuidResults[2]), 4);
     vendorId[12] = '\0';
-}
 
-void get_model(char modelName[49]) {
-    unsigned int cpuidResults[4];
-    for (unsigned int i = 0x80000002; i <= 0x80000004; ++i) {
-        executeCpuid(cpuidResults, i, 0x0);
-        memcpy(modelName + (i - 0x80000002) * 16, cpuidResults, 16);
-    }
-    modelName[48] = '\0';
-    trim(modelName);
+    return vendorId;
 }
 
 char * model() {
-    char proc_model[MAX_BUFFER_SIZE];
-    get_vendor(proc_model);
-    return proc_model;
-}
+    unsigned int cpuidResults[4];
 
-char * vendor() {
-    char vendor_id[MAX_BUFFER_SIZE];
-    get_vendor(vendor_id);
-    return vendor_id;
+    char * modelName = NULL;
+    int modelLength = 0;
+
+    for (unsigned int i = 0x80000002; i <= 0x80000004; ++i) {
+        executeCpuid(cpuidResults, i, 0x0);
+        char tempModel[17]; // Maximum submodel size is 16 characters + 1 null-terminator
+        snprintf(tempModel, sizeof(tempModel), "%s", (char*)cpuidResults);
+        modelLength += strlen(tempModel);
+        modelName = realloc(modelName, modelLength + 1); // Add 1 for the null-terminator
+        strcat(modelName, tempModel);
+    }
+
+    return modelName;
 }
 
 const char * manufacturer() {
-    for (size_t i = 0; i < sizeof(vmap) / sizeof(vmap[0]); i++) {
-        if (strcmp(vendor(), vmap[i].id) == 0) {
-            return vmap[i].manufacturer;
-        }
-    }
-    return "Unknown";
+    size_t dict_size = sizeof(vmap_manufacturer) / sizeof(vmap_manufacturer[0]);
+    char * manufacturer = value_from_dict(vmap_manufacturer, dict_size, vendor(), "");
+    return manufacturer;
 }
 
 const char * cpu_type() {
-    for (size_t i = 0; i < sizeof(vmap) / sizeof(vmap[0]); i++) {
-        if (strcmp(vendor(), vmap[i].id) == 0) {
-            return vmap[i].type;
-        }
-    }
-    return "Unknown";
+    size_t dict_size = sizeof(vmap_type) / sizeof(vmap_type[0]);
+    char * cpu_type = value_from_dict(vmap_type, dict_size, vendor(), "");
+    return cpu_type;
 }
 
 const int physical_cores() {

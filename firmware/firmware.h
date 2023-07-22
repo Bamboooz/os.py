@@ -7,11 +7,7 @@ found in the LICENSE file.
 
 #include <Python.h>
 
-#if _WIN32
-    #include "arch/windows/firmware.c"
-#elif __linux__
-    #include "arch/linux/firmware.c"
-#endif
+#include "arch/windows/firmware.c"
 
 static PyMethodDef ospylib_firmware_module_methods[] = {
     {"firmware", firmware, METH_NOARGS, "Check if the system is using UEFI or BIOS firmware."},

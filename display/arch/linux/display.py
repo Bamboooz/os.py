@@ -3,33 +3,47 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from Xlib import display
-from Xlib.ext import randr
+import subprocess
 
 
 def resolution() -> tuple:
-    d = display.Display()
-    root = d.screen().root
-    width = root.get_geometry().width
-    height = root.get_geometry().height
-    return width, height
+    result = subprocess.run(["xrandr"], capture_output=True, text=True)
+
+    resolution_format = result.stdout.splitlines()[0].replace(" ", "").split(",")
+
+    resolution = None
+
+    for item in resolution_format:
+        if item.startswith("current"):
+            resolution = item.replace("current", "")
+
+    if not resolution:
+        return None
+
+    x, y = tuple(resolution.split("x"))
+    return int(x), int(y)
 
 
-def refreq() -> int:
-    d = display.Display()
-    default_screen = d.get_default_screen()
-    info = d.screen(default_screen)
+def refreq() -> float:
+    result = subprocess.run(["xrandr"], capture_output=True, text=True)
 
-    resources = randr.get_screen_resources(info.root)
-    active_modes = set()
+    resolution_format = result.stdout.splitlines()[0].replace(" ", "").split(",")
 
-    for crtc in resources.crtcs:
-        crtc_info = randr.get_crtc_info(info.root, crtc, resources.config_timestamp)
-        if crtc_info.mode:
-            active_modes.add(crtc_info.mode)
+    resolution = None
+    refreq = None
 
-    for mode in resources.modes:
-        if mode.id in active_modes:
-            return round(mode.dot_clock / (mode.h_total * mode.v_total))
+    for item in resolution_format:
+        if item.startswith("current"):
+            resolution = item.replace("current", "")
 
-    return 0
+    if not resolution:
+        return None
+
+    for item in result.stdout.splitlines():
+        if item.strip().startswith(resolution):
+            refreq = item.strip().split()[-1]
+
+    if not refreq: 
+        return None
+
+    return float(refreq)

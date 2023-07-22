@@ -5,34 +5,36 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define MEMORY_INFORMATION_BUFFER 256
-
-static PyObject * memory_percent(PyObject * self, PyObject * args) {
+double memory_percent() {
     FILE * meminfo = fopen("/proc/meminfo", "r");
-
-    if (meminfo == NULL) {
-        Py_RETURN_NONE;
+    if (!meminfo) {
+        return -1.0; // Error opening file
     }
 
-    char buffer[MEMORY_INFORMATION_BUFFER];
-    long totalMemory = 0;
-    long freeMemory = 0;
+    long total_memory = 0;
+    long free_memory = 0;
+    char line[128];
 
-    while (fgets(buffer, sizeof(buffer), meminfo)) {
-        sscanf(buffer, "MemTotal: %ld kB", &totalMemory);
-        sscanf(buffer, "MemFree: %ld kB", &freeMemory);
+    while (fgets(line, sizeof(line), meminfo)) {
+        if (strncmp(line, "MemTotal:", 9) == 0) {
+            total_memory = atol(line + 9);
+        } else if (strncmp(line, "MemFree:", 8) == 0) {
+            free_memory = atol(line + 8);
+        }
     }
 
     fclose(meminfo);
 
-    if (totalMemory < 0 || freeMemory < 0) {
-        Py_RETURN_NONE;
+    if (total_memory <= 0 || free_memory <= 0) {
+        return -1.0; // Invalid memory values
     }
 
-    long usedMemory = totalMemory - freeMemory;
-    double memoryUsage = ((double)usedMemory / (double)totalMemory) * 100.0;
-    
-    return PyFloat_FromDouble(memoryUsage);
+    long used_memory = total_memory - free_memory;
+    double memory_usage = ((double)used_memory / total_memory) * 100.0;
+
+    return memory_usage;
 }

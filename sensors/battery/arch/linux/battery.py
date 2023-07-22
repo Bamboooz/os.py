@@ -5,12 +5,12 @@
 
 import os
 
-from collections import namedtuple
+from common.data import ospylib_data_format
 
 POWER_SUPPLY_PATH = "/sys/class/power_supply"
 
 BATTERIES = [battery for battery in os.listdir(POWER_SUPPLY_PATH) if battery.startswith('BAT') or 'battery' in battery.lower()]
-HAS_BATTERY = False if not BATTERIES else True
+HAS_BATTERY = True if BATTERIES else False
 
 BATTERY_STATUS_HIGH = 0
 BATTERY_STATUS_MEDIUM = 1
@@ -20,16 +20,20 @@ BATTERY_STATUS_CHARGING = 8
 BATTERY_STATUS_NO_BATTERY = 128
 BATTERY_STATUS_FAILED = 255
 
+BATTERY_CAPACITY = 'capacity'
+BATTERY_CHARGING = 'status'
+BATTERY_TIME_LEFT = ['energy_now', 'power_now']
 
-def sensors_battery() -> namedtuple:
+
+def sensors_battery() -> ospylib_data_format:
     """
-    Returns a named tuple with system battery information.
+    Returns a namedtuple-like with system battery information.
 
     If multiple system batteries installed returns data from the one with the biggest success rate.
 
     If failed to retrieve particular data it will be set as None.
 
-    Contains values:
+    :returns:
         - percentage: Current battery percentage
         - time_left: Current estimated battery time left
         - present: Is any battery installed
@@ -46,20 +50,21 @@ def sensors_battery() -> namedtuple:
     128       No system battery
     255       Unknown status—unable to read the battery flag information
     """
-    bat_stat_format = namedtuple('bat_stat_format', ['percentage', 'time_left', 'charging', 'flag', 'present'])
+    battery_format = ospylib_data_format("sensors_battery", ["percentage", "time_left", "charging", "flag", "present"])
 
-    if HAS_BATTERY is False:
-        battery_status_no_battery_format = bat_stat_format(percentage=None, time_left=None, charging=None, flag=BATTERY_STATUS_NO_BATTERY, present=False)
-        return battery_status_no_battery_format
+    if not HAS_BATTERY:
+        return battery_format(percentage=None, time_left=None, charging=None, flag=BATTERY_STATUS_NO_BATTERY, present=False)
 
-    battery_status = _best_battery_status()
+    battery_flag_format = battery_format(percentage=[_get_battery_status, [BATTERY_CAPACITY]], charging=[_get_battery_status, [BATTERY_CHARGING]])
 
-    percentage = battery_status['capacity']
-    time_left = battery_status['time_left']
-    is_charging = battery_status['status'] == 'charging'
-    flag = _get_battery_flag(percentage, is_charging)
+    battery_status_success_format = battery_format(
+        percentage=[_get_battery_status, [BATTERY_CAPACITY]],
+        time_left=[_get_battery_status, [BATTERY_TIME_LEFT]],
+        charging=[_get_battery_status, [BATTERY_CHARGING]],
+        flag=[_get_battery_flag, [battery_flag_format.percentage, battery_flag_format.charging]],
+        present=True
+    )
 
-    battery_status_success_format = bat_stat_format(percentage=percentage, time_left=time_left, charging=is_charging, flag=flag, present=True)
     return battery_status_success_format
 
 
@@ -96,63 +101,52 @@ def _get_battery_flag(percentage, is_charging) -> int:
         return BATTERY_STATUS_HIGH
 
 
-def _best_battery_status() -> dict:
-    """
-    Load the battery information of each installed battery and return the one with the biggest retrieval success rate.
-    """
-    info_per_battery = {}
+def _get_battery_status(data_type):
+    data_info_per_batteries = {}
 
-    for index, battery in enumerate(BATTERIES):
-        info_per_battery[index] = _get_battery_status(battery)
+    for battery in BATTERIES:
+        data_info = []
 
-    min_none_subdict = min(info_per_battery.values(), key=lambda subdict: sum(value is None for value in subdict.values()))
+        if type(data_type) is not list:
+            data_type = [data_type]
 
-    return min_none_subdict  # Return the battery which had the most successful scan rate.
+        for info in data_type:
+            try:
+                with open(f'{POWER_SUPPLY_PATH}/{battery}/{info}', 'r') as file:
+                    data_info.append(file.read().strip().lower())
+            except Exception:
+                data_info.append(None)
+
+        data_info_per_batteries[battery] = data_info
+
+    best_battery_status = _best_battery_status(data_info_per_batteries)
+    return _validate_battery_status(best_battery_status, data_type)
 
 
-def _get_battery_status(battery: str):
-    """
-    Get battery status by battery name.
-    """
-    battery_info = {}
+def _best_battery_status(status_dict: dict):
+    for item in status_dict.values():
+        if None not in item:
+            return item
 
-    # Try to read all required battery information.
-    for bat_stat in ['capacity', 'status', 'energy_now', 'power_now']:
+
+def _validate_battery_status(status, data_type):
+    if not status:
+        return None
+
+    if BATTERY_CHARGING in data_type:
+        return status[0].lower() == "charging"
+
+    if BATTERY_CAPACITY in data_type:
         try:
-            with open(f'{POWER_SUPPLY_PATH}/{battery}/{bat_stat}', 'r') as file:
-                battery_info[bat_stat] = file.read().strip().lower()
-        except:
-            # If failed set the value as None.
-            battery_info[bat_stat] = None
+            return int(status[0])
+        except Exception:
+            return None
 
-    return _validate_battery_status(battery_info)
+    if BATTERY_TIME_LEFT in data_type:
+        try:
+            energy_now, power_now = (int(item) for item in status)
+        except Exception:
+            return None
 
-
-def _validate_battery_status(status) -> dict:
-    """
-    Convert all the values in the battery information to their go-to data types and calculate battery time left.
-    """
-    try:
-        status['energy_now'] = int(status['energy_now'])
-    except:
-        status['energy_now'] = None
-
-    try:
-        status['power_now'] = int(status['power_now'])
-    except:
-        status['power_now'] = None
-
-    try:
-        status['capacity'] = int(status['capacity'])
-    except:
-        status['capacity'] = None
-
-    try:
-        if status['energy_now'] > 0 and status['power_now'] > 0:  # Calculate battery time left.
-            status['time_left'] = status['energy_now'] / status['power_now'] * 60  # Convert to seconds
-        else:
-            status['time_left'] = None
-    except:
-        status['time_left'] = None
-
-    return status
+        if energy_now > 0 and power_now > 0:  # Calculate battery time left.
+            return energy_now / power_now * 60  # Convert to seconds

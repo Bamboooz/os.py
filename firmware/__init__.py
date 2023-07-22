@@ -3,30 +3,15 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-
-from collections import namedtuple
-
-from common.load import import_by_os, WINDOWS, LINUX
+from common.data import ospylib_data_format
+from common.load import import_by_os
 
 
-def firmware_info() -> namedtuple:
-    firmware_info_format = namedtuple('firmware_info_format', ['type', 'version', 'release_date', 'vendor'])
-
+def firmware_info() -> ospylib_data_format:
     firmware_type = None  # will implement when I will connect my C code with Python
 
-    version = import_by_os({
-        WINDOWS: "arch.windows.firmware",
-        LINUX: "arch.linux.firmware"
-    }, 'version')()
+    version = import_by_os(windows="arch.windows.firmware", linux="arch.linux.firmware", function="version")
+    release_date = import_by_os(windows="arch.windows.firmware", linux="arch.linux.firmware", function="release_date")
+    vendor = import_by_os(windows="arch.windows.firmware", linux="arch.linux.firmware", function="vendor")
 
-    release_date = import_by_os({
-        WINDOWS: "arch.windows.firmware",
-        LINUX: "arch.linux.firmware"
-    }, 'release_date')()
-
-    vendor = import_by_os({
-        WINDOWS: "arch.windows.firmware",
-        LINUX: "arch.linux.firmware"
-    }, 'vendor')()
-
-    return firmware_info_format(type=firmware_type, version=version, release_date=release_date, vendor=vendor)
+    return ospylib_data_format(type=firmware_type, version=version, release_date=release_date, vendor=vendor)

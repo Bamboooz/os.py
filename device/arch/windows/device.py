@@ -5,13 +5,16 @@
 
 import wmi
 
-from common.path import drive_to_path as _dtp
+from common.fs.path import drive_to_path as _dtp
 
 
-def devices() -> dict:
-    logical_disks = {
-        _dtp(disk.DeviceID): [disk.VolumeName, disk.FileSystem]
-        for num, disk in enumerate(wmi.WMI().Win32_LogicalDisk(DriveType=2))
-    }
+def devices() -> list:
+    return [_dtp(disk.DeviceID) for disk in wmi.WMI().Win32_LogicalDisk(DriveType=2)]
 
-    return logical_disks
+
+def device_name(device, devs) -> str:
+    return dict(zip(devs, [disk.VolumeName for disk in wmi.WMI().Win32_LogicalDisk(DriveType=2)]))[device]
+
+
+def device_fstype(device, devs) -> str:
+    return dict(zip(devs, [disk.FileSystem for disk in wmi.WMI().Win32_LogicalDisk(DriveType=2)]))[device]

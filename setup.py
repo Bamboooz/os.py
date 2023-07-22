@@ -28,15 +28,13 @@ keywords = [
 packages = ['battery', 'common', 'device', 'display', 'drivers', 'hardware', 'sensors', 'storage', 'system', 'peripherals', 'process', 'audio']
 
 if platform.system() == 'Windows':
-    install_requirements=[
+    install_requirements = [
         'wmi'
     ]
 else:
-    install_requirements = [
-        'XLib'
-    ]
+    install_requirements = []
 
-entry_points={
+entry_points = {
     'console_scripts': [
         'ospylib = prompt.__init__:main'
     ]

@@ -9,7 +9,7 @@ from common.prompt.prompt import execute_command
 
 
 def drives() -> list:
-    return [mountpoint for mountpoint in os.listdir('/') if os.path.isdir(f'/{mountpoint}')]
+    return [f"/{mountpoint}" for mountpoint in os.listdir('/') if os.path.isdir(f'/{mountpoint}')]
 
 
 def filesystem(mount_point):
@@ -17,5 +17,5 @@ def filesystem(mount_point):
         output = execute_command(f'df -T {mount_point}', trim=1)
         filesystem = output[0].split()[1]
         return filesystem
-    except:
+    except Exception:
         return None

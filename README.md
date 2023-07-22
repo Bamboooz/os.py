@@ -48,13 +48,13 @@ You can use os.py to retrieve system information, such as the firmware type, ope
 import ospylib
 
 # Get the firmware type (BIOS or UEFI)
-firmware_type = ospylib.firmware().type
+firmware_type = ospylib.firmware_info().type
 
 # Get the operating system name
-os_version = ospylib.system().name
+os_version = ospylib.system_info().name
 
 # Get the processor model
-processor_info = ospylib.cpu().model
+processor_info = ospylib.cpu_info().model
 ```
 
 ### Reading system and hardware data from command prompt.
@@ -75,7 +75,7 @@ These were just random examples of os.py usage, but there's a lot more to explor
 
 ## Roadmap
 ### Project launch state
-> **os.py** launched in **May 2022**. As of **July 2023**, we are in the **Private ❌** stage.<br/>
+> **os.py** launched in **May 2022**. As of **June 2023**, we are in the **Private ❌** stage.<br/>
 
 ❌ **Private:** os.py is currently being developed, and you cannot install the library yet.<br/>
 ✅ **Public:** os.py is ready for public use and is receiving regular updates.

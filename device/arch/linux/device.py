@@ -9,14 +9,15 @@ FINDMNT_GET_DEVICE = "findmnt -Do TARGET"
 FINDMNT_GET_FSTYPE = "findmnt -Do FSTYPE"
 
 
-def devices() -> dict:
-    usbs = execute_command(FINDMNT_GET_DEVICE, 1).splitlines()
-    fstypes = execute_command(FINDMNT_GET_FSTYPE, 1).splitlines()
+def devices() -> list:
+    usbs = execute_command(FINDMNT_GET_DEVICE, 1)
+    return [usb for usb in usbs if usb.startswith("/media")]
 
-    f_devices = {}
 
-    for index, (usb, fstype) in enumerate(zip(usbs, fstypes)):
-        if usb.startswith('/media'):
-            f_devices[usb] = [usb.split('/')[-1], fstype]
+def device_name(device) -> str:
+    return device.split("/")[-1]
 
-    return f_devices
+
+def device_fstype(device, devs) -> str:
+    fstypes = execute_command(FINDMNT_GET_FSTYPE, 1)
+    return {device: fstype for device, fstype in zip(devs, fstypes)}[device]

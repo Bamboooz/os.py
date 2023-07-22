@@ -8,11 +8,10 @@ found in the LICENSE file.
 #include "../../common/cpuid/cpuid.c"
 
 #if cpuid_supported 
-    #include "shared/processor.c"
+    #include "arch/shared/processor.c"
 #else
-    if __linux__
+    #ifdef __linux__
         #include "arch/linux/processor.c"
     #endif
 #endif
-
 

@@ -10,8 +10,8 @@ found in the LICENSE file.
 #include <TlHelp32.h>
 #include <unistd.h>
 
-int current_pid() {
-    return getpid();
+int getpid() {
+    return GetCurrentProcessId();
 }
 
 int pid_exists(int pid) {

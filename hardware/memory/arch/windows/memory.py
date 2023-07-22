@@ -89,8 +89,7 @@ def sticks() -> int:
 
 
 def factor(per_stick=False) -> dict or str:
-    m_factors = {num: factors.get(mem_module.FormFactor) for num, mem_module in
-                 enumerate(wmi.WMI().Win32_PhysicalMemory())}
+    m_factors = {num: factors.get(mem_module.FormFactor) for num, mem_module in enumerate(wmi.WMI().Win32_PhysicalMemory())}
 
     return m_factors if per_stick else m_factors.get(0)
 

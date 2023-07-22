@@ -17,14 +17,14 @@ def driver_query(driver: str=None) -> namedtuple or dict:
         '<driver_name>': '<file_path>',
         ...
     }
-    If driver name or driver path is specified, returns a named tuple with items:
+    If driver name or driver path is specified, returns a namedtuple-like object with items:
         - name: Driver's name
         - path: Path to the driver file
         - description: Driver's description
     """
-    if driver is not None and os.path.isfile(driver):
+    if driver and os.path.isfile(driver):
         return _get_data_from_path(driver)
-    elif driver is not None:
+    elif driver:
         return _get_data_from_name(driver)
 
     kernel_release = execute_command('uname -r', 0)[0]

@@ -5,13 +5,14 @@ Use of this source code is governed by a BSD-style license that can be
 found in the LICENSE file.
 */
 
-#include <Python.h>
 #include <Windows.h>
 
-static PyObject * firmware(PyObject * self, PyObject * args) {
+#include "../../../common/regedit/registry.h"
+
+char * firmware() {
     HMODULE kernel32 = LoadLibraryA("kernel32.dll");
     if (kernel32 == NULL) {
-        return PyUnicode_FromString("Unknown");
+        return NULL;
     }
 
     typedef DWORD (WINAPI * PFN_GetFirmwareEnvironmentVariableA)(LPCSTR, LPCSTR, PVOID, DWORD);
@@ -19,7 +20,7 @@ static PyObject * firmware(PyObject * self, PyObject * args) {
     PFN_GetFirmwareEnvironmentVariableA pGetFirmwareEnvironmentVariableA = (PFN_GetFirmwareEnvironmentVariableA)GetProcAddress(kernel32, "GetFirmwareEnvironmentVariableA");
     if (pGetFirmwareEnvironmentVariableA == NULL) {
         FreeLibrary(kernel32);
-        return PyUnicode_FromString("Unknown");
+        return NULL;
     }
 
     char firmwareInfo[512];
@@ -28,5 +29,41 @@ static PyObject * firmware(PyObject * self, PyObject * args) {
     FreeLibrary(kernel32);
 
     const char * firmwareType = (result > 0) ? "UEFI" : "BIOS";
-    return PyUnicode_FromString(firmwareType);
+    return firmwareType;
+}
+
+char * version() {
+    char buffer[256];
+
+    int result = readRegistryValue(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "BIOSVersion", buffer, sizeof(buffer));
+
+    if (result != 0) {
+        return NULL;
+    }
+
+    return buffer;
+}
+
+char * release_date() {
+    char buffer[256];
+
+    int result = readRegistryValue(HKEY_LOCAL_MACHINE, "SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "BIOSReleaseDate", buffer, sizeof(buffer));
+
+    if (result != 0) {
+        return NULL;
+    }
+
+    return buffer;
+}
+
+char * vendor() {
+    char buffer[256];
+
+    int result = readRegistryValue(HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\BIOS", "BIOSVendor", buffer, sizeof(buffer));
+
+    if (result != 0) {
+        return NULL;
+    }
+
+    return buffer;
 }

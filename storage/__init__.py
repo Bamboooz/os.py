@@ -7,58 +7,80 @@ import os
 import shutil
 import device
 
-from collections import namedtuple
-
-from common.load import import_by_os, WINDOWS, LINUX
-from common.path import drive_to_path as _dtp
-
-
-drives = import_by_os({
-    WINDOWS: 'storage.arch.windows.storage',
-    LINUX: 'storage.arch.linux.storage'
-}, 'drives')
+from common.load import import_by_os
+from common.fs.path import drive_to_path as _dtp
+from common.data import ospylib_data_format
 
 
-def disk_usage(drive) -> namedtuple:
-    disk_stat_format = namedtuple('disk_stat_format', ['total', 'used', 'free', 'perc_free', 'perc_used'])
+def drives() -> list:
+    """
+    Get a list of all available installed drives.
+    """
+    drive_list = import_by_os(windows="storage.arch.windows.storage", linux="storage.arch.linux.storage", function="drives")
+    return drive_list()
 
+
+def disk_usage(drive) -> ospylib_data_format:
+    """
+    Returns a namedtuple-like containing information about specified drive's usages.
+
+    :returns:
+        - total: Returns the total amount of drive space in bytes.
+        - used: Returns the used amount of drive space in bytes.
+        - free: Returns the free amount of drive space in bytes.
+        - perc_free: Returns the free amount of drive space in percentage.
+        - perc_used: Returns the used amount of drive space in percentage.
+    """
     drive = _dtp(drive)
 
     is_mount = os.path.exists(drive) and drive.startswith("/") and not os.path.isfile(drive)
     is_drive = os.path.exists(drive) and os.path.isabs(drive) and len(os.path.splitdrive(drive)[0]) == 2 and not os.path.isfile(drive)
 
     if not is_mount and not is_drive:
-        disk_stat = disk_stat_format(total=None, used=None, free=None, perc_free=None, perc_used=None)
-        return disk_stat
+        return ospylib_data_format(total=None, used=None, free=None, perc_free=None, perc_used=None)
 
     total, used, free = shutil.disk_usage(drive)
     perc_free = free / total * 100
     perc_used = used / total * 100
 
-    disk_stat = disk_stat_format(total=total, used=used, free=free, perc_free=perc_free, perc_used=perc_used)
-    return disk_stat
+    return ospylib_data_format(total=total, used=used, free=free, perc_free=perc_free, perc_used=perc_used)
 
 
-def disk_info(drive) -> namedtuple:
-    disk_info_format = namedtuple('disk_info_format', ['fstype', 'type'])
-    disk_type_format = namedtuple('disk_type_format', ['removable', 'drive', 'mount'])
+def disk_info(drive) -> ospylib_data_format:
+    """
+    Returns a namedtuple-like object containing information about selected drive.
 
+    :returns:
+        - fstype: Returns the filesystem type of the requested drive
+        - type:
+            - drive: Returns if the selected disk is a drive
+            - mount: Returns if the selected disk is a mount
+            - removable: Returns if the selected disk is a removable disk device
+    """
     drive = _dtp(drive)
 
     is_mount = os.path.exists(drive) and drive.startswith("/") and not os.path.isfile(drive)
     is_drive = os.path.exists(drive) and os.path.isabs(drive) and len(os.path.splitdrive(drive)[0]) == 2 and not os.path.isfile(drive)
-    is_removable = drive in device.ext_dev()
 
     if not is_mount and not is_drive:
-        disk_type = disk_type_format(removable=None, drive=None, mount=None)
-        disk_stat = disk_info_format(fstype=None, type=disk_type)
-        return disk_stat
+        disk_type = ospylib_data_format(removable=None, drive=None, mount=None)
+        return ospylib_data_format(fstype=None, type=disk_type)
 
-    filesystem = import_by_os({
-        WINDOWS: 'storage.arch.windows.storage',
-        LINUX: 'storage.arch.linux.storage'
-    }, 'filesystem')(drive)
+    disk_type = ospylib_data_format(drive=is_drive, mount=is_mount, removable=[_is_removable, [drive]])
 
-    disk_type = disk_type_format(drive=is_drive, mount=is_mount, removable=is_removable)
-    partitions = disk_info_format(fstype=filesystem, type=disk_type)
-    return partitions
+    return ospylib_data_format(fstype=[_get_fst, [drive]], type=disk_type)
+
+
+def _is_removable(drive) -> bool:
+    """
+    Check if requested drive is removable.
+    """
+    return drive in device.ext_dev()
+
+
+def _get_fst(drive) -> str:
+    """
+    Get filesystem of a requested drive.
+    """
+    filesystem = import_by_os(windows="storage.arch.windows.storage", linux="storage.arch.linux.storage", function="filesystem")
+    return filesystem(drive)

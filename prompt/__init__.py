@@ -18,9 +18,11 @@ def from_cmd():
     print(GREEN     + '> Gathering system information, progress: 59%' + END_COLOR)  # random number for now this file won't even work until the c code will work with python 💀
     return
 
+
 def from_filepath(filepath):
     # Function implementation for filepath
     return
+
 
 def main():
     parser = argparse.ArgumentParser()

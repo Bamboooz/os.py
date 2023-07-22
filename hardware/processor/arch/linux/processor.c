@@ -11,13 +11,13 @@ found in the LICENSE file.
 
 #include <sys/utsname.h>
 
-#include "../../../../common/cpuid/types.h"
+#include "../../../../common/cpuid/const.h"
+#include "../../../../common/types/dict.h"
 
 #define MAX_BUFFER_SIZE 1024
 
-
 double ceil(double x) {
-    // no idea why my comiler didn't detect math.ceil() so I made my own.
+    // no idea why my compiler didn't detect math.ceil() so I made my own.
     if (x > (int)x) {
         x = (int)x + 1;
     }
@@ -90,26 +90,6 @@ const char * vendor() {
     return proc_value(cpuinfo, "vendor_id");
 }
 
-const char * manufacturer() {
-    for (size_t i = 0; i < sizeof(vmap) / sizeof(vmap[0]); i++) {
-        if (strcmp(vendor(), vmap[i].id) == 0) {
-            return vmap[i].manufacturer;
-        }
-    }
-
-    return "";
-}
-
-const char * cpu_type() {
-    for (size_t i = 0; i < sizeof(vmap) / sizeof(vmap[0]); i++) {
-        if (strcmp(vendor(), vmap[i].id) == 0) {
-            return vmap[i].type;
-        }
-    }
-
-    return "";
-}
-
 int clockspeed() {
     char cpuinfo[MAX_BUFFER_SIZE];
     read_file("/proc/cpuinfo", cpuinfo, sizeof(cpuinfo));
@@ -132,4 +112,16 @@ const char * architecture() {
     }
 
     return "";
+}
+
+const char * manufacturer() {
+    size_t dict_size = sizeof(vmap_manufacturer) / sizeof(vmap_manufacturer[0]);
+    char * manufacturer = value_from_dict(vmap_manufacturer, dict_size, vendor(), "");
+    return manufacturer;
+}
+
+const char * cpu_type() {
+    size_t dict_size = sizeof(vmap_type) / sizeof(vmap_type[0]);
+    char * cpu_type = value_from_dict(vmap_type, dict_size, vendor(), "");
+    return cpu_type;
 }
