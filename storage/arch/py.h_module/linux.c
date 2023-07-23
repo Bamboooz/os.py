@@ -8,14 +8,21 @@ found in the LICENSE file.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Python.h>
 
-char * filesystem(const char * mount_point) {
+static PyObject * filesystem(PyObject * self, PyObject * args) {
+    char * mount_point;
+
+    if (!PyArg_ParseTuple(args, "s", &mount_point)) {
+        Py_RETURN_NONE;
+    }
+
     char command[1024];
     snprintf(command, sizeof(command), "df -T %s", mount_point);
 
     FILE * fp = popen(command, "r");
     if (fp == NULL) {
-        return NULL;
+        Py_RETURN_NONE;
     }
 
     char * line = NULL;
@@ -26,7 +33,7 @@ char * filesystem(const char * mount_point) {
     if ((read = getline(&line, &len, fp)) == -1) {
         free(line);
         pclose(fp);
-        return NULL;
+        Py_RETURN_NONE;
     }
 
     char * filesystem = NULL;
@@ -48,5 +55,5 @@ char * filesystem(const char * mount_point) {
 
     free(line);
     pclose(fp);
-    return filesystem;
+    return PyUnicode_FromString(filesystem);
 }
