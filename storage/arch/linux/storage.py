@@ -4,8 +4,7 @@
 # found in the LICENSE file.
 
 import os
-
-from common.prompt.prompt import execute_command
+import subprocess
 
 
 def drives() -> list:
@@ -14,8 +13,7 @@ def drives() -> list:
 
 def filesystem(mount_point):
     try:
-        output = execute_command(f'df -T {mount_point}', trim=1)
-        filesystem = output[0].split()[1]
-        return filesystem
+        result = subprocess.run(['df', '-T', f'{mount_point}'], capture_output=True, text=True)
+        return result.stdout.strip().splitlines()[1].split()[1] # The location filesystem is located in.
     except Exception:
         return None

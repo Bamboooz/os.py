@@ -16,7 +16,7 @@ found in the LICENSE file.
     #include "arch/linux/sys.c"
 #endif
 
-const char * name() {
+char * name() {
     return OPERATING_SYSTEM;
 }
 
